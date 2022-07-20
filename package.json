@@ -4,8 +4,12 @@
   "description": "Carl Osterly Photography",
   "main": "index.js",
   "scripts": {
-    "start": "eleventy --serve",
-    "build": "eleventy"
+    "watch:sass": "sass --watch src/assets/scss:public/css",
+    "build:sass": "sass src/assets/scss:public/css",
+    "watch:eleventy": "eleventy --serve",
+    "build:eleventy": "eleventy",
+    "start": "npm-run-all build:sass --parallel watch:*",
+    "build": "npm-run-all build:*"
   },
   "repository": {
     "type": "git",

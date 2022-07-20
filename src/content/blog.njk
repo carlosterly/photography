@@ -1,6 +1,6 @@
 ---
 title: Blog
-layout: 'base.njk'
+layout: 'layouts/base.njk'
 ---
 
 <div class="section container">
@@ -9,7 +9,7 @@ layout: 'base.njk'
   <ul role="list" class="articles__list flow">
 
     {%- for post in collections.post | reverse -%}
-      {% include 'article-snippet.njk' %}
+      {% include 'layouts/article-snippet.njk' %}
     {% endfor %}
 
   </ul>
