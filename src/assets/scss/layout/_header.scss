@@ -1,3 +1,36 @@
-// -----------------------------------------------------------------------------
-// This file contains all styles related to the header of the site/application.
-// -----------------------------------------------------------------------------
+.site__header {
+  margin: 0.5rem 1rem 1rem 1rem;
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  grid-template-rows: 65px auto;
+  align-items: center;
+}
+
+.hero__heading {
+  justify-self: end;
+  grid-column: 2 / span 2;
+  h1 {
+    font-size: var(--font-size-lg);
+    margin-bottom: 0.8rem;
+    @include media(">420px") {
+      font-size: var(--font-size-xl);
+    }
+  }
+}
+
+.logo__text1 {
+  color: $dark-yellow;
+}
+
+.logo__text2 {
+  color: $mid-grey;
+}
+
+.hero__banner {
+  grid-row: 2 / span 1;
+  grid-column: 1 / span 2;
+  object-fit: cover;
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+  width: 100%;
+}

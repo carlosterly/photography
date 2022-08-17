@@ -1,3 +1,51 @@
-// -----------------------------------------------------------------------------
-// This file contains all styles related to the footer of the site/application.
-// -----------------------------------------------------------------------------
+.site__footer {
+  margin: 0 1rem 1rem 1rem;
+  font-size: var(--font-size-lg);
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  grid-row-gap: 1rem;
+  grid-template-areas:
+    "copyright"
+    "icons"
+    "pagetop";
+
+  @include media(">=md") {
+    grid-template-columns: max-content 1fr 0.7fr;
+    grid-template-areas: "copyright pagetop icons";
+    align-items: center;
+  }
+
+  a {
+    text-decoration: none;
+    color: $mid-grey;
+    transition: 1s;
+    &:hover {
+      color: $dark-yellow;
+    }
+  }
+}
+
+.footer__copyright {
+  grid-area: copyright;
+  text-align: center;
+  font-size: var(--font-size-md);
+  @include media(">=md") {
+    text-align: left;
+  }
+}
+
+.footer__pagetop {
+  grid-area: pagetop;
+  justify-self: center;
+}
+
+.footer__icons {
+  grid-area: icons;
+  display: flex;
+  justify-content: space-evenly;
+  @include media(">=md") {
+    justify-content: space-between;
+  }
+}

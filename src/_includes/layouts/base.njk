@@ -1,21 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="">
   <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+
+    <link rel="apple-touch-icon" href="icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
     <link rel="stylesheet" href="/css/main.css">
   </head>
   <body>
 
-    {% include 'layouts/header.njk' %}
+    {% include 'partials/header.njk' %}
 
-    <main>
-      {{ content | safe }}
-    </main>
+    <div class="page-wrap">
 
-    {% include 'layouts/footer.njk' %}
+      <main class="main-content">
+
+        <article class="article">
+
+          {{ content | safe }}
+
+        </article>
+
+      </main>
+
+    </div>
+
+    {% include 'partials/footer.njk' %}
+
+    <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
 
   </body>
 </html>

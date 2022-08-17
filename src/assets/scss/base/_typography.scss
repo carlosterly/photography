@@ -1,7 +1,55 @@
-/**
- * Basic typography style for copy text
- */
+@import url("https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;600&family=Source+Serif+Pro&display=swap");
+
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
+
 body {
   color: $text-color;
-  font: normal 125% / 1.4 $text-font-stack;
+  font: normal 1rem / 1.5 $text-font-stack;
+  background-color: $body-color;
+  // font-family: $text-font-stack;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $mid-grey;
+  font-family: "Familjen Grotesk", sans-serif;
+  line-height: 1.2;
+  margin: 0 0 1rem 0;
+}
+
+h1 {
+  font-size: var(--font-size-xxxl);
+}
+
+h2 {
+  font-size: var(--font-size-xxl);
+}
+
+h3 {
+  font-size: var(--font-size-xl);
+}
+
+h4 {
+  font-size: var(--font-size-lg);
+}
+
+h5 {
+  font-size: var(--font-size-md);
+}
+
+h6 {
+  font-size: var(--font-size-base);
+}
+
+p {
+  color: $dark-grey;
+  font-size: var(--font-size-md);
+  font-family: "Source Serif Pro", serif;
+  line-height: 1.3;
+  margin-top: 0;
+  margin-bottom: 1rem;
 }

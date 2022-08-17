@@ -7,7 +7,7 @@
  */
 .clearfix::after {
   clear: both;
-  content: '';
+  content: "";
   display: table;
 }
 
@@ -52,4 +52,13 @@
   padding: 0;
   position: absolute;
   width: 1px;
+}
+
+.hidden {
+  display: none;
+}
+
+.img-responsive {
+  max-width: 100%;
+  height: auto;
 }

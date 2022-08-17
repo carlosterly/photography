@@ -1,19 +1,19 @@
 const { DateTime } = require("luxon");
 
 module.exports = function(eleventyConfig) {
+  
   eleventyConfig.setBrowserSyncConfig({
 		files: './public/css/**/*.css'
-	});  
-  eleventyConfig.addPassthroughCopy("./src/assets/");
+  });  
+  
+  eleventyConfig.addPassthroughCopy("./src/assets/img");
+  eleventyConfig.addPassthroughCopy("./src/assets/js");
 
   eleventyConfig.addFilter("postDate", (dateObj) => {
     return DateTime.fromJSDate(dateObj).toLocaleString(DateTime.DATE_MED);
   });
 
   // const Card = require("./src/_includes/components/Card");
-  // eleventyConfig.addPassthroughCopy("src/assets/");
-  // eleventyConfig.addPassthroughCopy("src/css/");
-  // eleventyConfig.addWatchTarget("src/css/");
 
   // eleventyConfig.addShortcode("Card", Card);
 
