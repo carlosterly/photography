@@ -1,8 +1,27 @@
 .site__nav {
   grid-column: 1 / span 1;
+  @include media(">=md") {
+    display: none;
+  }
 }
 
-#menuToggle {
+.menu__desktop {
+  grid-column: 1 / span 1;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+
+  @include media("<=md") {
+    display: none;
+  }
+  li {
+    font-size: var(--font-size-base);
+  }
+}
+
+.menu__toggle {
   position: relative;
   display: block;
   width: 40px;
@@ -20,7 +39,7 @@
   }
 }
 
-#menuToggle input {
+.menu__toggle input {
   display: block;
   width: 40px;
   height: 32px;
@@ -33,7 +52,7 @@
   -webkit-touch-callout: none;
 }
 
-#menuToggle span {
+.menu__toggle span {
   position: relative;
   display: block;
   width: 33px;
@@ -54,7 +73,7 @@
   }
 }
 
-#menuToggle input:checked ~ span {
+.menu__toggle input:checked ~ span {
   opacity: 1;
   transform: rotate(45deg) translate(-2px, -1px);
   background: $mid-grey;
@@ -67,11 +86,11 @@
   }
 }
 
-#menuToggle input:checked ~ ul {
+.menu__toggle input:checked ~ ul {
   transform: none;
 }
 
-#menu {
+.menu__slide {
   position: absolute;
   width: 300px;
   margin: -100px 0 0 -50px;

@@ -1,5 +1,5 @@
 .site__footer {
-  margin: 0 1rem 0.5rem 1rem;
+  margin-bottom: 0.5rem;
   font-size: var(--font-size-md);
   color: $mid-grey;
 
@@ -13,7 +13,7 @@
     "pagetop";
 
   @include media(">=md") {
-    grid-template-columns: max-content 1fr 0.7fr;
+    grid-template-columns: max-content 1fr 0.3fr;
     grid-template-areas: "copyright pagetop icons";
     align-items: center;
   }
@@ -31,7 +31,7 @@
 .footer__copyright {
   grid-area: copyright;
   text-align: center;
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-base);
   @include media(">=md") {
     text-align: left;
   }
