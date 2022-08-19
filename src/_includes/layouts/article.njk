@@ -1,42 +1,21 @@
-<!DOCTYPE html>
-<html lang="">
-  <head>
-    <meta charset="UTF-8">
-    <title>{{ title }}</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+{% include 'partials/site-head.njk' %}
 
-    <meta property="og:title" content="">
-    <meta property="og:type" content="">
-    <meta property="og:url" content="">
-    <meta property="og:image" content="">
+{% include 'partials/navbar.njk' %}
 
-    <link rel="apple-touch-icon" href="icon.png">
-    <!-- Place favicon.ico in the root directory -->
+<div class="page-wrap">
 
-    <link rel="stylesheet" href="/css/main.css">
-  </head>
-  <body>
+  <main class="main-content">
 
-    {% include 'partials/header.njk' %}
+    <article class="article">
 
-    <div class="page-wrap">
+      {{ content | safe }}
 
-      <main class="main-content">
+    </article>
 
-        <article class="article">
+  </main>
 
-          {{ content | safe }}
+</div>
 
-        </article>
+{% include 'partials/footer.njk' %}
 
-      </main>
-
-    </div>
-
-    {% include 'partials/footer.njk' %}
-
-    <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
-
-  </body>
-</html>
+{% include 'partials/body-close.njk' %}

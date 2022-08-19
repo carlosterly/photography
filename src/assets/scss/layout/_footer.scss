@@ -1,6 +1,7 @@
 .site__footer {
-  margin: 0 1rem 1rem 1rem;
-  font-size: var(--font-size-lg);
+  margin: 0 1rem 0.5rem 1rem;
+  font-size: var(--font-size-md);
+  color: $mid-grey;
 
   display: grid;
   grid-template-columns: 1fr;
@@ -18,8 +19,8 @@
   }
 
   a {
-    text-decoration: none;
     color: $mid-grey;
+    text-decoration: none;
     transition: 1s;
     &:hover {
       color: $dark-yellow;

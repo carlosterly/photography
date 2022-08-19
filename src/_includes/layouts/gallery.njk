@@ -1,77 +1,9 @@
-<!DOCTYPE html>
-<html lang="">
-  <head>
-    <meta charset="UTF-8">
-    <title>{{ title }}</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+{% include 'partials/site-head.njk' %}
 
-    <meta property="og:title" content="">
-    <meta property="og:type" content="">
-    <meta property="og:url" content="">
-    <meta property="og:image" content="">
+{% include 'partials/navbar.njk' %}
 
-    <link rel="apple-touch-icon" href="icon.png">
-    <!-- Place favicon.ico in the root directory -->
+{{ content | safe }}
 
-    <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="/assets/js/photoswipe/photoswipe.css">
+{% include 'partials/footer.njk' %}
 
-  </head>
-  <body>
-
-    <img id="banner__image" class="hero__banner" src="https://res.cloudinary.com/liquidweb/image/upload/q_80/v1577351875/photography/portraits/Marcelle-Portrait-1-14092019.jpg" alt="Portrait of Marcelle">
-
-    <script src="/assets/js/homepage.js"></script>
-
-    <script type="module">
-      import PhotoSwipeLightbox from '/assets/js/photoswipe/photoswipe-lightbox.esm.js';
-
-      const options = {
-        dataSource: [
-
-          // simple image
-          {
-            src: 'https://res.cloudinary.com/liquidweb/image/upload/q_80/v1577351918/photography/portraits/Marcelle-Portrait-6-14092019.jpg',
-            width: 1365,
-            height: 2048,
-            alt: 'Marcelle'
-          }, {
-            src: 'https://res.cloudinary.com/liquidweb/image/upload/q_80/v1639387683/photography/portraits/Dana-Portrait-1-12122021.jpg',
-            width: 2160,
-            height: 1440,
-            alt: 'Dana'
-          }, {
-            src: 'https://res.cloudinary.com/liquidweb/image/upload/q_80/v1577352006/photography/portraits/Karen-Portrait-4-26052019.jpg',
-            width: 1365,
-            height: 2048,
-            alt: 'Karen'
-          }, {
-            src: 'https://res.cloudinary.com/liquidweb/image/upload/q_80/v1577351999/photography/portraits/Karen-Portrait-3-26052019.jpg',
-            width: 1365,
-            height: 2048,
-            alt: 'Karen'
-          }, {
-            src: 'https://res.cloudinary.com/liquidweb/image/upload/q_80/v1577351992/photography/portraits/Nikita-Portrait-7-04082019.jpg',
-            width: 1365,
-            height: 2048,
-            alt: 'Nikita'
-          }
-        ],
-        bgOpacity: 1,
-        errorMsg: 'The photo cannot be loaded',
-        showHideAnimationType: 'none',
-        pswpModule: () => import ('/assets/js/photoswipe/photoswipe.esm.js')
-      };
-      const lightbox = new PhotoSwipeLightbox(options);
-      lightbox.init();
-
-      document
-        .querySelector('#banner__image')
-        .onclick = () => {
-          lightbox.loadAndOpen(0); // defines start slide index
-        };
-    </script>
-
-  </body>
-</html>
+{% include 'partials/body-close.njk' %}
