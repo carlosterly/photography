@@ -21,7 +21,7 @@
   a {
     color: $mid-grey;
     text-decoration: none;
-    transition: 1s;
+    transition: color 0.3s ease-out;
     &:hover {
       color: $dark-yellow;
     }
