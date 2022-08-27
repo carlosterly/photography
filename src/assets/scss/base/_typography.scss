@@ -32,7 +32,7 @@ html {
 
 body {
   font: normal var(--text-unit) / var(--body-line-height) var(--font-body);
-  color: $text-color;
+  color: var(--text-color);
 }
 
 h1,
@@ -43,7 +43,7 @@ h5,
 h6 {
   font-family: var(--font-heading);
   line-height: var(--heading-line-height);
-  color: $mid-grey;
+  color: var(--mid-grey);
   margin: 0 0 1rem 0;
 }
 
@@ -72,7 +72,7 @@ h6 {
 }
 
 p {
-  color: $dark-grey;
+  color: var(--text-color);
   font-size: var(--font-size-md);
   font-family: var(--font-body);
   line-height: var(--body-line-height);

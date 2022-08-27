@@ -2,7 +2,7 @@
   margin-bottom: 0.5rem;
   font-family: var(--font-heading);
   font-size: var(--font-size-md);
-  color: $mid-grey;
+  color: var(--mid-grey);
 
   display: grid;
   grid-template-columns: 1fr;
@@ -14,17 +14,17 @@
     "pagetop";
 
   @include media(">=md") {
-    grid-template-columns: max-content 1fr 0.3fr;
+    grid-template-columns: max-content 1fr 0.4fr;
     grid-template-areas: "copyright pagetop icons";
     align-items: center;
   }
 
   a {
-    color: $mid-grey;
+    color: var(--mid-grey);
     text-decoration: none;
     transition: color 0.3s ease-out;
     &:hover {
-      color: $dark-yellow;
+      color: var(--dark-yellow);
     }
   }
 }

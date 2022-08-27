@@ -1,8 +1,7 @@
 .site__header {
-  // margin: 0.5rem 1rem 0 1rem;
   display: grid;
   grid-template-columns: 0.8fr 1fr;
-  grid-template-rows: 65px;
+  grid-template-rows: 64px;
   align-items: center;
 }
 
@@ -19,9 +18,13 @@
 }
 
 .logo__text1 {
-  color: $dark-yellow;
+  color: var(--dark-yellow);
 }
 
 .logo__text2 {
-  color: $mid-grey;
+  color: var(--mid-grey);
+}
+
+.main__content {
+  margin-bottom: 0.5rem;
 }

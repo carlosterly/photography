@@ -20,13 +20,13 @@ html {
 }
 
 body {
-  background-color: $body-color;
+  background-color: var(--body-colour);
 }
 
 /**
  * Basic styles for links
  */
 a {
-  color: $red;
+  color: var(--red);
   text-decoration: none;
 }

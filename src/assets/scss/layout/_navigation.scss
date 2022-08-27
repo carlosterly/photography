@@ -1,6 +1,6 @@
 .site__nav {
   grid-column: 1 / span 1;
-  @include media(">=md") {
+  @include media(">=lg") {
     display: none;
   }
 }
@@ -13,7 +13,7 @@
   display: flex;
   justify-content: space-between;
 
-  @include media("<=md") {
+  @include media("<=lg") {
     display: none;
   }
   li {
@@ -21,10 +21,10 @@
     font-size: var(--font-size-md);
   }
   a {
-    color: $mid-grey;
+    color: var(--mid-grey);
     transition: color 0.3s ease-out;
     &:hover {
-      color: $dark-yellow;
+      color: var(--dark-yellow);
     }
   }
 }
@@ -39,10 +39,10 @@
 
   a {
     text-decoration: none;
-    color: $mid-grey;
+    color: var(--mid-grey);
     transition: color 0.3s ease-out;
     &:hover {
-      color: $dark-yellow;
+      color: var(--dark-yellow);
     }
   }
 }
@@ -66,7 +66,7 @@
   width: 33px;
   height: 4px;
   margin-bottom: 5px;
-  background: $mid-grey;
+  background: var(--mid-grey);
   border-radius: 3px;
   z-index: 1;
   transform-origin: 4px 0px;
@@ -84,7 +84,7 @@
 .menu__toggle input:checked ~ span {
   opacity: 1;
   transform: rotate(45deg) translate(-2px, -1px);
-  background: $mid-grey;
+  background: var(--mid-grey);
   &:nth-last-child(3) {
     opacity: 0;
     transform: rotate(0deg) scale(0.2, 0.2);

@@ -1,22 +1,18 @@
-// This file contains all application-wide Sass variables.
+// This file contains all application-wide variables.
 
-$body-color: #faf9f6;
-$dark-yellow: rgba(242, 179, 96, 1);
-$light-yellow: rgba(251, 207, 139, 1);
-$red: rgba(196, 52, 31, 1);
-$dark-grey: rgba(10, 8, 12, 1);
-$mid-grey: rgba(77, 63, 63, 1);
-$light-grey: rgb(237, 237, 237);
+:root {
+  --body-colour: #faf9f6;
 
-$brand-color: $dark-yellow;
-$text-color: $dark-grey !default;
+  --dark-yellow: rgba(242, 179, 96, 1);
+  --light-yellow: rgba(251, 207, 139, 1);
+  --red: rgba(196, 52, 31, 1);
+  --dark-grey: rgba(10, 8, 12, 1);
+  --mid-grey: rgba(77, 63, 63, 1);
+  --light-grey: rgb(237, 237, 237);
 
-/// Container's maximum width
-/// @type Length
-$max-width: 1180px !default;
+  --brand-color: var(--dark-yellow);
+  --text-color: var(--dark-grey);
 
-/// Relative or absolute URL where all assets are served from
-/// @type String
-/// @example scss - When using a CDN
-///   $base-url: 'https://res.cloudinary.com/liquidweb/image/upload/f_auto/';
-$base-url: "/assets/" !default;
+  --max-width: 1180px;
+  --base-url: "https://res.cloudinary.com/liquidweb/image/upload/f_auto/";
+}
