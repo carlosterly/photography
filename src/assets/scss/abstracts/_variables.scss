@@ -1,28 +1,15 @@
 // This file contains all application-wide Sass variables.
 
-/// Regular font family
-/// @type List
-$text-font-stack: "Open Sans", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", sans-serif !default;
-
-/// Code (monospace) font family
-/// @type List
-$code-font-stack: "Courier New", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Monaco", monospace !default;
-
 $body-color: #faf9f6;
 $dark-yellow: rgba(242, 179, 96, 1);
 $light-yellow: rgba(251, 207, 139, 1);
 $red: rgba(196, 52, 31, 1);
-$mid-grey: rgba(77, 63, 63, 1);
 $dark-grey: rgba(10, 8, 12, 1);
+$mid-grey: rgba(77, 63, 63, 1);
+$light-grey: rgb(237, 237, 237);
+
 $brand-color: $dark-yellow;
-
-/// Copy text color
-/// @type Color
 $text-color: $dark-grey !default;
-
-/// Light grey
-/// @type Color
-$light-grey: rgb(237, 237, 237) !default;
 
 /// Container's maximum width
 /// @type Length
@@ -31,5 +18,5 @@ $max-width: 1180px !default;
 /// Relative or absolute URL where all assets are served from
 /// @type String
 /// @example scss - When using a CDN
-///   $base-url: 'https://cdn.example.com/assets/';
+///   $base-url: 'https://res.cloudinary.com/liquidweb/image/upload/f_auto/';
 $base-url: "/assets/" !default;

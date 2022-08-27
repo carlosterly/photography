@@ -1,20 +1,16 @@
 {% include 'partials/site-head.njk' %}
 
-{% include 'partials/navbar.njk' %}
+{% include 'partials/header.njk' %}
 
-<div class="page-wrap">
+<main class="main__content">
 
-  <main class="main-content">
+  <article class="article">
 
-    <article class="article">
+    {{ content | safe }}
 
-      {{ content | safe }}
+  </article>
 
-    </article>
-
-  </main>
-
-</div>
+</main>
 
 {% include 'partials/footer.njk' %}
 

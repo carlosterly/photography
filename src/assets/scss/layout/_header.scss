@@ -1,7 +1,7 @@
 .site__header {
   // margin: 0.5rem 1rem 0 1rem;
   display: grid;
-  grid-template-columns: 0.6fr 1fr;
+  grid-template-columns: 0.8fr 1fr;
   grid-template-rows: 65px;
   align-items: center;
 }
@@ -24,15 +24,4 @@
 
 .logo__text2 {
   color: $mid-grey;
-}
-
-.hero__banner-wrapper {
-  margin-bottom: 0.5rem;
-}
-
-.hero__banner {
-  object-fit: cover;
-  height: 100vh;
-  height: calc(var(--vh, 1vh) * 100);
-  width: 100%;
 }

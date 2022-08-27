@@ -1,14 +1,37 @@
 ---
-title: Gallery
-layout: 'layouts/gallery.njk'
-permalink: "/gallery/"
+title: Contact
+layout: 'layouts/about.njk'
+permalink: "/contact/"
 ---
 
-<img class="img-responsive" src="https://via.placeholder.com/2048x1365" alt="Placeholder" width="2048" height="1365">
+<img class="img-responsive" src="https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661571665/photography/core-ui/Hurstville-Walk-3_2.jpg" width="2160" height="1440" alt="Photo of letterbox">
 
-<h1>Gallery</h1>
+<h1>Contact</h1>
 
 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure quos molestias laudantium quasi neque totam maiores corporis id ut fuga ad, eaque nobis distinctio architecto praesentium facere fugit ducimus impedit eos est rerum blanditiis. Eum fugiat officiis maiores expedita dolorum exercitationem, modi labore repudiandae eos vero doloribus quasi quo possimus!</p>
+
+<form name="contact" method="POST" data-netlify="true">
+  <p>
+    <label>Your Name: <input type="text" name="name"/></label>
+  </p>
+  <p>
+    <label>Your Email: <input type="email" name="email"/></label>
+  </p>
+  <p>
+    <label>Your Role: <select name="role[]" multiple>
+        <option value="leader">Leader</option>
+        <option value="follower">Follower</option>
+      </select>
+    </label>
+  </p>
+  <p>
+    <label>Message: <textarea name="message"></textarea>
+    </label>
+  </p>
+  <p>
+    <button type="submit">Send</button>
+  </p>
+</form>
 
 <h2>Heading Two</h2>
 

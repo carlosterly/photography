@@ -17,7 +17,8 @@
     display: none;
   }
   li {
-    font-size: var(--font-size-base);
+    font-family: var(--font-heading);
+    font-size: var(--font-size-md);
   }
   a {
     color: $mid-grey;
@@ -114,6 +115,7 @@
 
   li {
     padding: 10px 0;
+    font-family: var(--font-heading);
     font-size: var(--font-size-md);
   }
 }

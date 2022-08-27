@@ -1,0 +1,7 @@
+{
+  "search.exclude": {
+    "**/*.map": true,
+    "**/*.md": true,
+    "**/*.ts": true
+  }
+}
