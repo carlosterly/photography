@@ -1,28 +1,36 @@
 .site__header {
   display: grid;
-  grid-template-columns: 0.8fr 1fr;
-  grid-template-rows: 64px;
+  grid-template-columns: min-content 1fr;
+  grid-template-rows: 4rem;
   align-items: center;
+  @include media(">=md") {
+    grid-template-columns: 0.8fr 1fr;
+  }
 }
 
 .site__heading {
   justify-self: end;
   grid-column: 2 / span 2;
-  h1 {
-    font-size: var(--font-size-lg);
-    margin-bottom: 0.4rem;
-    @include media(">420px") {
-      font-size: var(--font-size-xl);
-    }
-  }
+  font-size: 0;
+  font-family: var(--font-heading);
+  line-height: var(--heading-line-height);
+  font-weight: var(--heading-weight);
 }
 
 .logo__text1 {
+  font-size: var(--font-size-lg);
   color: var(--dark-yellow);
+  @include media(">420px") {
+    font-size: var(--font-size-xl);
+  }
 }
 
 .logo__text2 {
+  font-size: var(--font-size-lg);
   color: var(--mid-grey);
+  @include media(">420px") {
+    font-size: var(--font-size-xl);
+  }
 }
 
 .main__content {

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;600&family=Source+Serif+Pro&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&family=Source+Serif+Pro&display=swap");
 
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
 
@@ -14,7 +14,7 @@ html {
 
 :root {
   // font family
-  --font-heading: "Familjen Grotesk", sans-serif;
+  --font-heading: "Source Sans Pro", sans-serif;
   --font-body: "Source Serif Pro", serif;
   --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "Oxygen Mono",
     "Ubuntu Monospace", "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
@@ -26,12 +26,16 @@ html {
   --body-line-height: 1.4;
   --heading-line-height: 1.2;
 
+  // font weights
+  --heading-weight: 700;
+  --text-weight: 400;
+
   // unit - don't modify unless you want to change the typography unit (e.g., from Rem to Em units)
   --text-unit: var(--text-base-size); // if Em units → --text-unit: 1em;
 }
 
 body {
-  font: normal var(--text-unit) / var(--body-line-height) var(--font-body);
+  font: normal var(--text-unit) / var(--body-line-height) var(--font-heading);
   color: var(--text-color);
 }
 
