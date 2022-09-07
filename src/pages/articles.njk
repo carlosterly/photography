@@ -1,31 +1,32 @@
 ---
-title: Blog
+title: Recent Articles
 layout: 'layouts/article.njk'
 permalink: "/articles/"
 ---
 
 <img src="https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661583694/photography/core-ui/Dads-House-6.jpg" alt="Pile of magazines" class="img-responsive" width="2160" height="1440">
 
-<h1>Articles</h1>
+<h1>{{title}}</h1>
 
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum delectus rerum iure officia voluptatem ex laudantium, ipsa necessitatibus perspiciatis accusantium, iste facilis rem quaerat, optio est voluptate recusandae temporibus debitis placeat ab ut iusto aspernatur doloremque. Repellendus, magni delectus, reprehenderit ut mollitia minima dolorem unde, minus placeat cumque quibusdam est saepe ipsam sed? Minus aliquam maxime sed sit magni natus consequuntur et accusantium maiores nostrum, qui accusamus nemo ipsa! Numquam aut quam enim quisquam nemo eaque repellat modi voluptate aperiam aliquid neque voluptatibus impedit perspiciatis, consequuntur, voluptates quasi fugiat, cupiditate sint quidem assumenda? Saepe vel eius, error ex veniam tempora.</p>
+<div class="articles__list">
 
-<h2>Second Heading</h2>
+  {% for post in collections.post | reverse %}
+    <article class="card">
+      <div class="card__thumb">
+        <img src="{{post.data.image}}" alt="{{post.data.imagAlt}}" class="img-responsive"/>
+      </div>
+      <div class="card__content">
+        <a href="{{post.url}}">
+          <h2 class="card__title">{{ post.data.title }}</h2>
+        </a>
+        <p class="card__meta">{{ post.date | postDate }}
+        </p>
+        <p class="card__description">{{ post.data.description }}</p>
+        <div class="card__button">
+          <a href="{{post.url}}" class="btn btn--primary">Continue Reading</a>
+        </div>
+      </div>
+    </article>
+  {% endfor %}
 
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum delectus rerum iure officia voluptatem ex laudantium, ipsa necessitatibus perspiciatis accusantium, iste facilis rem quaerat, optio est voluptate recusandae temporibus debitis placeat ab ut iusto aspernatur doloremque. Repellendus, magni delectus, reprehenderit ut mollitia minima dolorem unde, minus placeat cumque quibusdam est saepe ipsam sed? Minus aliquam maxime sed sit magni natus consequuntur et accusantium maiores nostrum, qui accusamus nemo ipsa! Numquam aut quam enim quisquam nemo eaque repellat modi voluptate aperiam aliquid neque voluptatibus impedit perspiciatis, consequuntur, voluptates quasi fugiat, cupiditate sint quidem assumenda? Saepe vel eius, error ex veniam tempora.</p>
-
-<h3>Third Heading</h3>
-
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum delectus rerum iure officia voluptatem ex laudantium, ipsa necessitatibus perspiciatis accusantium, iste facilis rem quaerat, optio est voluptate recusandae temporibus debitis placeat ab ut iusto aspernatur doloremque. Repellendus, magni delectus, reprehenderit ut mollitia minima dolorem unde, minus placeat cumque quibusdam est saepe ipsam sed? Minus aliquam maxime sed sit magni natus consequuntur et accusantium maiores nostrum, qui accusamus nemo ipsa! Numquam aut quam enim quisquam nemo eaque repellat modi voluptate aperiam aliquid neque voluptatibus impedit perspiciatis, consequuntur, voluptates quasi fugiat, cupiditate sint quidem assumenda? Saepe vel eius, error ex veniam tempora.</p>
-
-<h4>Fourth Heading</h4>
-
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum delectus rerum iure officia voluptatem ex laudantium, ipsa necessitatibus perspiciatis accusantium, iste facilis rem quaerat, optio est voluptate recusandae temporibus debitis placeat ab ut iusto aspernatur doloremque. Repellendus, magni delectus, reprehenderit ut mollitia minima dolorem unde, minus placeat cumque quibusdam est saepe ipsam sed? Minus aliquam maxime sed sit magni natus consequuntur et accusantium maiores nostrum, qui accusamus nemo ipsa! Numquam aut quam enim quisquam nemo eaque repellat modi voluptate aperiam aliquid neque voluptatibus impedit perspiciatis, consequuntur, voluptates quasi fugiat, cupiditate sint quidem assumenda? Saepe vel eius, error ex veniam tempora.</p>
-
-<h5>Fifth Heading</h5>
-
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum delectus rerum iure officia voluptatem ex laudantium, ipsa necessitatibus perspiciatis accusantium, iste facilis rem quaerat, optio est voluptate recusandae temporibus debitis placeat ab ut iusto aspernatur doloremque. Repellendus, magni delectus, reprehenderit ut mollitia minima dolorem unde, minus placeat cumque quibusdam est saepe ipsam sed? Minus aliquam maxime sed sit magni natus consequuntur et accusantium maiores nostrum, qui accusamus nemo ipsa! Numquam aut quam enim quisquam nemo eaque repellat modi voluptate aperiam aliquid neque voluptatibus impedit perspiciatis, consequuntur, voluptates quasi fugiat, cupiditate sint quidem assumenda? Saepe vel eius, error ex veniam tempora.</p>
-
-<h6>Sixth Heading</h6>
-
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum delectus rerum iure officia voluptatem ex laudantium, ipsa necessitatibus perspiciatis accusantium, iste facilis rem quaerat, optio est voluptate recusandae temporibus debitis placeat ab ut iusto aspernatur doloremque. Repellendus, magni delectus, reprehenderit ut mollitia minima dolorem unde, minus placeat cumque quibusdam est saepe ipsam sed? Minus aliquam maxime sed sit magni natus consequuntur et accusantium maiores nostrum, qui accusamus nemo ipsa! Numquam aut quam enim quisquam nemo eaque repellat modi voluptate aperiam aliquid neque voluptatibus impedit perspiciatis, consequuntur, voluptates quasi fugiat, cupiditate sint quidem assumenda? Saepe vel eius, error ex veniam tempora.</p>
+</div>

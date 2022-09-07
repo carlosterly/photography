@@ -1,3 +1,112 @@
-// -----------------------------------------------------------------------------
-// This file contains all styles related to the button component.
-// -----------------------------------------------------------------------------
+// Set global color pallete
+
+$color-success: #3dad7e;
+$color-danger: #e63846;
+$color-accent: #a8dadc;
+$color-primary: rgba(77, 63, 63, 1);
+$color-action: #457b9d;
+$color-light: #f1faee;
+$color-secondary: #fca311;
+
+// Set mixin rules
+
+@mixin btnStyle($color, $text-color, $outline: false) {
+  background: $color;
+  color: $text-color;
+
+  &:hover {
+    background: darken($color, 10%);
+  }
+
+  @if $outline {
+    background: transparent;
+    border: 2px solid $color;
+    color: $color;
+
+    &:hover,
+    &:focus {
+      background: $color;
+      color: white;
+    }
+  }
+}
+
+.btn {
+  box-sizing: border-box;
+  cursor: pointer;
+  user-select: none;
+  padding: 10px;
+  border-radius: 8px;
+  border: 0;
+  // margin: 10px 10px;
+  width: 220px;
+  font-size: var(--font-size-sm);
+  text-align: center;
+  outline: none;
+  transition: background, box-shadow 400ms ease-in-out;
+
+  &--small {
+    font-size: 10px;
+    padding: 8px;
+  }
+
+  &--medium {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  &--large {
+    font-size: var(--font-size-base);
+    padding: 13px;
+  }
+
+  &--block {
+    display: block;
+    width: 100%;
+  }
+
+  &--shadow {
+    box-shadow: 0;
+    transition: box-shadow 400ms;
+
+    &:hover,
+    &:focus {
+      box-shadow: 0 4px 10px #00000040;
+    }
+  }
+
+  &--success {
+    @include btnStyle($color-success, $color-light);
+    &.outline {
+      @include btnStyle($color-success, $color-light, true);
+    }
+  }
+
+  &--danger {
+    @include btnStyle($color-danger, $color-light);
+    &.outline {
+      @include btnStyle($color-danger, $color-light, true);
+    }
+  }
+
+  &--accent {
+    @include btnStyle($color-accent, $color-primary);
+    &.outline {
+      @include btnStyle($color-accent, $color-primary, true);
+    }
+  }
+
+  &--primary {
+    @include btnStyle($color-primary, $color-light);
+    &.outline {
+      @include btnStyle($color-primary, $color-light, true);
+    }
+  }
+
+  &--secondary {
+    @include btnStyle($color-secondary, $color-primary);
+    &.outline {
+      @include btnStyle($color-secondary, $color-light, true);
+    }
+  }
+}
