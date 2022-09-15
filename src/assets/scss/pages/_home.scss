@@ -1,6 +1,14 @@
-.hero__banner {
+.home__wrapper {
+  // min-height: 100vh;
+  min-height: calc(var(--vh, 1vh) * 100);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.home__banner {
   object-fit: cover;
   width: 100%;
-  height: calc(var(--vh, 1vh) * 85);
+  height: 100%;
   cursor: pointer;
+  padding-bottom: 0.8rem;
 }

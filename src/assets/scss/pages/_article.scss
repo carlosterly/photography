@@ -4,3 +4,11 @@
   grid-gap: 1rem;
   // container: card/inline-size;
 }
+
+.article__wrapper {
+  max-width: 700px;
+}
+
+.article__title {
+  font-size: var(--font-size-xl);
+}

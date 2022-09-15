@@ -1,6 +1,6 @@
 ---
 title: Recent Articles
-layout: 'layouts/article.njk'
+layout: 'layouts/articles-index.njk'
 permalink: "/articles/"
 ---
 
@@ -11,7 +11,7 @@ permalink: "/articles/"
 <div class="articles__list">
 
   {% for post in collections.post | reverse %}
-    <article class="card">
+    <article class="card flow">
       <div class="card__thumb">
         <img src="{{post.data.image}}" alt="{{post.data.imagAlt}}" class="img-responsive"/>
       </div>

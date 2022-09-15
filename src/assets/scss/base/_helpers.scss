@@ -11,19 +11,10 @@
   display: table;
 }
 
-/**
- * Main content containers
- * 1. Make the container full-width with a maximum width
- * 2. Center it in the viewport
- * 3. Leave some space on the edges, especially valuable on small screens
- */
 .container {
-  max-width: var(--max-width); /* 1 */
-  margin-left: auto; /* 2 */
-  margin-right: auto; /* 2 */
-  padding-left: 1rem; /* 3 */
-  padding-right: 1rem; /* 3 */
-  width: 100%; /* 1 */
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: 1rem;
 }
 
 /**
@@ -62,4 +53,8 @@
   display: block;
   max-width: 100%;
   height: auto;
+}
+
+.flow > * + * {
+  margin-top: var(--flow-space, 1rem);
 }

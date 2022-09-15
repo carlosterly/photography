@@ -1,16 +1,16 @@
 {% include 'partials/site-head.njk' %}
 
-{% include 'partials/header.njk' %}
+<div class="home__wrapper">
 
-<main class="main__content">
+  {% include 'partials/header.njk' %}
 
-  <img id="hero__banner" class="hero__banner" src="https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1577351875/photography/portraits/Marcelle-Portrait-1-14092019.jpg" alt="Marcelle">
+  <img id="home__banner" class="home__banner" src="https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1577351875/photography/portraits/Marcelle-Portrait-1-14092019.jpg" alt="Marcelle">
 
-</main>
+  {% include 'partials/footer.njk' %}
 
-{% include 'partials/footer.njk' %}
+</div>
 
-<script src="/assets/js/homepage.js"></script>
+<script src="/assets/js/home.js"></script>
 
 <script type="module">
   import PhotoSwipeLightbox from '/assets/js/photoswipe/photoswipe-lightbox.esm.js';
@@ -504,7 +504,7 @@
   lightbox.init();
 
   document
-    .querySelector('#hero__banner')
+    .querySelector('#home__banner')
     .onclick = () => {
       lightbox.loadAndOpen(0); // defines start slide index
     };

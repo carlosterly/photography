@@ -1,7 +1,7 @@
 .card {
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  --flow-space: 0.8rem;
 }
 
 .card__thumb img {
@@ -17,13 +17,6 @@
   background-color: var(--light-grey);
   border-radius: 8px;
   padding: 1rem;
-}
-
-.card__content > * + * {
-  // margin-top: 0.35rem;
-}
-
-.card__content {
 }
 
 .card__title {
