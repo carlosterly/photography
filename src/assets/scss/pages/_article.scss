@@ -1,8 +1,12 @@
 .articles__list {
+  --min: 30ch;
+  --gap: 1.2rem;
+
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-gap: 1rem;
-  // container: card/inline-size;
+  grid-gap: var(--gap);
+  /* min() with 100% prevents overflow
+  in extra narrow spaces */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min)), 1fr));
 }
 
 .article__wrapper {

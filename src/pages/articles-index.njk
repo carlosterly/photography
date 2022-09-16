@@ -11,22 +11,23 @@ permalink: "/articles/"
 <div class="articles__list">
 
   {% for post in collections.post | reverse %}
-    <article class="card flow">
-      <div class="card__thumb">
-        <img src="{{post.data.image}}" alt="{{post.data.imagAlt}}" class="img-responsive"/>
-      </div>
-      <div class="card__content">
-        <a href="{{post.url}}">
-          <h2 class="card__title">{{ post.data.title }}</h2>
-        </a>
-        <p class="card__meta">{{ post.date | postDate }}
-        </p>
-        <p class="card__description">{{ post.data.description }}</p>
-        <div class="card__button">
-          <a href="{{post.url}}" class="btn btn--primary">Continue Reading</a>
-        </div>
-      </div>
+
+    <article class="smol-card-component">
+
+      <img src="{{post.data.image}}" alt="{{post.data.imagAlt}}" class="img-responsive"/>
+
+      <a href="{{post.url}}">
+        <h2>{{ post.data.title }}</h2>
+      </a>
+
+      <time>{{ post.date | postDate }}</time>
+
+      <p>{{ post.data.description }}</p>
+
+      <a href="{{post.url}}" class="btn btn--primary">Continue Reading</a>
+
     </article>
+
   {% endfor %}
 
 </div>
