@@ -4,7 +4,9 @@
 
 <main class="main__content">
 
-  <article class="article__wrapper flow">
+  <article class="flow">
+
+    {% include 'partials/page-banner.njk' %}
 
     {{ content | safe }}
 

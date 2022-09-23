@@ -1,14 +1,18 @@
 // This file contains all application-wide variables.
 
 :root {
-  --body-colour: #faf9f6;
+  --blue: rgba(3, 71, 116, 1);
 
-  --dark-yellow: rgba(242, 179, 96, 1);
   --light-yellow: rgba(251, 207, 139, 1);
-  --red: rgba(196, 52, 31, 1);
-  --dark-grey: rgba(10, 8, 12, 1);
+  --dark-yellow: rgba(242, 179, 96, 1);
+
+  --red: rgba(167, 36, 28, 1);
+
+  --light-grey: rgba(232, 235, 242, 1);
   --mid-grey: rgba(77, 63, 63, 1);
-  --light-grey: rgb(237, 237, 237);
+  --dark-grey: rgba(10, 8, 12, 1);
+
+  --body-color: rgba(250, 249, 246, 1);
 
   --brand-color: var(--dark-yellow);
   --text-color: var(--dark-grey);

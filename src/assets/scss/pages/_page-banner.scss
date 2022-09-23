@@ -1,23 +1,28 @@
-.headline-layout {
+.page-banner {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   border-top: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
 }
 
-.headline-layout img {
+.page-banner img {
   grid-column: 1 / 6;
   aspect-ratio: 16 / 9;
   width: 100%;
   height: 100%;
   object-fit: cover;
+
+  @include media(">=md") {
+    aspect-ratio: 21 / 9;
+  }
 }
 
-.headline-layout h1 {
+.page-banner h1 {
   grid-column: 5 / 7;
   align-self: center;
 
-  background-color: var(--body-colour);
+  color: var(--blue);
+  background-color: var(--body-color);
   border-top: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
   padding: 1rem;
@@ -26,11 +31,11 @@
   font-size: var(--font-size-lg);
 
   @include media(">=md") {
-    font-size: var(--font-size-xxxl);
+    font-size: var(--font-size-xxl);
   }
 }
 
-.headline-layout img,
-.headline-layout h1 {
+.page-banner img,
+.page-banner h1 {
   grid-row: 1 / 2;
 }
