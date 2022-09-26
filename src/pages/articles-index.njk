@@ -4,7 +4,7 @@ image: https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661583694/phot
 imageAlt: Pile of magazines
 imageWidth: 2160
 imageHeight: 1440
-layout: 'layouts/articles-index.njk'
+layout: 'layouts/page.njk'
 permalink: "/articles/"
 ---
 
@@ -14,7 +14,7 @@ permalink: "/articles/"
 
   {% for post in collections.post | reverse %}
 
-    <article class="smol-card-component">
+    <article class="card">
 
       <img src="{{post.data.image}}" alt="{{post.data.imagAlt}}" class="img-responsive"/>
 

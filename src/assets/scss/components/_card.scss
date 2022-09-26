@@ -1,4 +1,4 @@
-.smol-card-component {
+.card {
   --img-ratio: 3/2;
 
   display: flex;
@@ -8,53 +8,53 @@
   border-radius: 0.5rem;
 }
 
-.smol-card-component > img {
+.card > img {
   aspect-ratio: var(--img-ratio);
   object-fit: cover;
   object-position: center top;
   width: 100%;
 }
 
-.smol-card-component > img:first-child {
+.card > img:first-child {
   border-radius: 0.5rem 0.5rem 0 0;
 }
 
-.smol-card-component > img:last-child {
+.card > img:last-child {
   border-radius: 0 0 0.5rem 0.5rem;
   margin-top: auto;
 }
 
-.smol-card-component > :not(img) {
+.card > :not(img) {
   margin-inline: 1.2rem;
 }
 
-.smol-card-component > :not(img):first-child {
+.card > :not(img):first-child {
   margin-top: 1rem;
 }
 
 /* Enhanced `:not()` accepts a selector list,
 but as a fallback you can chain `:not()` instead */
-.smol-card-component > :last-of-type:not(p, time, img, h2, h3, h4) {
+.card > :last-of-type:not(p, time, img, h2, h3, h4) {
   margin-bottom: 1rem;
 }
 
-.smol-card-component h2 {
+.card h2 {
   font-size: var(--font-size-lg);
   margin-bottom: 0;
 }
 
-.smol-card-component > time {
+.card > time {
   font-size: var(--font-size-base);
   font-family: var(--font-heading);
 }
 
-.smol-card-component > p {
+.card > p {
   color: var(--text-color);
   font-size: var(--font-size-base);
   margin-bottom: 0;
 }
 
-.smol-card-component > a.btn:last-child {
+.card > a.btn:last-child {
   align-self: center;
   margin-top: auto;
 }

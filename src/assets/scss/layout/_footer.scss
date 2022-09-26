@@ -1,5 +1,4 @@
 .site__footer {
-  margin-bottom: 1rem;
   font-family: var(--font-heading);
   font-size: var(--font-size-md);
   color: var(--mid-grey);
@@ -26,6 +25,10 @@
     &:hover {
       color: var(--dark-yellow);
     }
+  }
+
+  @include media(">=md") {
+    padding-bottom: 1rem;
   }
 }
 
