@@ -8,6 +8,7 @@
   grid: auto-flow var(--s) / repeat(2, var(--s));
 }
 .gallery > img {
+  cursor: pointer;
   object-fit: cover;
   object-position: center top;
   -webkit-mask: var(--_m);

@@ -11,8 +11,60 @@ permalink: "/gallery/"
 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure quos molestias laudantium quasi neque totam maiores corporis id ut fuga ad, eaque nobis distinctio architecto praesentium facere fugit ducimus impedit eos est rerum blanditiis. Eum fugiat officiis maiores expedita dolorum exercitationem, modi labore repudiandae eos vero doloribus quasi quo possimus!</p>
 
 <div class="gallery">
-  <img src="https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661243897/photography/portraits/Six_Neo.jpg" width="1920" height="1080" alt="Portrait of Six">
+  <img id="portraits" src="https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661243897/photography/portraits/Six_Neo.jpg" width="1920" height="1080" alt="Portrait of Six">
   <img src="https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1639040097/photography/art/Big-Bang.png" width="1536" height="2048" alt="Digital Artworks">
   <img src="https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1663908882/photography/street/Chinese-Garden-BW.jpg" width="1620" height="1080" alt="Chinese Garden">
-  <img src="https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1663908964/photography/street/Kyoto-58.jpg" width="2048" height="1365" alt="Tokyo Street Scene">
+  <img id="japan" src="https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1663908964/photography/street/Kyoto-58.jpg" width="2048" height="1365" alt="Tokyo Street Scene">
 </div>
+
+<script type="module">
+  import PhotoSwipeLightbox from '/assets/js/photoswipe/photoswipe-lightbox.esm.js';
+
+  const portraits = {
+    dataSource: [
+      {
+        src: 'https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1577351918/photography/portraits/Marcelle-Portrait-6-14092019.jpg',
+        width: 1365,
+        height: 2048,
+        alt: 'Marcelle'
+      }
+    ],
+    bgOpacity: 1,
+    errorMsg: 'The photo cannot be loaded',
+    showHideAnimationType: 'none',
+    pswpModule: () => import ('/assets/js/photoswipe/photoswipe.esm.js')
+  };
+
+  const japan = {
+    dataSource: [
+      {
+        src: 'https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1663908967/photography/street/Tokyo-2019-1.jpg',
+        width: 2048,
+        height: 1365,
+        alt: 'Japan'
+      }
+    ],
+    bgOpacity: 1,
+    errorMsg: 'The photo cannot be loaded',
+    showHideAnimationType: 'none',
+    pswpModule: () => import ('/assets/js/photoswipe/photoswipe.esm.js')
+  };
+
+  const lightboxPortraits = new PhotoSwipeLightbox(portraits);
+  const lightboxJapan = new PhotoSwipeLightbox(japan);
+
+  lightboxPortraits.init();
+  lightboxJapan.init();
+
+  document
+    .querySelector('#portraits')
+    .onclick = () => {
+      lightboxPortraits.loadAndOpen(0);
+    };
+
+  document
+    .querySelector('#japan')
+    .onclick = () => {
+      lightboxJapan.loadAndOpen(0);
+    };
+</script>
