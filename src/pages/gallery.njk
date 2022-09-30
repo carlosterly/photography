@@ -1,6 +1,6 @@
 ---
 title: Gallery
-image: https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1663908967/photography/street/Kanazawa-51.jpg
+image: https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1663908967/photography/japan/Kanazawa-51.jpg
 imageAlt: A street in Kanazawa
 imageWidth: 2048
 imageHeight: 1365
@@ -12,12 +12,13 @@ permalink: "/gallery/"
 
 <div class="gallery">
   <img id="portraits" src="https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661243897/photography/portraits/Six_Neo.jpg" width="1920" height="1080" alt="Portrait of Six">
-  <img src="https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1639040097/photography/art/Big-Bang.png" width="1536" height="2048" alt="Digital Artworks">
-  <img src="https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1663908882/photography/street/Chinese-Garden-BW.jpg" width="1620" height="1080" alt="Chinese Garden">
-  <img id="japan" src="https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1663908964/photography/street/Kyoto-58.jpg" width="2048" height="1365" alt="Tokyo Street Scene">
+  <img id="art" src="https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1639040097/photography/art/Big-Bang.png" width="1536" height="2048" alt="Digital Artworks">
+  <img id="street" src="https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447390/photography/street/Architecture-Carl-Osterly-1.jpg" width="1620" height="1080" alt="Chinese Garden">
+  <img id="japan" src="https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1663908964/photography/japan/Kyoto-58.jpg" width="1517" height="2048" alt="Central Park Buildings">
 </div>
 
 <script type="module">
+
   import PhotoSwipeLightbox from '/assets/js/photoswipe/photoswipe-lightbox.esm.js';
 
   const portraits = {
@@ -35,13 +36,243 @@ permalink: "/gallery/"
     pswpModule: () => import ('/assets/js/photoswipe/photoswipe.esm.js')
   };
 
+  const art = {
+    dataSource: [
+      {
+        src: 'https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1639040097/photography/art/Big-Bang.png',
+        width: 1365,
+        height: 2048,
+        alt: 'Big Bang'
+      }, {
+        src: 'https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447486/photography/art/Emerging-OsterlyCarl-6.jpg',
+        width: 2700,
+        height: 1804,
+        alt: 'Girl Emerging'
+      }, {
+        src: 'https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447043/photography/art/Quantum-Rising.png',
+        width: 2400,
+        height: 2400,
+        alt: 'Quantum Rising'
+      }, {
+        src: 'https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664446938/photography/art/Double-Vision-Building.jpg',
+        width: 1620,
+        height: 1080,
+        alt: 'Double Vision Building'
+      }, {
+        src: 'https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664446915/photography/art/Cloud-Heads.jpg',
+        width: 1620,
+        height: 1080,
+        alt: 'Cloud Heads'
+      }, {
+        src: 'https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664446901/photography/art/Chinese-Garden.png',
+        width: 1920,
+        height: 1080,
+        alt: 'Chinese Garden'
+      }, {
+        src: 'https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664446878/photography/art/Broken-Bottles-and-Sky.jpg',
+        width: 1620,
+        height: 1080,
+        alt: 'Broken Bottles and Sky'
+      }, {
+        src: 'https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664446876/photography/art/Blurred-Power_Poles.png',
+        width: 2048,
+        height: 1364,
+        alt: 'Blurred Power Poles'
+      }, {
+        src: 'https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664446851/photography/art/Blue-Orb.jpg',
+        width: 3072,
+        height: 3072,
+        alt: 'Blue Orb'
+      }, {
+        src: 'https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664446825/photography/art/Beth-Glitch_Portrait-3-10-2015.png',
+        width: 1920,
+        height: 1080,
+        alt: 'Beth Glitch'
+      }, {
+        src: 'https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664446803/photography/art/Bathurst-St-Quilt.jpg',
+        width: 2048,
+        height: 1365,
+        alt: 'Bathurst St Quilt'
+      }
+    ],
+    bgOpacity: 1,
+    errorMsg: 'The photo cannot be loaded',
+    showHideAnimationType: 'none',
+    pswpModule: () => import ('/assets/js/photoswipe/photoswipe.esm.js')
+  };
+
   const japan = {
     dataSource: [
       {
-        src: 'https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1663908967/photography/street/Tokyo-2019-1.jpg',
+        src: 'https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1663908964/photography/japan/Kyoto-58.jpg',
         width: 2048,
         height: 1365,
-        alt: 'Japan'
+        alt: 'Kyoto Geisha'
+      }, {
+        src: 'https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1663908967/photography/japan/Tokyo-2019-1.jpg',
+        width: 2048,
+        height: 1365,
+        alt: 'Tokyo Street Scene'
+      }, {
+        src: 'https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447545/photography/japan/Kyoto-70.jpg',
+        width: 2560,
+        height: 1440,
+        alt: 'Kyoto Couple'
+      }, {
+        src: 'https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447545/photography/japan/Takayama-2019-1.jpg',
+        width: 2048,
+        height: 1365,
+        alt: 'Takayama Shrine'
+      }, {
+        src: 'https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447542/photography/japan/Kanazawa-25.jpg',
+        width: 2048,
+        height: 1365,
+        alt: 'Kanazawa Castle'
+      }, {
+        src: 'https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1663908967/photography/japan/Kanazawa-51.jpg',
+        width: 2048,
+        height: 1365,
+        alt: 'Kanazawa Street Scene'
+      }, {
+        src: 'https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664520706/photography/japan/Takayama-2019-37.jpg',
+        width: 2048,
+        height: 1365,
+        alt: 'School girls riding bikes in Takayama'
+      }, {
+        src: 'https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664521092/photography/japan/Kyoto-82.jpg',
+        width: 1365,
+        height: 2048,
+        alt: 'Kyoto Boy'
+      }, {
+        src: 'https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664521161/photography/japan/Kyoto-105.jpg',
+        width: 1365,
+        height: 2048,
+        alt: 'Kyoto Dragon'
+      }
+    ],
+    bgOpacity: 1,
+    errorMsg: 'The photo cannot be loaded',
+    showHideAnimationType: 'none',
+    pswpModule: () => import ('/assets/js/photoswipe/photoswipe.esm.js')
+  };
+
+  const street = {
+    dataSource: [
+      {
+        src: 'https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447390/photography/street/Architecture-Carl-Osterly-1.jpg',
+        width: 1517,
+        height: 2048,
+        alt: 'Central Park Buildings'
+      }, {
+        src: 'https://res.cloudinary.com/liquidweb/image/upload/v1664447809/photography/street/Twirl-Girl.jpg',
+        width: 1920,
+        height: 1080,
+        alt: 'Twirl Girl'
+      }, {
+        src: 'https://res.cloudinary.com/liquidweb/image/upload/v1664447800/photography/street/carl_osterly_01.jpg',
+        width: 1920,
+        height: 1080,
+        alt: 'Street Demonstration'
+      }, {
+        src: 'https://res.cloudinary.com/liquidweb/image/upload/v1664447809/photography/street/Exploding-Bubble.jpg',
+        width: 1920,
+        height: 1080,
+        alt: 'Exploding Bubble'
+      }, {
+        src: 'https://res.cloudinary.com/liquidweb/image/upload/v1664447799/photography/street/Long-Embrace.jpg',
+        width: 1644,
+        height: 1080,
+        alt: 'Long Embrace'
+      }, {
+        src: 'https://res.cloudinary.com/liquidweb/image/upload/v1664447808/photography/street/carl_osterly_13.jpg',
+        width: 1920,
+        height: 1080,
+        alt: 'Quiet Drink'
+      }, {
+        src: 'https://res.cloudinary.com/liquidweb/image/upload/v1664447799/photography/street/carl_osterly_06.jpg',
+        width: 2048,
+        height: 1365,
+        alt: 'Hyde Park Couple'
+      }, {
+        src: 'https://res.cloudinary.com/liquidweb/image/upload/v1664447808/photography/street/Neon-Stair-Couple.jpg',
+        width: 1620,
+        height: 1080,
+        alt: 'Hyde Park Couple'
+      }, {
+        src: 'https://res.cloudinary.com/liquidweb/image/upload/v1664447797/photography/street/Lying-Down.jpg',
+        width: 1920,
+        height: 1080,
+        alt: 'Lying Down'
+      }, {
+        src: 'https://res.cloudinary.com/liquidweb/image/upload/v1664447807/photography/street/carl_osterly_11.jpg',
+        width: 1920,
+        height: 1080,
+        alt: 'Couple With Umbrella'
+      }, {
+        src: 'https://res.cloudinary.com/liquidweb/image/upload/v1664447797/photography/street/Kick-The-Ball.jpg',
+        width: 1920,
+        height: 1080,
+        alt: 'Kick The Ball'
+      }, {
+        src: 'https://res.cloudinary.com/liquidweb/image/upload/v1664447806/photography/street/carl_osterly_10.jpg',
+        width: 1254,
+        height: 1080,
+        alt: 'Hyde Park Reflection'
+      }, {
+        src: 'https://res.cloudinary.com/liquidweb/image/upload/v1664447796/photography/street/carl_osterly_xx.jpg',
+        width: 2048,
+        height: 1365,
+        alt: 'Reflective Drink At The Pub'
+      }, {
+        src: 'https://res.cloudinary.com/liquidweb/image/upload/v1664447804/photography/street/Forgetful-Groom.jpg',
+        width: 1772,
+        height: 1080,
+        alt: 'Forgetful Groom'
+      }, {
+        src: 'https://res.cloudinary.com/liquidweb/image/upload/v1664447795/photography/street/Expecting-Her-Kiss.jpg',
+        width: 1365,
+        height: 2048,
+        alt: 'Expecting Her Kiss'
+      }, {
+        src: 'https://res.cloudinary.com/liquidweb/image/upload/v1664447804/photography/street/Tram-Ride-Home.jpg',
+        width: 1920,
+        height: 965,
+        alt: 'Tram Ride Home'
+      }, {
+        src: 'https://res.cloudinary.com/liquidweb/image/upload/v1664447793/photography/street/Man-Patting-Dog.jpg',
+        width: 1489,
+        height: 1080,
+        alt: 'Man Patting Dog'
+      }, {
+        src: 'https://res.cloudinary.com/liquidweb/image/upload/v1664447803/photography/street/carl_osterly_12.jpg',
+        width: 1620,
+        height: 1080,
+        alt: 'Book Sale'
+      }, {
+        src: 'https://res.cloudinary.com/liquidweb/image/upload/v1664447792/photography/street/Wedding-Car.jpg',
+        width: 1920,
+        height: 1080,
+        alt: 'Wedding Car'
+      }, {
+        src: 'https://res.cloudinary.com/liquidweb/image/upload/v1664447803/photography/street/carl_osterly_04.jpg',
+        width: 1443,
+        height: 1080,
+        alt: 'Group Shot'
+      }, {
+        src: 'https://res.cloudinary.com/liquidweb/image/upload/v1664447792/photography/street/Chucking-The-Bed.jpg',
+        width: 1620,
+        height: 1080,
+        alt: 'Chucking The Bed'
+      }, {
+        src: 'https://res.cloudinary.com/liquidweb/image/upload/v1664447802/photography/street/We-Are-Open.jpg',
+        width: 1620,
+        height: 1080,
+        alt: 'We Are Open'
+      }, {
+        src: 'https://res.cloudinary.com/liquidweb/image/upload/v1664447791/photography/street/Apple-Taxis.jpg',
+        width: 1620,
+        height: 1080,
+        alt: 'Apple Taxi'
       }
     ],
     bgOpacity: 1,
@@ -51,15 +282,31 @@ permalink: "/gallery/"
   };
 
   const lightboxPortraits = new PhotoSwipeLightbox(portraits);
+  const lightboxArt = new PhotoSwipeLightbox(art);
+  const lightboxStreet = new PhotoSwipeLightbox(street);
   const lightboxJapan = new PhotoSwipeLightbox(japan);
 
   lightboxPortraits.init();
+  lightboxArt.init();
+  lightboxStreet.init();
   lightboxJapan.init();
 
   document
     .querySelector('#portraits')
     .onclick = () => {
       lightboxPortraits.loadAndOpen(0);
+    };
+
+  document
+    .querySelector('#art')
+    .onclick = () => {
+      lightboxArt.loadAndOpen(0);
+    };
+
+  document
+    .querySelector('#street')
+    .onclick = () => {
+      lightboxStreet.loadAndOpen(0);
     };
 
   document
