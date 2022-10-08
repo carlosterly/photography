@@ -4,7 +4,11 @@
 
 <main class="main__content flow">
 
-  {% include 'partials/page-banner.njk' %}
+  {% if title == 'Sandbox' %}
+
+  {% else %}
+    {% include 'partials/page-banner.njk' %}
+  {% endif %}
 
   {{ content | safe }}
 
