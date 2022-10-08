@@ -11,9 +11,15 @@ permalink: "/contact/"
 
 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure quos molestias laudantium quasi neque totam maiores corporis id ut fuga ad, eaque nobis distinctio architecto praesentium facere fugit ducimus impedit eos est rerum blanditiis. Eum fugiat officiis maiores expedita dolorum exercitationem, modi labore repudiandae eos vero doloribus quasi quo possimus!</p>
 
-<form name="contact-form" method="post" data-netlify="true">
+<form name="contact-form" method="post" data-netlify="true" netlify-honeypot="bot-field">
 
   <fieldset class="fieldset">
+
+    <p class="hidden">
+      <label>
+      Don’t fill this out if you’re human: <input name="bot-field"/>
+      </label>
+    </p>
 
     <label for="full-name">Full Name</label>
     <input class="input" type="text" name="name" id="full-name" required="">
