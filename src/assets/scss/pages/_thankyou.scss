@@ -1,0 +1,15 @@
+.thankyou__wrapper {
+  @include full-height-wrapper;
+}
+
+.thankyou__content {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 100%;
+  align-self: center;
+  justify-self: center;
+}
+
+.thankyou__content p {
+  font-size: var(--font-size-xl);
+}

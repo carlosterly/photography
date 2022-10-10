@@ -1,8 +1,12 @@
-.home__wrapper {
+@mixin full-height-wrapper {
   // min-height: 100vh;
   min-height: calc(var(--vh, 1vh) * 100);
   display: grid;
   grid-template-rows: auto 1fr auto;
+}
+
+.home__wrapper {
+  @include full-height-wrapper;
 }
 
 .home__banner {
