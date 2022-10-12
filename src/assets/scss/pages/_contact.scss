@@ -1,15 +1,21 @@
 .contact__layout {
   display: grid;
   grid-template-columns: 1fr;
+  grid-row-gap: 1rem;
 
   @include media(">=md") {
     grid-template-columns: 1fr 1fr;
-    grid-column-gap: 4rem;
+    grid-column-gap: 3rem;
+    grid-row-gap: 0;
   }
 }
 
-.contact__address address {
+.contact__layout address {
   font-style: normal;
   font-family: var(--font-heading);
   font-size: var(--font-size-base);
+}
+
+.contact__layout iframe {
+  @include responsive-iframe;
 }

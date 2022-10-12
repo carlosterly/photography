@@ -28,11 +28,11 @@
   padding: 1rem;
 
   text-align: center;
-  font-size: var(--font-size-lg);
+  // // font-size: var(--font-size-lg);
 
-  @include media(">=md") {
-    font-size: var(--font-size-xxl);
-  }
+  // @include media(">=md") {
+  //   // font-size: var(--font-size-xxl);
+  // }
 }
 
 .page-banner img,

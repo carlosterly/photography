@@ -3,13 +3,13 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
 
 html {
-  --font-size-sm: clamp(0.8rem, 0.17vw + 0.76rem, 0.89rem);
-  --font-size-base: clamp(1rem, 0.34vw + 0.91rem, 1.19rem);
-  --font-size-md: clamp(1.25rem, 0.61vw + 1.1rem, 1.58rem);
-  --font-size-lg: clamp(1.56rem, 1vw + 1.31rem, 2.11rem);
-  --font-size-xl: clamp(1.95rem, 1.56vw + 1.56rem, 2.81rem);
-  --font-size-xxl: clamp(2.44rem, 2.38vw + 1.85rem, 3.75rem);
-  --font-size-xxxl: clamp(3.05rem, 3.54vw + 2.17rem, 5rem);
+  --font-size-sm: clamp(0.89rem, 0.17vw + 0.86rem, 0.99rem);
+  --font-size-base: clamp(1rem, 0.31vw + 0.94rem, 1.19rem);
+  --font-size-md: clamp(1.13rem, 0.5vw + 1.02rem, 1.43rem);
+  --font-size-lg: clamp(1.27rem, 0.74vw + 1.12rem, 1.71rem);
+  --font-size-xl: clamp(1.42rem, 1.05vw + 1.21rem, 2.05rem);
+  --font-size-xxl: clamp(1.6rem, 1.43vw + 1.31rem, 2.46rem);
+  --font-size-xxxl: clamp(1.8rem, 1.92vw + 1.42rem, 2.95rem);
 }
 
 :root {
