@@ -18,17 +18,17 @@
 }
 
 .logo__text1 {
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-xxl);
   color: var(--dark-yellow);
   @include media(">420px") {
-    font-size: var(--font-size-xl);
+    // font-size: var(--font-size-xxxl);
   }
 }
 
 .logo__text2 {
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-xxl);
   color: var(--mid-grey);
   @include media(">420px") {
-    font-size: var(--font-size-xl);
+    // font-size: var(--font-size-xxxl);
   }
 }
