@@ -7,34 +7,16 @@
   border-radius: 0.5rem;
 }
 
-.card > img {
+.card img {
   aspect-ratio: var(--img-ratio);
   object-fit: cover;
   object-position: center top;
   width: 100%;
-}
-
-.card > img:first-child {
   border-radius: 0.5rem 0.5rem 0 0;
-}
-
-.card > img:last-child {
-  border-radius: 0 0 0.5rem 0.5rem;
-  margin-top: auto;
 }
 
 .card > :not(img) {
   margin-inline: 1.2rem;
-}
-
-.card > :not(img):first-child {
-  margin-top: 1rem;
-}
-
-/* Enhanced `:not()` accepts a selector list,
-but as a fallback you can chain `:not()` instead */
-.card > :last-of-type:not(p, time, img, h2, h3, h4) {
-  margin-bottom: 1rem;
 }
 
 .card h2 {
@@ -42,17 +24,18 @@ but as a fallback you can chain `:not()` instead */
   margin-bottom: 0;
 }
 
-.card > time {
+.card time {
   font-family: var(--font-heading);
 }
 
-.card > p {
+.card p {
   color: var(--text-color);
   font-size: var(--font-size-base);
   margin-bottom: 0;
 }
 
-.card > a.btn:last-child {
+.card a.btn {
   align-self: center;
   margin-top: auto;
+  margin-bottom: 1rem;
 }
