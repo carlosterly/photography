@@ -15,7 +15,7 @@
   border-radius: 0.5rem 0.5rem 0 0;
 }
 
-.card > :not(img) {
+.card > :not(a:first-of-type) {
   margin-inline: 1.2rem;
 }
 
