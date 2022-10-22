@@ -4,7 +4,7 @@
   "description": "Carl Osterly Photography",
   "main": "index.js",
   "scripts": {
-    "watch:sass": "sass --watch src/assets/scss:public/css",
+    "watch:sass": "sass --style=compressed --watch src/assets/scss:public/css",
     "build:sass": "sass --style=compressed src/assets/scss:public/css",
     "watch:eleventy": "eleventy --serve",
     "build:eleventy": "eleventy",

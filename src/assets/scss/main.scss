@@ -4,7 +4,7 @@
 @import "abstracts/variables", "abstracts/functions", "abstracts/mixins";
 
 // 2. Vendors
-@import "vendors/normalize";
+@import "vendors/normalize", "../js/photoswipe/photoswipe";
 
 // 3. Base stuff
 @import "base/base", "base/typography", "base/helpers", "base/responsive";
