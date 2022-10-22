@@ -3,10 +3,25 @@
   gap: 0.5rem;
   grid: auto-flow 1fr / repeat(2, 1fr);
 }
+
 .gallery img {
   cursor: pointer;
   object-fit: cover;
   object-position: center top;
   width: 100%;
   height: 100%;
+  @include box-shadow;
+}
+
+.awards-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30ch, 1fr));
+  gap: 1.2rem;
+}
+
+.awards-gallery img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  @include box-shadow;
 }
