@@ -1,11 +1,11 @@
-.page-banner {
+.page__banner {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   border-top: 0.5px solid var(--border-color);
   border-bottom: 0.5px solid var(--border-color);
 }
 
-.page-banner img {
+.page__banner img {
   grid-column: 1 / 6;
   aspect-ratio: 16 / 9;
   width: 100%;
@@ -17,25 +17,19 @@
   }
 }
 
-.page-banner h1 {
+.page__banner h1 {
   grid-column: 5 / 7;
   align-self: center;
 
+  padding: 1rem;
+  text-align: center;
   color: var(--blue);
   background-color: var(--body-color);
   border-top: 0.5px solid var(--border-color);
   border-bottom: 0.5px solid var(--border-color);
-  padding: 1rem;
-
-  text-align: center;
-  // // font-size: var(--font-size-lg);
-
-  // @include media(">=md") {
-  //   // font-size: var(--font-size-xxl);
-  // }
 }
 
-.page-banner img,
-.page-banner h1 {
+.page__banner img,
+.page__banner h1 {
   grid-row: 1 / 2;
 }
