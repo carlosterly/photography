@@ -2,22 +2,19 @@
 
 :root {
   --blue: rgba(3, 71, 116, 1);
-
   --light-yellow: rgba(251, 207, 139, 1);
   --dark-yellow: rgba(242, 179, 96, 1);
-
   --red: rgba(167, 36, 28, 1);
-
   --light-grey: rgba(232, 235, 242, 1);
   --mid-grey: rgba(77, 63, 63, 1);
   --dark-grey: rgba(10, 8, 12, 1);
 
   --body-color: rgba(250, 249, 246, 1);
-
   --brand-color: var(--dark-yellow);
   --text-color: var(--dark-grey);
   --border-color: var(--brand-color);
 
-  --max-width: 1180px;
+  // --max-width: 1180px;
+  --max-width: 960px;
   --base-url: "https://res.cloudinary.com/liquidweb/image/upload/f_auto/";
 }
