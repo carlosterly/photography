@@ -4,13 +4,14 @@
 
 html {
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
-@media screen and (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
-  }
-}
+// @media screen and (prefers-reduced-motion: reduce) {
+//   html {
+//     scroll-behavior: unset;
+//   }
+// }
 
 /**
  * Make all elements from the DOM inherit from the parent box-sizing

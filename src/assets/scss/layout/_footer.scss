@@ -2,14 +2,15 @@
   font-family: var(--font-heading);
   font-size: var(--font-size-xxl);
   color: var(--mid-grey);
+  margin-bottom: 0.8rem;
 
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto;
-  grid-row-gap: 1rem;
+  grid-row-gap: 0.8rem;
   grid-template-areas:
-    "copyright"
     "icons"
+    "copyright"
     "pagetop";
 
   @include media(">=md") {
@@ -26,10 +27,6 @@
     &:hover {
       color: var(--dark-yellow);
     }
-  }
-
-  @include media(">=md") {
-    padding-bottom: 1rem;
   }
 }
 

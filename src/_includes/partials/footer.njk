@@ -2,11 +2,17 @@
 
   <div class="footer__copyright">&copy; 2022 carlosterly.photography</div>
 
-  <div class="footer__pagetop">
-    {# <a href="#top">
-      <i class="bi bi-arrow-up-circle"></i>
-    </a> #}
-  </div>
+  {% if noPageTop %}
+
+    <div class="footer__pagetop"></div>
+
+  {% else %}
+    <div class="footer__pagetop">
+      <a href="#top">
+        <i class="bi bi-arrow-up-circle"></i>
+      </a>
+    </div>
+  {% endif %}
 
   <div class="footer__icons">
 
@@ -15,12 +21,6 @@
         <i class="bi bi-envelope"></i>
       </a>
     </div>
-
-    {# <div>
-      <a href="https://www.facebook.com/carlosterly" aria-label="Facebook">
-        <i class="bi bi-facebook"></i>
-      </a>
-    </div> #}
 
     <div>
       <a href="https://m.me/carlosterly" aria-label="Facebook Messenger">
