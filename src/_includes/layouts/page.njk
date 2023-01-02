@@ -1,19 +1,23 @@
 {% include 'partials/site-head.njk' %}
 
-{% include 'partials/header.njk' %}
+<div class="fh__wrapper">
 
-<main class="main__content flow">
+  {% include 'partials/header.njk' %}
 
-  {% if title == 'Sandbox' %}
+  <main class="main__content flow">
 
-  {% else %}
-    {% include 'partials/page-banner.njk' %}
-  {% endif %}
+    {% if title == 'Sandbox' %}
 
-  {{ content | safe }}
+    {% else %}
+      {% include 'partials/page-banner.njk' %}
+    {% endif %}
 
-</main>
+    {{ content | safe }}
 
-{% include 'partials/footer.njk' %}
+  </main>
+
+  {% include 'partials/footer.njk' %}
+
+</div>
 
 {% include 'partials/body-close.njk' %}

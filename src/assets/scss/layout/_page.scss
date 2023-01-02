@@ -1,3 +1,7 @@
+.fh__wrapper {
+  @include fh-wrapper;
+}
+
 .main__content {
   margin-bottom: 1rem;
 }

@@ -1,6 +1,5 @@
-@mixin full-height-wrapper {
+@mixin fh-wrapper {
   min-height: 100dvh;
-  // min-height: calc(var(--vh, 1vh) * 100);
   display: grid;
   grid-template-rows: auto 1fr auto;
 }
