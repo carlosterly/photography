@@ -2,7 +2,6 @@
   font-family: var(--font-heading);
   font-size: var(--font-size-xxl);
   color: var(--mid-grey);
-  margin-bottom: 0.8rem;
 
   display: grid;
   grid-template-columns: 1fr;
@@ -42,6 +41,7 @@
 .footer__pagetop {
   grid-area: pagetop;
   justify-self: center;
+  margin-bottom: 0.8rem;
 }
 
 .footer__icons {
