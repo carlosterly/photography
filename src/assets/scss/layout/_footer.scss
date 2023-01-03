@@ -13,10 +13,10 @@
     "pagetop";
 
   @include media(">=md") {
+    font-size: var(--font-size-md);
+    margin-bottom: 0.8rem;
     grid-template-columns: max-content 1fr 0.4fr;
     grid-template-areas: "copyright pagetop icons";
-    align-items: center;
-    font-size: var(--font-size-md);
   }
 
   a {
@@ -41,7 +41,6 @@
 .footer__pagetop {
   grid-area: pagetop;
   justify-self: center;
-  margin-bottom: 0.8rem;
 }
 
 .footer__icons {
