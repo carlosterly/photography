@@ -19,3 +19,23 @@
 .contact__layout iframe {
   @include responsive-iframe;
 }
+
+.contact__icons {
+  font-size: var(--font-size-xxl);
+  display: flex;
+  justify-content: space-around;
+  padding: 0.8rem 0 0.8rem 0;
+
+  @include media(">=md") {
+    justify-content: space-evenly;
+  }
+
+  a {
+    color: var(--mid-grey);
+    text-decoration: none;
+    transition: color 0.3s ease-out;
+    &:hover {
+      color: var(--dark-yellow);
+    }
+  }
+}

@@ -1,13 +1,13 @@
 .gallery {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  gap: 0.5rem;
+  gap: 0.8rem;
 
   @include media(">=sm") {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  @include media(">=md") {
+  @include media(">=lg") {
     grid-template-columns: repeat(4, 1fr);
   }
 }
