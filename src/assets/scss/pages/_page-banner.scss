@@ -29,7 +29,6 @@
   border-bottom: 0.5px solid var(--border-color);
 }
 
-.page__banner img,
-.page__banner h1 {
+.page__banner :is(img, h1) {
   grid-row: 1 / 2;
 }
