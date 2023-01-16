@@ -20,6 +20,10 @@
   @include responsive-iframe;
 }
 
+.contact__layout .recaptcha {
+  margin-bottom: 1.2rem;
+}
+
 .contact__icons {
   font-size: var(--font-size-xxl);
   display: flex;
