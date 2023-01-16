@@ -41,7 +41,7 @@ permalink: "/contact/"
 
     <h2>Contact Form</h2>
 
-    <form name="contact-form" method="post" data-netlify="true" netlify-honeypot="bot-field" action="/thankyou">
+    <form name="contact-form" method="post" data-netlify="true" netlify-honeypot="bot-field" data-netlify-recaptcha="true" action="/thankyou">
 
       <fieldset class="fieldset">
 
@@ -66,6 +66,8 @@ permalink: "/contact/"
         <textarea class="input" rows="3" name="comments" id="comments" required=""></textarea>
         <input type="hidden" name="subject" value="Photography Enquiry">
       </fieldset>
+
+      <div data-netlify-recaptcha="true"></div>
 
       <input class="btn btn--primary outline" type="submit" value="Submit">
 
