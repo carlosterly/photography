@@ -18,7 +18,7 @@ alt="Marcelle"/>
 {# <script src="/assets/js/home.js"></script> #}
 
 <script type="module">
-  import PhotoSwipeLightbox from '/assets/js/photoswipe/photoswipe-lightbox.esm.js';
+  import PhotoSwipeLightbox from '/assets/js/photoswipe/photoswipe-lightbox.esm.min.js';
 
   const options = {
     dataSource: [
@@ -553,7 +553,7 @@ alt="Marcelle"/>
     bgOpacity: 1,
     errorMsg: 'The photo cannot be loaded',
     showHideAnimationType: 'none',
-    pswpModule: () => import ('/assets/js/photoswipe/photoswipe.esm.js')
+    pswpModule: () => import ('/assets/js/photoswipe/photoswipe.esm.min.js')
   };
   const lightbox = new PhotoSwipeLightbox(options);
   lightbox.init();
