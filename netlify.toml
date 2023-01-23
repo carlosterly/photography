@@ -18,4 +18,9 @@
     removeComments = true
     collapseWhitespace = true
     removeAttributeQuotes = false
+    removeRedundantAttributes = true
+    removeScriptTypeAttributes = true
+    removeStyleLinkTypeAttributes = true
+    useShortDoctype = true
+    minifyJS = true
     # collapseInlineTagWhitespace = false
