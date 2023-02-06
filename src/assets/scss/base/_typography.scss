@@ -1,3 +1,24 @@
+@font-face {
+  font-family: "Source Sans Pro";
+  src: url("/assets/fonts/sourcesanspro-bold-webfont.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Source Sans Pro";
+  src: url("/assets/fonts/sourcesanspro-regular-webfont.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Source Serif Pro";
+  src: url("/assets/fonts/sourceserifpro-regular-webfont.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
 html {
   --font-size-sm: clamp(0.89rem, 0.17vw + 0.86rem, 0.99rem);
   --font-size-base: clamp(1rem, 0.31vw + 0.94rem, 1.19rem);
