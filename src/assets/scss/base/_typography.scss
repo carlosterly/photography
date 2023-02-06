@@ -3,6 +3,7 @@
   src: url("/assets/fonts/sourcesanspro-bold-webfont.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -10,6 +11,7 @@
   src: url("/assets/fonts/sourcesanspro-regular-webfont.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -17,6 +19,7 @@
   src: url("/assets/fonts/sourceserifpro-regular-webfont.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
 }
 
 html {
