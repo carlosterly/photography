@@ -7,9 +7,9 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  @include media(">=lg") {
-    grid-template-columns: repeat(4, 1fr);
-  }
+  // @include media(">=lg") {
+  //   grid-template-columns: repeat(4, 1fr);
+  // }
 }
 
 .gallery__box {
