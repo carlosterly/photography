@@ -1,0 +1,39 @@
+.pricing-card__wrapper {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 0.8rem;
+
+  @include media(">=sm") {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.pricing-card {
+  padding: 0 0 0.5rem 0;
+  background: #fff;
+  text-align: center;
+  @include box-shadow;
+  overflow: hidden;
+  transition: all 0.1ms ease-in-out;
+}
+
+.pricing-card__header {
+  height: 5rem;
+  color: var(--text-inverse);
+  font-size: var(--font-size-xxl);
+  font-family: var(--font-heading);
+  padding: 1rem 0;
+  clip-path: polygon(0 0, 100% 0%, 100% 85%, 0% 100%);
+  background: linear-gradient(135deg, var(--brand-color), var(--mid-grey));
+}
+
+.pricing-card__body {
+  padding: 0.5rem 0;
+}
+
+.pricing-card__list {
+  padding: 0;
+  list-style: none;
+  font-size: var(--font-size-lg);
+  font-family: var(--font-heading);
+}
