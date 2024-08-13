@@ -14,10 +14,6 @@ $color-secondary: #fca311;
   background: $color;
   color: $text-color;
 
-  &:hover {
-    background: darken($color, 10%);
-  }
-
   @if $outline {
     background: transparent;
     border: 2px solid $color;
@@ -29,6 +25,12 @@ $color-secondary: #fca311;
       color: white;
     }
   }
+
+  &:hover {
+    background: darken($color, 10%);
+  }
+
+
 }
 
 .btn {
