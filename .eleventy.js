@@ -2,10 +2,10 @@ const { DateTime } = require("luxon");
 
 module.exports = function(eleventyConfig) {
   
-  eleventyConfig.setBrowserSyncConfig({
-		files: './public/css/**/*.css'
-  });  
-  
+  eleventyConfig.setServerOptions({
+    watch: ["sandbox/public/css/**/*.css"]
+  });
+
   eleventyConfig.addPassthroughCopy("./src/assets/img");
   eleventyConfig.addPassthroughCopy("./src/assets/js");
   eleventyConfig.addPassthroughCopy("./src/assets/fonts");
@@ -35,3 +35,4 @@ module.exports = function(eleventyConfig) {
     dataTemplateEngine: "njk",
   };
 };
+
