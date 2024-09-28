@@ -36,3 +36,7 @@ a {
   color: var(--red);
   text-decoration: none;
 }
+
+@view-transition {
+  navigation: auto;
+}
