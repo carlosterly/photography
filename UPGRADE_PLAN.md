@@ -4,7 +4,7 @@ Ordered from safest to most complex.
 
 ---
 
-## 1. Replace `npm-run-all` with `npm-run-all2`
+## 1. ✅ Replace `npm-run-all` with `npm-run-all2`
 
 **Risk: Very Low**
 
