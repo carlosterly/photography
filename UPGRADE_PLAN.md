@@ -34,43 +34,145 @@ call it by name in change-set A, `38d6b47`)
 
 ---
 
-## 2. Upgrade `sass` and address the `@import` deprecation
+## 2. The stylesheet: upgrade Sass, or drop it entirely
 
-**Risk: Low to bump · Medium to fully migrate**
+**Status: undecided — both options below are on the table.**
 
-The version number is not the point — the `@import` rule is. `@import` is deprecated
-as of Dart Sass 1.80 and is scheduled for **removal in Dart Sass 3.0**. Split this
-into two independent pieces:
+The trigger is the `@import` deprecation: `@import` is deprecated as of Dart Sass 1.80
+and is **removed in Dart Sass 3.0**. But the research below shows the project barely
+uses Sass's real capabilities, so "remove Sass" is a serious alternative to
+"migrate Sass".
 
-### 2a. Bump Sass (Low, quick) — set B
+### 2·research — what test-compiling with `sass@1.103.1` and auditing the SCSS showed
+
+Verified 2026-09-03. Current pin is `sass@1.77.8` (held by the lockfile; `package.json`
+says `^1.77.8`, so the caret already intends to float within 1.x). Building with
+1.77.8 today emits **zero** warnings.
+
+**Compiling the current SCSS with `sass@1.103.1`:** succeeds (exit 0), but:
+
+1. **~1,950 deprecation warnings**, by type:
+   | Type | Count | Where |
+   |---|---|---|
+   | `global-builtin` (`map-get` → `map.get`) | ~1,920 | `base/_icons.scss` — vendored Bootstrap Icons, one `map-get` per glyph |
+   | `import` (`@import` → `@use`) | 5 | `main.scss` |
+   | `color-functions` (`darken`/`lighten`) | ~10 | `components/_button.scss:30`; `components/_forms.scss` ×9 |
+   | `if-function` (global `if()`) | 3 | `base/_responsive.scss` (media-query helper) |
+
+   The build console is unusable without
+   `--silence-deprecation=import,global-builtin,color-functions,if-function` on the
+   `build:sass` / `watch:sass` scripts.
+
+2. **The compiled CSS changes.** Newer `darken()`/`lighten()` emit a different
+   representation:
+   ```css
+   /* 1.77.8  */ .btn--success:hover { background: #308763 }
+   /* 1.103.1 */ .btn--success:hover { background: rgb(18.7078934138% 53.0568124686% 38.6425339367%) }
+   ```
+   Every button/form hover & disabled state (~78 output fragments, all tracing to the
+   ~10 `darken`/`lighten` calls) switches to verbose `rgb()`/`hsl()`. Same rendered
+   colour; output ~450 bytes larger; not byte-identical.
+
+**SCSS feature audit — what actually depends on Sass:**
+
+| Feature | Real usage | Notes |
+|---|---|---|
+| `@include media(...)` | **32 call sites** | The [include-media](https://include-media.com/) library (~360 lines in `base/_responsive.scss`: string parsing, maps, `@each`/`@for`, `@if`). Only ~5 distinct conditions are ever used: `>=sm`, `>=md`, `>=lg`, `<=lg`, `>420px` — each a one-line `@media (min/max-width)`. |
+| `@include btnStyle()` | 10× | `@mixin` with `@if $outline` + `darken()` |
+| `@include box-shadow` / `fh-wrapper` / `responsive-iframe` / `line-clamp` | few | static, param-less snippets |
+| `abstracts/_functions.scss` `asset()` / `image()` / `font()` | **0 call sites** | dead code — delete |
+| `$bootstrap-icons-map` + ~1,900 `map-get` | `base/_icons.scss` | vendored Bootstrap Icons SCSS; map only looks up static `\fXXX` glyphs. A prebuilt `bootstrap-icons.min.css` is the exact compiled equivalent. |
+| `#{}` interpolation | `components/_forms.scss` | empty `$prefix` → `.input`; `math.div(x,2)` inside `calc()`; `#{$svg}` colour injected into 3 inline-SVG data URIs |
+| Nesting `&` | everywhere | covered by **native CSS nesting** (Baseline 2024) |
+| `@import` partials (24 partials + `main.scss`) | concatenation only | needs a bundler step |
+
+Nothing here needs Sass's programmable features for its actual output. The heavy
+machinery (include-media, the icons map, the asset functions) is barely used, dead, or
+replaceable with a prebuilt CSS file.
+
+---
+
+### Option 2·SASS — stay on Sass, upgrade it
+
+Two sub-steps, independently shippable.
+
+**2·SASS-a — bump + silence (set B).**
 
 ```bash
 npm install --save-dev sass@latest
-npm run build:sass
 ```
 
-The build keeps working; expect `@import` / global-builtin deprecation warnings on
-every compile. Ship this on its own and live with the warnings until 2b.
+Add `--silence-deprecation=import,global-builtin,color-functions,if-function` to
+`build:sass` and `watch:sass` in `package.json`. Accept the verbose-`rgb()` colour
+representation in the output (visually identical). Low risk, ~15 min. Downside: now
+sitting on deprecated APIs with warnings muted, plus a one-time CSS diff.
 
-### 2b. Migrate `@import` → `@use` / `@forward` (Medium) — set C, separate
+**2·SASS-b — migrate off the deprecated APIs (set C).**
 
-Not a mechanical find/replace. `@use` is **not global**: every partial that consumes a
-variable, mixin, or function from `abstracts/` needs its own
-`@use 'abstracts/variables' as *;` (or a namespaced import) at the top. That touches
-most files under `src/assets/scss/`, not just `main.scss`.
+`sass-migrator` is the right tool and does the high-volume work, but is a starting
+point, not a finished job:
 
-- Use the automated migrator as the starting point:
-  ```bash
-  npx sass-migrator module --migrate-deps src/assets/scss/main.scss
-  ```
-  Then review every changed file and fix up namespacing by hand.
-- **Watch the PhotoSwipe cross-import.** `main.scss` does
-  `@import "../js/photoswipe/photoswipe"` — a plain `.css` file in the JS vendor
-  folder loaded as a Sass partial. Plain-CSS loading behaves differently under `@use`;
-  verify the PhotoSwipe styles still land in `public/css/main.css` after migration.
-  Consider vendoring `photoswipe.css` into `src/assets/scss/vendors/` instead.
-- Acceptance: `public/css/main.css` is byte-comparable (allowing for ordering) to the
-  pre-migration output; every page still renders correctly.
+```bash
+npx sass-migrator module --migrate-deps src/assets/scss/main.scss   # @import→@use, map-get→map.get (~1,920 sites)
+npx sass-migrator color  --migrate-deps src/assets/scss/main.scss   # darken/lighten→color.adjust (~10 sites)
+```
+
+Then hand-work:
+
+- **`@use` is not global** — the migrator adds explicit `@use` to dependent partials
+  but tends to emit `@use "..." as *` everywhere; review namespacing.
+- **PhotoSwipe cross-import** `@import "../js/photoswipe/photoswipe"` (a `.css` file
+  outside the SCSS tree) — verify under `@use`, or vendor `photoswipe.css` into
+  `src/assets/scss/vendors/_photoswipe.scss` and `@forward` it.
+- **`base/_icons.scss` is vendored** — in-place edits are lost on re-download; prefer
+  swapping to a current Bootstrap Icons release that ships `@use`, or the prebuilt CSS.
+- **`if-function`** (3 calls in `base/_responsive.scss`) — no dedicated migrator;
+  leave or fix by hand.
+- Migrating `color.adjust()` still does **not** make the output byte-identical to the
+  1.77.8 build (still emits verbose `rgb()`); only literal hex values would.
+- Acceptance: `public/css/main.css` renders identically on every page (colour
+  representation change expected; anything structural is a bug).
+
+---
+
+### Option 2·CSS — remove Sass entirely
+
+Feasible here, and it deletes the whole `@import`→`@use` question along with the
+include-media library and the ~2,000-line icons file.
+
+**Tooling: not Vite.** Vite is a JS-app dev-server/HMR tool with a large dependency
+tree and non-trivial Eleventy integration, for what is a single stylesheet. Use
+**Lightning CSS** (`lightningcss-cli`) instead — one fast dependency, a near drop-in
+for the `sass` CLI line:
+
+```
+lightningcss --bundle --minify --targets '>= 0.5%' src/assets/css/main.css -o public/css/main.css
+```
+
+It inlines `@import`, minifies, and **transpiles native nesting and `color-mix()` down
+for older browsers**, so migrating to modern CSS syntax doesn't cost browser support.
+(`esbuild` also bundles CSS `@import` if preferred; `postcss` + plugins is the heavier
+older route. Reach for Vite only if you also want it to bundle/fingerprint the JS.)
+
+**Migration path:**
+
+1. Replace vendored `base/_icons.scss` with Bootstrap Icons' prebuilt
+   `bootstrap-icons.min.css` (or subset to the ~10 icons actually used). Removes
+   ~2,000 lines and ~1,920 warnings in one move — **worth doing even if Sass stays.**
+2. Convert the ~24 remaining partials to plain CSS with native nesting: hand-write the
+   ~32 `@media` blocks (replacing include-media), expand the 4 static mixins, rebuild
+   the button variants with custom properties + `color-mix(in srgb, var(--btn) 90%, black)`,
+   inline the 3 form-SVG fill colours, drop the dead `_functions.scss`.
+3. Swap `sass` → `lightningcss-cli` in `package.json`; keep the
+   `build:css` / `watch:css` script shape identical.
+4. Eleventy and everything else unchanged.
+
+Effort: roughly a day. Also removes one toolchain concern from the Eleventy 3 upgrade
+(set D).
+
+**Browser-support note:** native nesting + `color-mix()` are Baseline 2024; Lightning
+CSS `--targets` transpiles them down, so the effective floor stays where the
+`--targets` query sets it.
 
 ---
 
@@ -211,7 +313,15 @@ Then, because there are **no automated tests**:
 
 | Set | Contents | Risk | Status |
 |---|---|---|---|
-| **A** | Step 3 (delete `home.js` + refs) + `package.json` cleanup (`main` field, script bin names) | ~Zero | ✅ done (`38d6b47`) |
-| **B** | `sass@latest` bump, accept deprecation warnings | Low | ⬜ next |
-| **C** | `@import` → `@use` / `@forward` migration via `sass-migrator` | Medium | ⬜ |
+| **A** | Delete `home.js` + refs; `package.json` cleanup (`main` field, script bin names) | ~Zero | ✅ done (`38d6b47`) |
+| **icons** | Swap vendored `_icons.scss` → prebuilt `bootstrap-icons.min.css` (or subset) — kills ~1,920 warnings and ~2,000 lines | Low | ⬜ do regardless of the 2·SASS / 2·CSS choice |
 | **D** | Eleventy 2 → 3 (4a–4e), verified on a Netlify deploy preview | High | ⬜ |
+
+**Stylesheet decision (section 2) — pick one branch:**
+
+| Branch | Sets | Risk | Effort |
+|---|---|---|---|
+| **2·SASS** — keep Sass | **B**: `sass@latest` + `--silence-deprecation`; then **C**: `sass-migrator` (`module` + `color`) + hand-fixes | Low → Medium | ~15 min + ~½ day |
+| **2·CSS** — remove Sass | Bootstrap-icons swap + convert ~24 partials to native-nested CSS + `sass` → `lightningcss-cli` | Medium | ~1 day |
+
+Recommended order once decided: **A ✅ → icons → (2·SASS or 2·CSS) → D**.
