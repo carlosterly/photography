@@ -2,14 +2,13 @@
   "name": "carlosterly.photography",
   "version": "1.0.0",
   "description": "Carl Osterly Photography",
-  "main": "index.js",
   "scripts": {
     "watch:sass": "sass --style=compressed --watch src/assets/scss:public/css",
     "build:sass": "sass --style=compressed src/assets/scss:public/css",
     "watch:eleventy": "eleventy --serve",
     "build:eleventy": "eleventy",
-    "start": "npm-run-all build:sass --parallel watch:*",
-    "build": "npm-run-all build:*"
+    "start": "npm-run-all2 build:sass --parallel watch:*",
+    "build": "npm-run-all2 build:*"
   },
   "repository": {
     "type": "git",
