@@ -4,19 +4,24 @@ Ordered from safest to most complex.
 
 Status legend: ✅ done · ⚠ partially superseded by the current repo state (see notes).
 
+Work lands as direct commits on `main` (the change-set labels A–D below are just
+logical groupings, not pull requests). Change-set A shipped in commit `38d6b47`
+(merged via PR #1, merge commit `b393949`).
+
 ---
 
-## Current state (verified 2026-09-03)
+## Current state (verified 2026-09-03, after change-set A)
 
 | Thing | State |
 |---|---|
 | `@11ty/eleventy` | `2.0.1` installed |
 | `sass` | `1.77.8` installed |
 | `luxon` | `3.5.0`, but only as a **transitive dependency of Eleventy 2** |
-| `npm-run-all2` | `8.0.4` installed (step 1 done) |
+| `npm-run-all2` | `8.0.4` installed; scripts now call it by name (was the `npm-run-all` alias) |
 | Node (local dev) | **v24.13.0** — newer than Eleventy 2 officially supports |
 | `--vh` custom property in SCSS | **none** — only `min-height: 100svh` in `abstracts/_mixins.scss:2` |
-| `src/assets/js/home.js` | still present, still sets `--vh`; loaded by `layouts/thankyou.njk:27` |
+| `src/assets/js/home.js` | ✅ deleted in change-set A, along with its refs in `thankyou.njk` / `home.njk` |
+| `package.json` `"main"` field | ✅ removed in change-set A (pointed at a non-existent `index.js`) |
 | `src/_11ty/{collections,filters,shortcodes,utils}` | all empty |
 | SCSS entry | `src/assets/scss/main.scss`, legacy comma-separated `@import`, incl. `@import "../js/photoswipe/photoswipe"` |
 
@@ -24,12 +29,8 @@ Status legend: ✅ done · ⚠ partially superseded by the current repo state (s
 
 ## 1. ✅ Replace `npm-run-all` with `npm-run-all2`
 
-**Risk: Very Low — DONE** (commit `3810eef`)
-
-`npm-run-all2` `^8.0.4` is installed. One cosmetic loose end: the `package.json`
-scripts still invoke the `npm-run-all` **bin name** (which `npm-run-all2` provides as
-an alias, so it works). Renaming those calls to `npm-run-all2` is folded into **PR A**
-below.
+**Risk: Very Low — DONE** (`npm-run-all2` swapped in `3810eef`; scripts updated to
+call it by name in change-set A, `38d6b47`)
 
 ---
 
@@ -41,7 +42,7 @@ The version number is not the point — the `@import` rule is. `@import` is depr
 as of Dart Sass 1.80 and is scheduled for **removal in Dart Sass 3.0**. Split this
 into two independent pieces:
 
-### 2a. Bump Sass (Low, quick) — PR B
+### 2a. Bump Sass (Low, quick) — set B
 
 ```bash
 npm install --save-dev sass@latest
@@ -51,7 +52,7 @@ npm run build:sass
 The build keeps working; expect `@import` / global-builtin deprecation warnings on
 every compile. Ship this on its own and live with the warnings until 2b.
 
-### 2b. Migrate `@import` → `@use` / `@forward` (Medium) — PR C, separate
+### 2b. Migrate `@import` → `@use` / `@forward` (Medium) — set C, separate
 
 Not a mechanical find/replace. `@use` is **not global**: every partial that consumes a
 variable, mixin, or function from `abstracts/` needs its own
@@ -73,35 +74,27 @@ most files under `src/assets/scss/`, not just `main.scss`.
 
 ---
 
-## 3. Remove the dead `--vh` viewport hack
+## 3. ✅ Remove the dead `--vh` viewport hack
 
-**Risk: ~Zero — now just dead-code deletion (folded into PR A)**
+**Risk: ~Zero — DONE in change-set A (`38d6b47`)**
 
-The original plan called for a grep-and-replace of `var(--vh)` in SCSS. That is
-already done — there is no `--vh` left in the stylesheets; the only viewport unit is
-`min-height: 100svh` in `abstracts/_mixins.scss`. What remains is unused JS:
+The original plan called for a grep-and-replace of `var(--vh)` in SCSS, but that was
+already done — no `--vh` remained in the stylesheets (the only viewport unit is
+`min-height: 100svh` in `abstracts/_mixins.scss`), so the property-setting JS was pure
+dead code. Change-set A:
 
-- `src/assets/js/home.js` computes and sets `--vh` on every load — a property nothing
-  reads.
-- It is still loaded by `src/_includes/layouts/thankyou.njk:27`.
-- `src/_includes/layouts/home.njk:13` has a commented-out `<script>` reference to it.
+- Deleted `src/assets/js/home.js`.
+- Removed the `<script src="/assets/js/home.js"></script>` line from
+  `layouts/thankyou.njk`.
+- Removed the commented reference in `layouts/home.njk`.
 
-### Steps (PR A)
-
-1. Delete `src/assets/js/home.js`.
-2. Remove the `<script src="/assets/js/home.js"></script>` line from
-   `layouts/thankyou.njk`.
-3. Remove the commented reference on `layouts/home.njk:13`.
-4. `npm run build`, load `/thankyou/` and confirm no console error and no layout
-   shift.
-
-No CSS changes and no mobile testing needed.
+`npm run build` verified; no CSS changes.
 
 ---
 
 ## 4. Upgrade Eleventy 2.0.1 → 3.x
 
-**Risk: High — multiple coordinated changes. Do this last, as its own PR (PR D).**
+**Risk: High — multiple coordinated changes. Do this last, as its own commit (set D).**
 
 Eleventy 3 drops CommonJS in its own codebase and expects ESM projects. Several APIs
 also changed. Running Eleventy 2 on Node 24 (current local setup) is already
@@ -166,8 +159,8 @@ cruft):
 "type": "module"
 ```
 
-Safe here: after PR A the only project `.js` files are the config (being converted)
-and none else. `home.js` will already be gone.
+Safe here: after change-set A the only project `.js` file is the config (being
+converted). `home.js` is already gone.
 
 ### 4d. Review `src/_11ty/` utility files
 
@@ -202,23 +195,23 @@ Then, because there are **no automated tests**:
 
 ---
 
-## Miscellaneous cleanup (folded into PR A)
+## Miscellaneous cleanup
 
-- `package.json` `"main": "index.js"` points at a file that does not exist — remove
-  the field.
-- Rename the `npm-run-all` bin calls in `package.json` scripts to `npm-run-all2`.
-- Run `npm audit` / refresh `package-lock.json` at some point during this work.
-- Optional, unrelated: the `@view-transition` "Transition was skipped" console noise
-  (from `scss/base/_base.scss:40`) can be silenced with an `unhandledrejection`
+- ✅ `package.json` `"main": "index.js"` field removed (change-set A).
+- ✅ `npm-run-all` bin calls in `package.json` scripts renamed to `npm-run-all2`
+  (change-set A).
+- ⬜ Run `npm audit` / refresh `package-lock.json` at some point during this work.
+- ⬜ Optional, unrelated: the `@view-transition` "Transition was skipped" console
+  noise (from `scss/base/_base.scss:40`) can be silenced with an `unhandledrejection`
   handler in `partials/body-close.njk` if it becomes distracting during development.
 
 ---
 
-## Suggested sequencing
+## Sequencing
 
-| PR | Contents | Risk |
-|---|---|---|
-| **A** | Step 3 (delete `home.js` + refs) + `package.json` cleanup (`main` field, script bin names) | ~Zero |
-| **B** | `sass@latest` bump, accept deprecation warnings | Low |
-| **C** | `@import` → `@use` / `@forward` migration via `sass-migrator` | Medium |
-| **D** | Eleventy 2 → 3 (4a–4e), verified on a Netlify deploy preview | High |
+| Set | Contents | Risk | Status |
+|---|---|---|---|
+| **A** | Step 3 (delete `home.js` + refs) + `package.json` cleanup (`main` field, script bin names) | ~Zero | ✅ done (`38d6b47`) |
+| **B** | `sass@latest` bump, accept deprecation warnings | Low | ⬜ next |
+| **C** | `@import` → `@use` / `@forward` migration via `sass-migrator` | Medium | ⬜ |
+| **D** | Eleventy 2 → 3 (4a–4e), verified on a Netlify deploy preview | High | ⬜ |
