@@ -59,7 +59,10 @@ says `^1.77.8`, so the caret already intends to float within 1.x). Building with
    | `color-functions` (`darken`/`lighten`) | ~10 | `components/_button.scss:30`; `components/_forms.scss` ×9 |
    | `if-function` (global `if()`) | 3 | `base/_responsive.scss` (media-query helper) |
 
-   The build console is unusable without
+   > **Update 2026-09-06:** the icons step (commit `1c8a9da`) removed the ~1,920
+> `global-builtin` warnings; ~90 remain (include-media globals + `darken`/`lighten`).
+
+The build console is unusable without
    `--silence-deprecation=import,global-builtin,color-functions,if-function` on the
    `build:sass` / `watch:sass` scripts.
 
@@ -314,7 +317,7 @@ Then, because there are **no automated tests**:
 | Set | Contents | Risk | Status |
 |---|---|---|---|
 | **A** | Delete `home.js` + refs; `package.json` cleanup (`main` field, script bin names) | ~Zero | ✅ done (`38d6b47`) |
-| **icons** | Swap vendored `_icons.scss` → prebuilt `bootstrap-icons.min.css` (or subset) — kills ~1,920 warnings and ~2,000 lines | Low | ⬜ do regardless of the 2·SASS / 2·CSS choice |
+| **icons** | Subset `_icons.scss` to the 5 glyphs the site uses (was the full ~2000-icon vendored set) | Low | ✅ done (`1c8a9da`) — `main.css` 98.6 KB → 25.7 KB; `sass@latest` warnings ~1,950 → ~90 |
 | **D** | Eleventy 2 → 3 (4a–4e), verified on a Netlify deploy preview | High | ⬜ |
 
 **Stylesheet decision (section 2) — pick one branch:**
@@ -322,6 +325,6 @@ Then, because there are **no automated tests**:
 | Branch | Sets | Risk | Effort |
 |---|---|---|---|
 | **2·SASS** — keep Sass | **B**: `sass@latest` + `--silence-deprecation`; then **C**: `sass-migrator` (`module` + `color`) + hand-fixes | Low → Medium | ~15 min + ~½ day |
-| **2·CSS** — remove Sass | Bootstrap-icons swap + convert ~24 partials to native-nested CSS + `sass` → `lightningcss-cli` | Medium | ~1 day |
+| **2·CSS** — remove Sass | Convert ~24 partials to native-nested CSS + `sass` → `lightningcss-cli` (icons swap already done) | Medium | ~1 day |
 
-Recommended order once decided: **A ✅ → icons → (2·SASS or 2·CSS) → D**.
+Recommended order: **A ✅ → icons ✅ → (2·SASS or 2·CSS) → D**.
