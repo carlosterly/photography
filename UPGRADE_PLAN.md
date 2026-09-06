@@ -36,7 +36,11 @@ call it by name in change-set A, `38d6b47`)
 
 ## 2. The stylesheet: upgrade Sass, or drop it entirely
 
-**Status: undecided — both options below are on the table.**
+**Status: deferred (Option A chosen 2026-09-06).** `sass` pinned to exact `1.77.8`
+in `package.json` (caret dropped so `npm update` cannot drift it); no migration or
+removal for now. The 2·SASS and 2·CSS options below stay documented for when this is
+revisited — likely after set D (Eleventy 3), or when Dart Sass 3.0 has a real release
+date. Nothing forces it before then: `@import` is not removed until Dart Sass 3.0.
 
 The trigger is the `@import` deprecation: `@import` is deprecated as of Dart Sass 1.80
 and is **removed in Dart Sass 3.0**. But the research below shows the project barely
@@ -318,13 +322,14 @@ Then, because there are **no automated tests**:
 |---|---|---|---|
 | **A** | Delete `home.js` + refs; `package.json` cleanup (`main` field, script bin names) | ~Zero | ✅ done (`38d6b47`) |
 | **icons** | Subset `_icons.scss` to the 5 glyphs the site uses (was the full ~2000-icon vendored set) | Low | ✅ done (`1c8a9da`) — `main.css` 98.6 KB → 25.7 KB; `sass@latest` warnings ~1,950 → ~90 |
-| **D** | Eleventy 2 → 3 (4a–4e), verified on a Netlify deploy preview | High | ⬜ |
+| **sass-pin** | Pin `sass` to exact `1.77.8` (Option A — defer the stylesheet work) | ~Zero | ✅ done 2026-09-06 (uncommitted) |
+| **D** | Eleventy 2 → 3 (4a–4e), verified on a Netlify deploy preview | High | ⬜ ← next |
 
-**Stylesheet decision (section 2) — pick one branch:**
+**Stylesheet decision (section 2) — DEFERRED (Option A, 2026-09-06). When revisited, pick one branch:**
 
 | Branch | Sets | Risk | Effort |
 |---|---|---|---|
 | **2·SASS** — keep Sass | **B**: `sass@latest` + `--silence-deprecation`; then **C**: `sass-migrator` (`module` + `color`) + hand-fixes | Low → Medium | ~15 min + ~½ day |
 | **2·CSS** — remove Sass | Convert ~24 partials to native-nested CSS + `sass` → `lightningcss-cli` (icons swap already done) | Medium | ~1 day |
 
-Recommended order: **A ✅ → icons ✅ → (2·SASS or 2·CSS) → D**.
+Recommended order: **A ✅ → icons ✅ → sass-pin ✅ → D → (2·SASS or 2·CSS, later)**.
