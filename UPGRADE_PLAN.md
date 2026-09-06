@@ -203,99 +203,83 @@ dead code. Change-set A:
 
 ## 4. Upgrade Eleventy 2.0.1 → 3.x
 
-**Risk: High — multiple coordinated changes. Do this last, as its own commit (set D).**
+**Risk: Medium — deploy-critical path, but a small config surface.** Target is the
+current latest, **Eleventy 3.1.6** (`engines: node >=18`). Do this as its own commit
+(set D), after the sass-pin.
 
-Eleventy 3 drops CommonJS in its own codebase and expects ESM projects. Several APIs
-also changed. Running Eleventy 2 on Node 24 (current local setup) is already
-unsupported territory, which is a mild independent reason to prioritise this.
+### What actually changes here (verified 2026-09-06)
 
-### 4a. Add `luxon` as an explicit dependency
+The project's Eleventy footprint is small, which lowers both the benefit and the risk:
 
-It is currently only present as a transitive dep of Eleventy 2 and disappears under
-Eleventy 3.
+| Area | Current | v3 impact |
+|---|---|---|
+| Config | `.eleventy.js`, CommonJS | **CJS config still works in v3** — conversion to ESM is optional, not required. Keep CJS for the smallest diff. |
+| `luxon` | `require("luxon")` for `postDate`; resolves today via hoisting (v2 dep) | v3 also bundles `luxon@^3.7.2`, so it likely keeps resolving — but add it as an explicit dependency rather than rely on a transitive. |
+| Templates | 100% Nunjucks, 4 layouts + 5 partials, no markdown content | same `nunjucks@3.2.x` in v3 → output should be near-identical |
+| Data | `site.json`, `galleries.json`, `articles/articles.json`; no `.js` data, no `eleventyComputed`, **no `{{ }}` in data or front-matter** | `dataTemplateEngine: "njk"` is set but unused → just delete the line |
+| Collections | `collections.post` (tag), `collections.all` (sitemap) | stable API, unchanged |
+| Filters | `safe` / `dump` / `url` (built-in) + `postDate` (custom) | unchanged |
+| Plugins / shortcodes / pagination / eleventy-img | none | v3 auto-bundles `@11ty/eleventy-plugin-bundle` (adds `{% bundle %}`) — new surface, nothing here conflicts |
+| `.eleventy.js` cruft | stale `setServerOptions.watch: ["sandbox/public/css/**/*.css"]`; `addPassthroughCopy("./src/assets/img")` (folder doesn't exist) | clean up during the upgrade |
+| `src/_11ty/*` | all empty | no-op |
+| Node | local v24.20.0; **no `.nvmrc` / `NODE_VERSION` pin anywhere** | v3 hard-errors below Node 18 via `please-upgrade-node` |
 
-```bash
-npm install luxon
-npm install --save-dev @types/luxon   # optional, editor hints
-```
+### Pros
 
-Surface is small: the only consumer is the `postDate` filter, used only by the
-article pages.
+- **Supported runtime.** v2 officially tops out ~Node 20; local is Node 24 — already
+  unsupported. v3 supports 18/20/22/24.
+- **Maintenance & security** — v2 receives no further fixes.
+- **Unblocks the ecosystem** — most current plugins (image optimization, RSS, …)
+  require v3. Prerequisite if the CSS/JS bundling work (`eleventy-img`, a bundle step)
+  is ever wanted.
+- Faster builds (new globbing / dependency graph) — marginal at 14 pages / ~5 s.
 
-### 4b. Convert the config to ESM
+### Cons / costs
 
-Rename `.eleventy.js` → `eleventy.config.js` and convert to ESM. (Escape hatch: if the
-ESM conversion is troublesome, Eleventy 3 will still load a CommonJS config named
-`.eleventy.cjs`.)
+- **QA with no safety net** — zero automated tests; every page + the contact form +
+  the four galleries must be checked by hand.
+- **Deploy-critical path** — a bad upgrade means the site does not build, unlike the
+  low-stakes stylesheet work.
+- **Marginal practical benefit today** — the site works, builds fast, uses no
+  v3-only features. This is "stay current" hygiene.
+- ~half a day including a Netlify deploy-preview round-trip.
 
-```js
-// eleventy.config.js
-import { DateTime } from "luxon";
+### Risks, ranked
 
-export default function (eleventyConfig) {
-  eleventyConfig.addPassthroughCopy("./src/assets/js");
-  eleventyConfig.addPassthroughCopy("./src/assets/fonts");
-  eleventyConfig.addPassthroughCopy({ "./src/assets/images/favicon": "/" });
+1. **Netlify Node version — low probability, site-down impact.** No pin exists, so
+   Netlify uses its build-image default (Node ≥18 for years, so *likely* fine).
+   Mitigation: add `.nvmrc` (`20` or `22`) in this change; check the site's Netlify
+   build settings first.
+2. **Direct-to-`main` + Netlify auto-deploy = no preview gate.** A broken build ships
+   immediately. Mitigation: for this one change, either use a throwaway branch to get
+   a Netlify deploy preview before merging, or verify the Netlify Node version up
+   front and run a clean `npm ci && npm run build` locally.
+3. **Subtle Nunjucks rendering change — low probability, medium impact.** Same
+   nunjucks major, but whitespace/escaping edge cases can shift. Mitigation: diff the
+   whole `public/` tree before vs. after.
+4. **`postDate` / luxon fails to resolve — very low, breaks article pages only.**
+   Mitigation: `npm install luxon` explicitly.
+5. `netlify-plugin-minify-html` is independent of the Eleventy version — not a risk.
 
-  eleventyConfig.addFilter("postDate", (dateObj) =>
-    DateTime.fromJSDate(dateObj).toLocaleString(DateTime.DATE_MED)
-  );
+### Recommended path (minimal diff)
 
-  return {
-    dir: { input: "src", includes: "_includes", output: "public" },
-    templateFormats: ["md", "njk", "html"],
-    markdownTemplateEngine: "njk",
-    htmlTemplateEngine: "njk",
-  };
-}
-```
+1. `npm install --save-dev @11ty/eleventy@3` and `npm install luxon`.
+2. **Keep `.eleventy.js` as CommonJS.** Only edit it to:
+   - delete `dataTemplateEngine: "njk"` (removed in v3, unused here);
+   - delete `addPassthroughCopy("./src/assets/img")` (dead — folder doesn't exist);
+   - fix `setServerOptions({ watch: [...] })` to `["public/css/**/*.css"]` so
+     `--serve` reloads on Sass recompiles, or drop `setServerOptions` entirely.
+3. Add `.nvmrc` (`20` or `22`) and confirm the Netlify build image's Node version.
+4. `npm run build`; diff `public/` against a pre-upgrade copy; `npm start` and click
+   every page, the four gallery lightboxes, the home banner, and the contact form →
+   `/thankyou`.
+5. Verify on a Netlify deploy preview (throwaway branch) **before** it lands on
+   `main`, given auto-deploy.
 
-Deliberate changes to make during the conversion (the current `.eleventy.js` carries
-cruft):
+Going full ESM (`eleventy.config.mjs` + `"type": "module"`) is possible but adds churn
+for no functional gain here — skip it unless there's another reason.
 
-- **Drop `addPassthroughCopy("./src/assets/img")`** — that folder does not exist (the
-  real one is `src/assets/images`); the rule is a silent no-op today.
-- **Fix or drop the dev-server watch.** Current config has
-  `setServerOptions({ watch: ["sandbox/public/css/**/*.css"] })` — a stale path that
-  watches nothing. If you want `--serve` to reload when Sass recompiles, set
-  `watch: ["public/css/**/*.css"]`; otherwise omit `setServerOptions` entirely.
-- **Drop `dataTemplateEngine`** from the returned `dir` object — removed in
-  Eleventy 3.
-
-### 4c. Mark `package.json` as ESM
-
-```json
-"type": "module"
-```
-
-Safe here: after change-set A the only project `.js` file is the config (being
-converted). `home.js` is already gone.
-
-### 4d. Review `src/_11ty/` utility files
-
-No-op — all four directories are empty.
-
-### 4e. Install, test, and verify on a deploy preview
-
-```bash
-npm install --save-dev @11ty/eleventy@latest
-npm run build
-npm start
-```
-
-Watch for:
-
-- Nunjucks template/layout errors under `src/_includes/`
-- The `postDate` filter output on article pages
-- Dev-server behaviour (Eleventy 3 ships an updated `@11ty/eleventy-dev-server`)
-
-Then, because there are **no automated tests**:
-
-- **Check the Netlify build's Node version** — Eleventy 3 needs Node 18+. There is no
-  `.nvmrc` or `NODE_VERSION` in the repo, so it inherits Netlify's default; pin it
-  (`.nvmrc` or `NODE_VERSION` env) to a supported LTS.
-- Open a **Netlify deploy preview** and manually click every page, exercise the four
-  gallery lightboxes and the home banner, submit the contact form to `/thankyou`.
+`src/_11ty/*` are all empty — nothing to convert.
 
 ### Reference
 
@@ -322,8 +306,8 @@ Then, because there are **no automated tests**:
 |---|---|---|---|
 | **A** | Delete `home.js` + refs; `package.json` cleanup (`main` field, script bin names) | ~Zero | ✅ done (`38d6b47`) |
 | **icons** | Subset `_icons.scss` to the 5 glyphs the site uses (was the full ~2000-icon vendored set) | Low | ✅ done (`1c8a9da`) — `main.css` 98.6 KB → 25.7 KB; `sass@latest` warnings ~1,950 → ~90 |
-| **sass-pin** | Pin `sass` to exact `1.77.8` (Option A — defer the stylesheet work) | ~Zero | ✅ done 2026-09-06 (uncommitted) |
-| **D** | Eleventy 2 → 3 (4a–4e), verified on a Netlify deploy preview | High | ⬜ ← next |
+| **sass-pin** | Pin `sass` to exact `1.77.8` (Option A — defer the stylesheet work) | ~Zero | ✅ done (`4fdcee5`) |
+| **D** | Eleventy 2.0.1 → 3.1.6 — keep CJS config, add explicit `luxon`, drop dead config, add `.nvmrc`, verify on a deploy preview | Medium | ⬜ ← next |
 
 **Stylesheet decision (section 2) — DEFERRED (Option A, 2026-09-06). When revisited, pick one branch:**
 
