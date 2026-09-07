@@ -1,12 +1,11 @@
 const { DateTime } = require("luxon");
 
 module.exports = function(eleventyConfig) {
-  
+
   eleventyConfig.setServerOptions({
-    watch: ["sandbox/public/css/**/*.css"]
+    watch: ["public/css/**/*.css"]
   });
 
-  eleventyConfig.addPassthroughCopy("./src/assets/img");
   eleventyConfig.addPassthroughCopy("./src/assets/js");
   eleventyConfig.addPassthroughCopy("./src/assets/fonts");
   eleventyConfig.addPassthroughCopy({ "./src/assets/images/favicon": "/" });
@@ -14,14 +13,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter("postDate", (dateObj) => {
     return DateTime.fromJSDate(dateObj).toLocaleString(DateTime.DATE_MED);
   });
-
-  // const Card = require("./src/_includes/components/Card");
-
-  // eleventyConfig.addShortcode("Card", Card);
-
-  // eleventyConfig.addCollection("posts", function(collectionApi) {
-  //   return collectionApi.getFilteredByGlob('src/blog/posts/**/*.md')
-  // });
 
   return {
     dir: {
@@ -32,7 +23,5 @@ module.exports = function(eleventyConfig) {
     templateFormats: ["md", "njk", "html"],
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",
-    dataTemplateEngine: "njk",
   };
 };
-
