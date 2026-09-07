@@ -87,19 +87,6 @@ the giant icons file.
 
 ---
 
-## Other cleanup (not scheduled)
-
-- **`npm audit`** — 4 vulns (3 high, 1 critical), all pre-existing build-time-only
-  transitive deps: `immutable` (via `sass`), `shell-quote` (via `npm-run-all2`),
-  `js-yaml@3` + `picomatch@2` (via `gray-matter` / `chokidar`). No runtime exposure
-  on a static site. `npm audit fix` needs `--force` (bumps `sass` / `eleventy`
-  majors). Revisit alongside §2 or a future Eleventy bump.
-- **`@view-transition` console noise** — the "Transition was skipped" `AbortError`
-  from `scss/base/_base.scss:40` can be silenced with an `unhandledrejection` handler
-  in `partials/body-close.njk`. Cosmetic; dev-only.
-
----
-
 ## Done
 
 | Set | What | Commits |
@@ -107,4 +94,6 @@ the giant icons file.
 | **A** | `npm-run-all` → `npm-run-all2` (called by name); delete unused `home.js` + the dead `--vh` hack refs; drop `package.json` `"main"` field | `3810eef`, `38d6b47` (PR #1 `b393949`) |
 | **icons** | Subset vendored `_icons.scss` from ~2000 glyphs to the 5 used → `main.css` 98.6 KB → 25.7 KB; `sass@latest` warnings ~1,950 → ~90 | `1c8a9da` |
 | **sass-pin** | Pin `sass` to exact `1.77.8` (Option A) | `4fdcee5` |
-| **D** | Eleventy 2.0.1 → 3.1.6: kept CJS `.eleventy.js` (removed `dataTemplateEngine`, dead `./src/assets/img` passthrough, commented scaffolding; fixed `setServerOptions.watch`); `luxon` explicit dep; `package-lock.json` −1,249 lines; `.nvmrc`. Output byte-identical to v2 across the whole `public/` tree; deployed green on Netlify (Node 24). | `1afa4fa`, `85f4706` |
+| **D** | Eleventy 2.0.1 → 3.1.6: kept CJS `.eleventy.js` (removed `dataTemplateEngine`, dead `./src/assets/img` passthrough, commented scaffolding; fixed `setServerOptions.watch`); `luxon` explicit dep; `package-lock.json` −1,249 lines; `.nvmrc`. Output byte-identical to v2 across the whole `public/` tree; deployed green on Netlify (Node 24). | `1afa4fa`, `85f4706`, `63ea197` |
+| **audit** | `npm audit fix` (no `--force`) — patched `immutable` 4.1.0→4.3.9, `shell-quote` 1.8.3→1.10.0, `picomatch` 2.3.1→2.3.2, `js-yaml` 3.14.1→3.15.2; all semver-compatible, `package.json` untouched. `npm audit` → 0 vulnerabilities; build output byte-identical. | _(uncommitted)_ |
+| **vt-noise** | Added an `unhandledrejection` handler in `partials/body-close.njk` that `preventDefault()`s the benign `AbortError: transition was skipped` from cross-document view transitions. Renders on all 12 pages. | _(uncommitted)_ |

@@ -1,2 +1,13 @@
+<script>
+  // Silence the benign "AbortError: Transition was skipped" that cross-document
+  // view transitions (@view-transition in scss/base/_base.scss) raise when a
+  // navigation interrupts an in-flight transition.
+  addEventListener("unhandledrejection", function (event) {
+    var reason = event.reason;
+    if (reason && reason.name === "AbortError" && /transition was skipped/i.test(reason.message || "")) {
+      event.preventDefault();
+    }
+  });
+</script>
 </body>
 </html>
