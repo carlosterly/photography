@@ -10,19 +10,19 @@ logical groupings, not pull requests). Change-set A shipped in commit `38d6b47`
 
 ---
 
-## Current state (verified 2026-09-03, after change-set A)
+## Current state (verified 2026-09-07, after change-sets A / icons / sass-pin / D)
 
 | Thing | State |
 |---|---|
-| `@11ty/eleventy` | `2.0.1` installed |
-| `sass` | `1.77.8` installed |
-| `luxon` | `3.5.0`, but only as a **transitive dependency of Eleventy 2** |
+| `@11ty/eleventy` | `3.1.6` (set D) — CJS `.eleventy.js` kept |
+| `sass` | `1.77.8`, pinned exact (no caret) — Option A |
+| `luxon` | `3.7.2`, now an explicit `dependencies` entry (set D) |
 | `npm-run-all2` | `8.0.4` installed; scripts now call it by name (was the `npm-run-all` alias) |
-| Node (local dev) | **v24.13.0** — newer than Eleventy 2 officially supports |
+| Node | local v24.20.0; repo `.nvmrc` = `22` (set D) — Netlify build image still to be confirmed |
 | `--vh` custom property in SCSS | **none** — only `min-height: 100svh` in `abstracts/_mixins.scss:2` |
 | `src/assets/js/home.js` | ✅ deleted in change-set A, along with its refs in `thankyou.njk` / `home.njk` |
 | `package.json` `"main"` field | ✅ removed in change-set A (pointed at a non-existent `index.js`) |
-| `src/_11ty/{collections,filters,shortcodes,utils}` | all empty |
+| `_icons.scss` | subset to 5 glyphs (`1c8a9da`); `src/_11ty/*` all empty |
 | SCSS entry | `src/assets/scss/main.scss`, legacy comma-separated `@import`, incl. `@import "../js/photoswipe/photoswipe"` |
 
 ---
@@ -201,85 +201,70 @@ dead code. Change-set A:
 
 ---
 
-## 4. Upgrade Eleventy 2.0.1 → 3.x
+## 4. ✅ Upgrade Eleventy 2.0.1 → 3.1.6
 
-**Risk: Medium — deploy-critical path, but a small config surface.** Target is the
-current latest, **Eleventy 3.1.6** (`engines: node >=18`). Do this as its own commit
-(set D), after the sass-pin.
+**Risk was: Medium (deploy-critical path, small config surface). DONE 2026-09-07
+(uncommitted at time of writing).** Kept the config as CommonJS — the minimal-diff
+path.
 
-### What actually changes here (verified 2026-09-06)
+### What was done
 
-The project's Eleventy footprint is small, which lowers both the benefit and the risk:
+- `npm install --save-dev @11ty/eleventy@3` → **3.1.6**; `npm install luxon` → **3.7.2**
+  as an explicit `dependencies` entry (was only transitive via Eleventy 2).
+- `package-lock.json` regenerated — net **−1,249 lines** (v3's tree is leaner).
+- `.eleventy.js` — kept CommonJS (`require` / `module.exports`); edits:
+  - removed `dataTemplateEngine: "njk"` (removed in v3, unused here);
+  - removed `addPassthroughCopy("./src/assets/img")` (dead — folder never existed);
+  - removed the commented-out Card / shortcode / collection scaffolding;
+  - fixed `setServerOptions({ watch: [...] })` → `["public/css/**/*.css"]` (was a
+    stale `sandbox/public/...` path).
+- Added `.nvmrc` = `22` (Node 20 reached EOL; 22 is current LTS).
 
-| Area | Current | v3 impact |
+### Verification
+
+- `npm run build` → exit 0, Eleventy 3.1.6, 14 pages / 53 files copied.
+- **Every HTML/XML/TXT file in `public/` byte-identical to the Eleventy 2.0.1 output**
+  — full-tree diff, same file list, zero rendering drift.
+- `postDate` (luxon) filter works — article dates render (`1 May 2022`).
+- `eleventy --serve` starts clean; `/` and `/gallery/` return HTTP 200.
+- User confirmed the running site works correctly (2026-09-07).
+
+### Still open
+
+- **`npm audit`: 4 vulns (3 high, 1 critical)** — traced, all *pre-existing*
+  transitive deps not introduced by this upgrade: `immutable` (via `sass`),
+  `shell-quote` (via `npm-run-all2`), `js-yaml@3` + `picomatch@2` (via
+  `gray-matter` / `chokidar`, which Eleventy has always pulled). All are
+  build-time-only DoS / prototype-pollution — no runtime exposure on a static site.
+  `npm audit fix` won't clear them without `--force` (bumps sass / eleventy majors).
+  Tracked under "Miscellaneous cleanup" below.
+- **Netlify Node version** — `.nvmrc` = `22` added, but confirm the site's Netlify
+  build image honours it. Given direct-to-`main` + auto-deploy, ideally push to a
+  throwaway branch first and check the deploy preview before it lands on `main`.
+
+### Pre-upgrade analysis (kept for reference)
+
+The project's Eleventy footprint was small, which lowered both benefit and risk:
+
+| Area | v2 | v3 outcome |
 |---|---|---|
-| Config | `.eleventy.js`, CommonJS | **CJS config still works in v3** — conversion to ESM is optional, not required. Keep CJS for the smallest diff. |
-| `luxon` | `require("luxon")` for `postDate`; resolves today via hoisting (v2 dep) | v3 also bundles `luxon@^3.7.2`, so it likely keeps resolving — but add it as an explicit dependency rather than rely on a transitive. |
-| Templates | 100% Nunjucks, 4 layouts + 5 partials, no markdown content | same `nunjucks@3.2.x` in v3 → output should be near-identical |
-| Data | `site.json`, `galleries.json`, `articles/articles.json`; no `.js` data, no `eleventyComputed`, **no `{{ }}` in data or front-matter** | `dataTemplateEngine: "njk"` is set but unused → just delete the line |
-| Collections | `collections.post` (tag), `collections.all` (sitemap) | stable API, unchanged |
-| Filters | `safe` / `dump` / `url` (built-in) + `postDate` (custom) | unchanged |
-| Plugins / shortcodes / pagination / eleventy-img | none | v3 auto-bundles `@11ty/eleventy-plugin-bundle` (adds `{% bundle %}`) — new surface, nothing here conflicts |
-| `.eleventy.js` cruft | stale `setServerOptions.watch: ["sandbox/public/css/**/*.css"]`; `addPassthroughCopy("./src/assets/img")` (folder doesn't exist) | clean up during the upgrade |
+| Config | `.eleventy.js` CommonJS | CJS still works in v3 — kept it; ESM conversion skipped (no gain) |
+| `luxon` | `require("luxon")` via hoisting | added as explicit dependency |
+| Templates | 100% Nunjucks, 4 layouts + 5 partials | same `nunjucks@3.2.x` → output byte-identical |
+| Data | 3 static JSON files, no `{{ }}` templating | `dataTemplateEngine` removal was a no-op |
+| Collections | `collections.post`, `collections.all` | unchanged |
+| Filters | `safe` / `dump` / `url` + `postDate` | unchanged |
+| Plugins / shortcodes / pagination / eleventy-img | none | v3 auto-bundles `@11ty/eleventy-plugin-bundle` — no conflict |
 | `src/_11ty/*` | all empty | no-op |
-| Node | local v24.20.0; **no `.nvmrc` / `NODE_VERSION` pin anywhere** | v3 hard-errors below Node 18 via `please-upgrade-node` |
 
-### Pros
+**Why it was worth doing:** v2 gets no further fixes and officially tops out ~Node 20
+(local is Node 24). v3 is the floor for most current plugins, so it also unblocks any
+future `eleventy-img` / bundle-step work. Downside was the QA cost (no automated
+tests) and that a bad upgrade breaks the deploy — mitigated by the byte-identical
+output diff.
 
-- **Supported runtime.** v2 officially tops out ~Node 20; local is Node 24 — already
-  unsupported. v3 supports 18/20/22/24.
-- **Maintenance & security** — v2 receives no further fixes.
-- **Unblocks the ecosystem** — most current plugins (image optimization, RSS, …)
-  require v3. Prerequisite if the CSS/JS bundling work (`eleventy-img`, a bundle step)
-  is ever wanted.
-- Faster builds (new globbing / dependency graph) — marginal at 14 pages / ~5 s.
-
-### Cons / costs
-
-- **QA with no safety net** — zero automated tests; every page + the contact form +
-  the four galleries must be checked by hand.
-- **Deploy-critical path** — a bad upgrade means the site does not build, unlike the
-  low-stakes stylesheet work.
-- **Marginal practical benefit today** — the site works, builds fast, uses no
-  v3-only features. This is "stay current" hygiene.
-- ~half a day including a Netlify deploy-preview round-trip.
-
-### Risks, ranked
-
-1. **Netlify Node version — low probability, site-down impact.** No pin exists, so
-   Netlify uses its build-image default (Node ≥18 for years, so *likely* fine).
-   Mitigation: add `.nvmrc` (`20` or `22`) in this change; check the site's Netlify
-   build settings first.
-2. **Direct-to-`main` + Netlify auto-deploy = no preview gate.** A broken build ships
-   immediately. Mitigation: for this one change, either use a throwaway branch to get
-   a Netlify deploy preview before merging, or verify the Netlify Node version up
-   front and run a clean `npm ci && npm run build` locally.
-3. **Subtle Nunjucks rendering change — low probability, medium impact.** Same
-   nunjucks major, but whitespace/escaping edge cases can shift. Mitigation: diff the
-   whole `public/` tree before vs. after.
-4. **`postDate` / luxon fails to resolve — very low, breaks article pages only.**
-   Mitigation: `npm install luxon` explicitly.
-5. `netlify-plugin-minify-html` is independent of the Eleventy version — not a risk.
-
-### Recommended path (minimal diff)
-
-1. `npm install --save-dev @11ty/eleventy@3` and `npm install luxon`.
-2. **Keep `.eleventy.js` as CommonJS.** Only edit it to:
-   - delete `dataTemplateEngine: "njk"` (removed in v3, unused here);
-   - delete `addPassthroughCopy("./src/assets/img")` (dead — folder doesn't exist);
-   - fix `setServerOptions({ watch: [...] })` to `["public/css/**/*.css"]` so
-     `--serve` reloads on Sass recompiles, or drop `setServerOptions` entirely.
-3. Add `.nvmrc` (`20` or `22`) and confirm the Netlify build image's Node version.
-4. `npm run build`; diff `public/` against a pre-upgrade copy; `npm start` and click
-   every page, the four gallery lightboxes, the home banner, and the contact form →
-   `/thankyou`.
-5. Verify on a Netlify deploy preview (throwaway branch) **before** it lands on
-   `main`, given auto-deploy.
-
-Going full ESM (`eleventy.config.mjs` + `"type": "module"`) is possible but adds churn
-for no functional gain here — skip it unless there's another reason.
-
-`src/_11ty/*` are all empty — nothing to convert.
+Going full ESM (`eleventy.config.mjs` + `"type": "module"`) was possible but adds
+churn for no functional gain here — skipped.
 
 ### Reference
 
@@ -293,7 +278,11 @@ for no functional gain here — skip it unless there's another reason.
 - ✅ `package.json` `"main": "index.js"` field removed (change-set A).
 - ✅ `npm-run-all` bin calls in `package.json` scripts renamed to `npm-run-all2`
   (change-set A).
-- ⬜ Run `npm audit` / refresh `package-lock.json` at some point during this work.
+- ⬜ `npm audit` — 4 vulns (3 high, 1 critical) as of 2026-09-07, all pre-existing
+  build-time transitive deps (`immutable`/`sass`, `shell-quote`/`npm-run-all2`,
+  `js-yaml@3` + `picomatch@2`/`gray-matter`+`chokidar`). No runtime exposure on a
+  static site; `npm audit fix` needs `--force` (bumps sass/eleventy majors). Revisit
+  with the 2·SASS/2·CSS work or a future Eleventy bump.
 - ⬜ Optional, unrelated: the `@view-transition` "Transition was skipped" console
   noise (from `scss/base/_base.scss:40`) can be silenced with an `unhandledrejection`
   handler in `partials/body-close.njk` if it becomes distracting during development.
@@ -307,7 +296,7 @@ for no functional gain here — skip it unless there's another reason.
 | **A** | Delete `home.js` + refs; `package.json` cleanup (`main` field, script bin names) | ~Zero | ✅ done (`38d6b47`) |
 | **icons** | Subset `_icons.scss` to the 5 glyphs the site uses (was the full ~2000-icon vendored set) | Low | ✅ done (`1c8a9da`) — `main.css` 98.6 KB → 25.7 KB; `sass@latest` warnings ~1,950 → ~90 |
 | **sass-pin** | Pin `sass` to exact `1.77.8` (Option A — defer the stylesheet work) | ~Zero | ✅ done (`4fdcee5`) |
-| **D** | Eleventy 2.0.1 → 3.1.6 — keep CJS config, add explicit `luxon`, drop dead config, add `.nvmrc`, verify on a deploy preview | Medium | ⬜ ← next |
+| **D** | Eleventy 2.0.1 → 3.1.6 — kept CJS config, explicit `luxon`, dropped dead config, added `.nvmrc` 22 | Medium | ✅ done 2026-09-07 (uncommitted); output byte-identical |
 
 **Stylesheet decision (section 2) — DEFERRED (Option A, 2026-09-06). When revisited, pick one branch:**
 
@@ -316,4 +305,4 @@ for no functional gain here — skip it unless there's another reason.
 | **2·SASS** — keep Sass | **B**: `sass@latest` + `--silence-deprecation`; then **C**: `sass-migrator` (`module` + `color`) + hand-fixes | Low → Medium | ~15 min + ~½ day |
 | **2·CSS** — remove Sass | Convert ~24 partials to native-nested CSS + `sass` → `lightningcss-cli` (icons swap already done) | Medium | ~1 day |
 
-Recommended order: **A ✅ → icons ✅ → sass-pin ✅ → D → (2·SASS or 2·CSS, later)**.
+Recommended order: **A ✅ → icons ✅ → sass-pin ✅ → D ✅ → (2·SASS or 2·CSS, later)**.
