@@ -47,11 +47,14 @@ What already exists (from exploration):
   [home.njk](src/_includes/layouts/home.njk) (105) via `| dump | safe`; only
   Netlify's `minifyJS` shrinks it. No per-photo pages, no tags, no `<a>`-based
   PhotoSwipe, no schema/validation.
-- **Site-wide gaps**: no Open Graph / Twitter / canonical / JSON-LD anywhere; raw
-  `{{ title }}` with no site-name suffix; empty `<meta description>` on
-  `articles-index` + `sandbox`; About page has ~37 unsized `<img>` and 2 malformed
-  `src="  https://…"`; GA4 hardcoded on every page incl. `/thankyou/` `/sandbox/`;
-  no CI, no linting, no `_headers`.
+- **Site-wide gaps** (✅ = fixed in Phase 0 items 1/2/4, see progress note below):
+  ~~no Open Graph / Twitter / canonical / JSON-LD anywhere~~ ✅ (`partials/meta.njk`);
+  ~~raw `{{ title }}` with no site-name suffix~~ ✅; ~~empty `<meta description>` on
+  `articles-index` + `sandbox`~~ ✅; ~~About page has ~37 unsized `<img>` and 2
+  malformed `src="  https://…"`~~ ✅; ~~5 award images missing `f_auto` (served as
+  raw JPEG, not WebP/AVIF)~~ ✅; ~~stale `<label for="timely">` + `</br>` typo on
+  Contact~~ ✅ (found while fixing About). Still open: GA4 hardcoded on every page
+  incl. `/thankyou/` `/sandbox/`; no CI, no linting, no `_headers`.
 - **UPGRADE_PLAN.md §2** (deferred): Sass `@import` deprecation. Documented options:
   (A) bump + `--silence-deprecation`; (B) `sass-migrator`; (C) drop Sass for
   **Lightning CSS**. Nothing forces it (removed only at Dart Sass 3.0, no date).
@@ -96,31 +99,55 @@ Phase 4  Sass → Lightning CSS + tooling/CI   last: needs a settled stylesheet
 
 **Goal:** cheap, high-leverage, no intended visual change. De-risk everything after.
 
-1. **Repo hygiene.** Fix [README.md](README.md) ("Eleventy (v2)" → 3.1.6, CJS,
-   Node 24). (The stale `_(uncommitted)_` markers in UPGRADE_PLAN.md's Done table
-   were corrected when this file was added.)
-2. **SEO / social meta partial** — extend
-   [src/_includes/partials/site-head.njk](src/_includes/partials/site-head.njk) (or
-   split a `partials/meta.njk`):
-   - `<title>` → `{{ title }} · Carl Osterly Photography` (bare `/` special-cased);
-     suffix from [src/_data/site.json](src/_data/site.json) `name`.
+**Progress (2026-09-13):** items 1, 2, 3, 4 and 5 are done, direct to `main` (no
+branch — each was a small, isolated, non-shared-partial-breaking change reviewed
+locally before push). Items 6 and 7 are still open.
+
+1. ~~**Repo hygiene.** Fix [README.md](README.md) ("Eleventy (v2)" → 3.1.6, CJS,
+   Node 24).~~ ✅ **Done** (`10ac853`). (The stale `_(uncommitted)_` markers in
+   UPGRADE_PLAN.md's Done table were corrected when this file was added.)
+2. ~~**SEO / social meta partial**~~ ✅ **Done** (`10ac853`) — added
+   [src/_includes/partials/meta.njk](src/_includes/partials/meta.njk), included from
+   [site-head.njk](src/_includes/partials/site-head.njk):
+   - `<title>` → `{{ title }} · Carl Osterly Photography` (home page, whose `title`
+     already equals `site.name`, is special-cased by that equality check — no double
+     suffix); suffix from [src/_data/site.json](src/_data/site.json) `name`.
    - Open Graph (`og:title/description/type/url/image` + `image:width/height` +
-     `site_name`), Twitter `summary_large_image`, `<link rel="canonical">`.
+     `site_name`), Twitter `summary_large_image`, `<link rel="canonical">`. `og:type`
+     is `article` when `tags` includes `post`, else `website` — ready for Phase 2.
    - JSON-LD `WebSite` + `Person` on all pages (extension point for `Article` in P2,
      `ImageObject` in P3).
-   - Fill empty `<meta description>` on `articles-index.njk` + `sandbox.njk`; add
-     `<meta name="robots" content="noindex">` to `sandbox.njk` and `thankyou.njk`.
-   - Reuse: every content page already carries `image` / `imageAlt` / `imageWidth` /
-     `imageHeight` front matter — the partial reads them with a `site.json` fallback.
-3. **OG-image convention.** Add `defaultImage` + `description` to `site.json`.
-   Document one Cloudinary social-card recipe (`w_1200,h_630,c_fill,g_auto,f_auto,q_auto`)
-   in `docs/`. The meta partial derives `og:image` from the page `image` + recipe.
-4. **About-page fixes** ([src/pages/about.njk](src/pages/about.njk)): `width`/`height`
+   - Filled empty `<meta description>` on `articles-index.njk` + `sandbox.njk`; added
+     `noindex: true` front matter (partial renders `<meta name="robots" content="noindex">`)
+     on `sandbox.njk` and `thankyou.njk`.
+   - `site.json` gained `defaultDescription` / `defaultImage` / `defaultImageAlt` /
+     `defaultImageWidth` / `defaultImageHeight` as fallbacks for pages without their
+     own `image`/`description` front matter (home, sandbox, thankyou) — this is a
+     down payment on item 3 below, not the full Cloudinary social-card recipe.
+3. ~~**OG-image convention.**~~ ✅ **Done** — documented in
+   [docs/og-images.md](docs/og-images.md). Rather than a static per-page recipe,
+   added an `ogImage` Nunjucks filter ([.eleventy.js](.eleventy.js)) that rewrites
+   *any* Cloudinary URL's transformation segment to
+   `c_fill,g_auto,w_1200,h_630,f_auto,q_auto`, applied in `meta.njk` to
+   `image or site.defaultImage`. No per-page `ogImage` front matter needed — every
+   page's existing `image` is automatically re-cropped for the social card;
+   `og:image:width`/`height` are now hardcoded `1200`/`630` (the recipe guarantees
+   it) instead of read from front matter.
+4. ~~**About-page fixes** ([src/pages/about.njk](src/pages/about.njk)): `width`/`height`
    on the ~37 lazy `<img>` (CLS); fix the 2 `src="  https://…"` leading-space URLs
-   (broken in prod); fix the stale `for=` attr and `</br>` typo.
-5. **Manifest / favicon cleanup.** Fill empty `name` / `short_name` in
+   (broken in prod); fix the stale `for=` attr and `</br>` typo.~~ ✅ **Done**
+   (`1054b12`). The `for=`/`</br>` typos turned out to live in
+   [contact.njk](src/pages/contact.njk) (`<label for="timely">` didn't match
+   `id="enquiry"`; `</br>` → `<br>`), not about.njk as originally scoped here —
+   fixed there instead. Also found and fixed in the same commit: 5 of the 37 award
+   images (the newest, 2026 ones) were missing `f_auto/w_500` and so were served as
+   raw JPEG instead of negotiating WebP/AVIF like the other 32 — added the
+   transformation and corrected their `width`/`height` to the delivered 500×500.
+5. ~~**Manifest / favicon cleanup.** Fill empty `name` / `short_name` in
    `src/assets/images/favicon/site.webmanifest`; drop the stale `favicon` key in
-   `site.json`.
+   `site.json`.~~ ✅ **Done** — manifest `name`/`short_name` now
+   "Carl Osterly Photography" / "Carl Osterly"; confirmed `site.favicon` had zero
+   call sites before removing it.
 6. **Preload critical assets** in `site-head.njk`: the 3 woff2 in
    `src/assets/fonts/` (`crossorigin`) and the LCP hero (`home__banner` /
    [page-banner.njk](src/_includes/partials/page-banner.njk)).
@@ -132,8 +159,8 @@ Phase 4  Sass → Lightning CSS + tooling/CI   last: needs a settled stylesheet
    `[build]` block — add `command` or fold into the `package.json` `build` script).
    A failing build = no deploy: this replaces CI/PRs.
 
-**First task:** meta partial on branch `chore/seo-meta` → `npm run build` → eyeball 5
-rendered pages → deploy preview → merge.
+**Next task:** item 6 (preload critical assets) or item 7 (validate step) — both
+small and independently shippable direct to `main`.
 
 ---
 
