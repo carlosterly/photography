@@ -99,9 +99,9 @@ Phase 4  Sass → Lightning CSS + tooling/CI   last: needs a settled stylesheet
 
 **Goal:** cheap, high-leverage, no intended visual change. De-risk everything after.
 
-**Progress (2026-09-13):** items 1, 2, 3, 4 and 5 are done, direct to `main` (no
-branch — each was a small, isolated, non-shared-partial-breaking change reviewed
-locally before push). Items 6 and 7 are still open.
+**Progress (2026-09-13):** all 7 items are done, direct to `main` (no branch — each
+was a small, isolated, non-shared-partial-breaking change reviewed locally before
+push).
 
 1. ~~**Repo hygiene.** Fix [README.md](README.md) ("Eleventy (v2)" → 3.1.6, CJS,
    Node 24).~~ ✅ **Done** (`10ac853`). (The stale `_(uncommitted)_` markers in
@@ -148,19 +148,33 @@ locally before push). Items 6 and 7 are still open.
    `site.json`.~~ ✅ **Done** — manifest `name`/`short_name` now
    "Carl Osterly Photography" / "Carl Osterly"; confirmed `site.favicon` had zero
    call sites before removing it.
-6. **Preload critical assets** in `site-head.njk`: the 3 woff2 in
+6. ~~**Preload critical assets** in `site-head.njk`: the 3 woff2 in
    `src/assets/fonts/` (`crossorigin`) and the LCP hero (`home__banner` /
-   [page-banner.njk](src/_includes/partials/page-banner.njk)).
-7. **Validate step** ($0, no runtime dep). A Node script in `src/_11ty/utils/`
-   (uses the empty scaffold): valid JSON for `galleries.json`, each entry has `src` +
-   integer `width`/`height` + non-empty `alt`; grep built `public/` for
-   `via.placeholder.com`, `http://`, `src="  ` / `href="  `. Wire it into a raw
-   `.git/hooks/pre-commit` **and** the Netlify build (`netlify.toml` has no
-   `[build]` block — add `command` or fold into the `package.json` `build` script).
-   A failing build = no deploy: this replaces CI/PRs.
+   [page-banner.njk](src/_includes/partials/page-banner.njk)).~~ ✅ **Done** — all 3
+   fonts preloaded on every page; hero image preload is conditional
+   (`page.url == '/'` → `galleries.portrait.banner`, else the page's own `image`
+   front matter if present) so it always matches the exact URL the actual `<img>`
+   requests — verified byte-for-byte against the built output on home and about.
+7. ~~**Validate step**~~ ✅ **Done** — [src/_11ty/utils/validate.js](src/_11ty/utils/validate.js),
+   documented in [docs/validate.md](docs/validate.md): valid JSON + per-image
+   `src`/integer `width`/`height`/non-empty `alt` for `galleries.json` (fatal); built
+   `public/**/*.{html,xml}` scanned for insecure `http://` and leading-space
+   `src`/`href` (fatal). `via.placeholder.com` is a **warning only** for now — it
+   correctly flags the 5 still-lorem-ipsum articles, which are legitimately
+   unfixed pending Phase 2 item 6; promote it to fatal once those are replaced.
+   Wired into `npm run build` (`build:sass` → `build:eleventy` → `build:validate`,
+   now explicit instead of the `build:*` glob). (Considered a local
+   `.git/hooks/pre-commit` too, but dropped it — it's untracked by git so it
+   silently doesn't exist on a fresh clone, and for a $0/no-deadline solo project
+   the only thing it buys over the Netlify gate below is finding out a few seconds
+   sooner, which isn't worth the false sense of protection.) Verified: a
+   deliberately-broken `galleries.json` correctly fails; restored and re-verified
+   clean. No `netlify.toml` change needed — its
+   existing build command already runs `npm run build`, which now validates.
 
-**Next task:** item 6 (preload critical assets) or item 7 (validate step) — both
-small and independently shippable direct to `main`.
+**Phase 0 is now fully complete** (items 1–7). Next up: Phase 1 — token layer +
+layout foundation (see below), the reskin-enablement work with no intended visual
+change.
 
 ---
 

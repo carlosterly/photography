@@ -7,8 +7,10 @@
     "build:sass": "sass --style=compressed src/assets/scss:public/css",
     "watch:eleventy": "eleventy --serve",
     "build:eleventy": "eleventy",
+    "build:validate": "node src/_11ty/utils/validate.js",
+    "validate": "node src/_11ty/utils/validate.js",
     "start": "npm-run-all2 build:sass --parallel watch:*",
-    "build": "npm-run-all2 build:*"
+    "build": "npm-run-all2 build:sass build:eleventy build:validate"
   },
   "repository": {
     "type": "git",

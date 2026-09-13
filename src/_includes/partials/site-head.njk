@@ -22,6 +22,16 @@
     <link rel="preconnect" href="https://res.cloudinary.com">
     <link rel="dns-prefetch" href="https://res.cloudinary.com">
 
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/sourcesanspro-regular-webfont.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/sourcesanspro-bold-webfont.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/sourceserifpro-regular-webfont.woff2" crossorigin>
+
+    {% if page.url == '/' %}
+      <link rel="preload" as="image" href="{{ galleries.portrait.banner }}">
+    {% elif image %}
+      <link rel="preload" as="image" href="{{ image }}">
+    {% endif %}
+
     <link rel="stylesheet" href="/css/main.css">
 
     {% include 'partials/meta.njk' %}
