@@ -2,5 +2,10 @@
   "name": "Carl Osterly Photography",
   "url": "https://carlosterly.photography",
   "authorName": "Carl Osterly",
-  "favicon": "https://carlosterly.photography/images/meta/favicon.svg"
+  "favicon": "https://carlosterly.photography/images/meta/favicon.svg",
+  "defaultDescription": "Portrait, street and travel photography by Carl Osterly, based in Sydney, Australia.",
+  "defaultImage": "https://res.cloudinary.com/liquidweb/image/upload/f_auto,q_30/v1661501540/photography/core-ui/Carl-BW-Portrait-29112017.jpg",
+  "defaultImageAlt": "Portrait of Carl Osterly",
+  "defaultImageWidth": 2048,
+  "defaultImageHeight": 1365
 }

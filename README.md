@@ -1,7 +1,7 @@
 # carlosterly.photography
 
-Personal photography portfolio. Built with [Eleventy](https://www.11ty.dev/) (v2) and
-Dart Sass, deployed on Netlify.
+Personal photography portfolio. Built with [Eleventy](https://www.11ty.dev/) 3.1.6
+(CJS `.eleventy.js`) and Dart Sass, deployed on Netlify (Node 24).
 
 ## Local development
 
