@@ -184,9 +184,7 @@ change.
 layout objects, so the actual reskin is a token edit + a sandbox review, not a hunt
 through 24 partials. **No intended visual change.**
 
-**Progress (2026-09-13):** the "first task" half of item 1 is done — tokens exist
-and are rendered in `sandbox.njk`. The literal-migration half of item 1, and items
-2–5, are still open.
+**Progress (2026-09-13):** item 1 is fully done. Items 2–5 are still open.
 
 1. **Expand [_variables.scss](src/assets/scss/abstracts/_variables.scss):**
    ~~spacing scale `--space-3xs…3xl`~~ ✅ **tokens added** — `--space-3xs`(0.25rem)
@@ -203,13 +201,16 @@ and are rendered in `sandbox.njk`. The literal-migration half of item 1, and ite
    ~~Delete the dead `--base-url` and `_functions.scss`~~ ✅ (confirmed 0 call sites
    for `asset()`/`image()`/`font()` before deleting; also removed the now-dead
    `@import` in `main.scss`).
-   **Still open:** replacing the `0.8rem`/`1rem`/`1.2rem`/`3rem`/`10px`/`4rem`/`5rem`
-   literals across `layout/*`, `pages/*` and `_card.scss` with the new tokens — the
-   10px nav padding has no exact token match and will need a judgment call (round
-   to `--space-2xs` 8px or `--space-xs` 12.8px) when that literal is touched.
-   Verified this step is a pure no-op: diffed compiled `main.css` before/after —
-   only the `:root` block changed (new custom properties + `--base-url` removed),
-   every byte after it is identical.
+   ~~Replace the `0.8rem`/`1rem`/`1.2rem`/`3rem`/`10px`/`4rem`/`5rem` literals
+   across `layout/*`, `pages/*` and `_card.scss`~~ ✅ — also folded in
+   [_pricing-card.scss](src/assets/scss/components/_pricing-card.scss), which
+   had the identical debt (`0.8rem`/`0.5rem`/`5rem`/`1rem`) but wasn't named in
+   this item's original scope. Verified with a full expanded-CSS diff (not just
+   the minified single-line output): every changed declaration now resolves to
+   the exact same computed value as before, **except** the nav's `10px` padding
+   ([_navigation.scss](src/assets/scss/layout/_navigation.scss)), which had no
+   exact token match — rounded down to `--space-2xs` (8px), a deliberate 2px
+   visual change, the only one in this commit.
 2. **De-Sass component colour logic** (the Lightning-CSS down payment):
    - [_button.scss](src/assets/scss/components/_button.scss): replace `$color-*` +
      `btnStyle()` + `darken()` with `:root` props +

@@ -1,6 +1,6 @@
 .articles__list {
   --min: 30ch;
-  --gap: 1.2rem;
+  --gap: var(--space-md);
 
   display: grid;
   grid-gap: var(--gap);

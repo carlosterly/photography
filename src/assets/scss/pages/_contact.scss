@@ -1,11 +1,11 @@
 .contact__layout {
   display: grid;
   grid-template-columns: 1fr;
-  grid-row-gap: 1rem;
+  grid-row-gap: var(--space-sm);
 
   @include media(">=md") {
     grid-template-columns: 1fr 1fr;
-    grid-column-gap: 3rem;
+    grid-column-gap: var(--space-xl);
     grid-row-gap: 0;
   }
 }
@@ -21,14 +21,14 @@
 }
 
 .contact__layout .recaptcha {
-  margin-bottom: 1.2rem;
+  margin-bottom: var(--space-md);
 }
 
 .contact__icons {
   font-size: var(--font-size-xxl);
   display: flex;
   justify-content: space-around;
-  padding: 0.8rem 0 0.8rem 0;
+  padding: var(--space-xs) 0 var(--space-xs) 0;
 
   @include media(">=md") {
     justify-content: space-evenly;

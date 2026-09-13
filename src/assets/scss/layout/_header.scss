@@ -1,7 +1,7 @@
 .site__header {
   display: grid;
   grid-template-columns: min-content 1fr;
-  grid-template-rows: 4rem;
+  grid-template-rows: var(--space-2xl);
   align-items: center;
   @include media(">=md") {
     grid-template-columns: 0.8fr 1fr;

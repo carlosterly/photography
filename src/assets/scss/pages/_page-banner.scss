@@ -21,7 +21,7 @@
   grid-column: 5 / 7;
   align-self: center;
 
-  padding: 1rem;
+  padding: var(--space-sm);
   text-align: center;
   color: var(--blue);
   background-color: var(--body-color);

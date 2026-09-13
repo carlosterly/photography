@@ -114,7 +114,7 @@
   transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
 
   li {
-    padding: 10px 0;
+    padding: var(--space-2xs) 0;
     font-family: var(--font-heading);
     font-size: var(--font-size-lg);
   }

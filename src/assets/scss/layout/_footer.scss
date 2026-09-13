@@ -6,7 +6,7 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto;
-  grid-row-gap: 0.8rem;
+  grid-row-gap: var(--space-xs);
   grid-template-areas:
     "icons"
     "copyright"
@@ -14,7 +14,7 @@
 
   @include media(">=md") {
     font-size: var(--font-size-md);
-    margin-bottom: 0.8rem;
+    margin-bottom: var(--space-xs);
     grid-template-columns: max-content 1fr 0.4fr;
     grid-template-areas: "copyright pagetop icons";
   }
