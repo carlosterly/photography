@@ -184,14 +184,32 @@ change.
 layout objects, so the actual reskin is a token edit + a sandbox review, not a hunt
 through 24 partials. **No intended visual change.**
 
-1. **Expand [_variables.scss](src/assets/scss/abstracts/_variables.scss):** spacing
-   scale `--space-3xs…3xl` (replace the literals — `0.8rem`, `1rem`, `1.2rem`,
-   `3rem`, `10px`, `4rem`, `5rem` — across `layout/*` + `pages/*` + `_card.scss`);
-   `--radius-sm/md` (reconcile button `8px` / card `0.5rem` / forms `0`); `--shadow-1`
-   (from the `box-shadow` mixin); `--measure: 65ch`; `--color-heading` (headings are
-   hardcoded `--mid-grey` in `_typography.scss`); z-index tokens for the nav. Delete
-   the dead `--base-url` and [_functions.scss](src/assets/scss/abstracts/_functions.scss)
-   (0 call sites).
+**Progress (2026-09-13):** the "first task" half of item 1 is done — tokens exist
+and are rendered in `sandbox.njk`. The literal-migration half of item 1, and items
+2–5, are still open.
+
+1. **Expand [_variables.scss](src/assets/scss/abstracts/_variables.scss):**
+   ~~spacing scale `--space-3xs…3xl`~~ ✅ **tokens added** — `--space-3xs`(0.25rem)
+   through `--space-3xl`(5rem), sized to exactly match the literals found
+   (`0.5rem`, `0.8rem`, `1rem`, `1.2rem`, `3rem`, `4rem`, `5rem`) plus two new
+   in-between steps (`--space-lg: 2rem` and `--space-3xs: 0.25rem`) for headroom.
+   ~~`--radius-sm/md`~~ ✅ (`0.25rem`/`0.5rem` — button `8px` and card `0.5rem` turned
+   out to already be the same value; forms' deliberate `0` doesn't need a token).
+   ~~`--shadow-1`~~ ✅ (copied verbatim from the `box-shadow` mixin).
+   ~~`--measure: 65ch`~~ ✅. ~~`--color-heading`~~ ✅ (aliases `--mid-grey` — no visual
+   change yet). ~~z-index tokens for the nav~~ ✅ (`--z-nav-toggle`/`--z-nav-toggle-input`,
+   named for what they actually do — the hamburger vs. the invisible checkbox
+   placed over it — since the existing `1`/`2` had no other semantic meaning).
+   ~~Delete the dead `--base-url` and `_functions.scss`~~ ✅ (confirmed 0 call sites
+   for `asset()`/`image()`/`font()` before deleting; also removed the now-dead
+   `@import` in `main.scss`).
+   **Still open:** replacing the `0.8rem`/`1rem`/`1.2rem`/`3rem`/`10px`/`4rem`/`5rem`
+   literals across `layout/*`, `pages/*` and `_card.scss` with the new tokens — the
+   10px nav padding has no exact token match and will need a judgment call (round
+   to `--space-2xs` 8px or `--space-xs` 12.8px) when that literal is touched.
+   Verified this step is a pure no-op: diffed compiled `main.css` before/after —
+   only the `:root` block changed (new custom properties + `--base-url` removed),
+   every byte after it is identical.
 2. **De-Sass component colour logic** (the Lightning-CSS down payment):
    - [_button.scss](src/assets/scss/components/_button.scss): replace `$color-*` +
      `btnStyle()` + `darken()` with `:root` props +
@@ -209,10 +227,13 @@ through 24 partials. **No intended visual change.**
    distinct conditions, 576/768/992 px). Delete
    [_responsive.scss](src/assets/scss/base/_responsive.scss) (587 lines) in Phase 4
    once the last call site is gone.
-5. **Turn [sandbox.njk](src/pages/sandbox.njk) into a real style guide:** token
-   swatches (colour, spacing bars, radii, shadow), card, pricing-card, form, gallery
-   tile, and a **prose specimen** (h2–h4, p, ul/ol, blockquote, `pre`, `figure`,
-   `hr`, `table`) that Phase 2 styles. This is the one-screen reskin QA surface.
+5. **Turn [sandbox.njk](src/pages/sandbox.njk) into a real style guide:**
+   ~~token swatches (spacing bars, radii, shadow)~~ ✅ — a "Tokens" section now
+   renders every `--space-*`/`--radius-*` swatch, the `--shadow-1` sample,
+   `--color-heading`, and a `--measure`-constrained paragraph. **Still open:**
+   colour swatches, card, pricing-card, form, gallery tile, and the **prose
+   specimen** (h2–h4, p, ul/ol, blockquote, `pre`, `figure`, `hr`, `table`) that
+   Phase 2 styles. This is the one-screen reskin QA surface.
 
 **First task:** add the spacing/radius/shadow/`--measure`/`--color-heading` tokens to
 `_variables.scss` and render them all in `sandbox.njk`. Nothing consumes them yet —

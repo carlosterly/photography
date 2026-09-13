@@ -14,6 +14,76 @@ noindex: true
 <h5>Heading 5</h5>
 <h6>Heading 6</h6>
 
+<h2>Tokens</h2>
+
+<h3>Spacing (--space-3xs … --space-3xl)</h3>
+<div style="display: flex; flex-direction: column; gap: 0.5rem; align-items: flex-start;">
+  <div style="display: flex; align-items: center; gap: 1rem;">
+    <div style="width: var(--space-3xs); height: 1.5rem; background: var(--brand-color);"></div>
+    <code>--space-3xs (0.25rem)</code>
+  </div>
+  <div style="display: flex; align-items: center; gap: 1rem;">
+    <div style="width: var(--space-2xs); height: 1.5rem; background: var(--brand-color);"></div>
+    <code>--space-2xs (0.5rem)</code>
+  </div>
+  <div style="display: flex; align-items: center; gap: 1rem;">
+    <div style="width: var(--space-xs); height: 1.5rem; background: var(--brand-color);"></div>
+    <code>--space-xs (0.8rem)</code>
+  </div>
+  <div style="display: flex; align-items: center; gap: 1rem;">
+    <div style="width: var(--space-sm); height: 1.5rem; background: var(--brand-color);"></div>
+    <code>--space-sm (1rem)</code>
+  </div>
+  <div style="display: flex; align-items: center; gap: 1rem;">
+    <div style="width: var(--space-md); height: 1.5rem; background: var(--brand-color);"></div>
+    <code>--space-md (1.2rem)</code>
+  </div>
+  <div style="display: flex; align-items: center; gap: 1rem;">
+    <div style="width: var(--space-lg); height: 1.5rem; background: var(--brand-color);"></div>
+    <code>--space-lg (2rem)</code>
+  </div>
+  <div style="display: flex; align-items: center; gap: 1rem;">
+    <div style="width: var(--space-xl); height: 1.5rem; background: var(--brand-color);"></div>
+    <code>--space-xl (3rem)</code>
+  </div>
+  <div style="display: flex; align-items: center; gap: 1rem;">
+    <div style="width: var(--space-2xl); height: 1.5rem; background: var(--brand-color);"></div>
+    <code>--space-2xl (4rem)</code>
+  </div>
+  <div style="display: flex; align-items: center; gap: 1rem;">
+    <div style="width: var(--space-3xl); height: 1.5rem; background: var(--brand-color);"></div>
+    <code>--space-3xl (5rem)</code>
+  </div>
+</div>
+
+<h3>Radius</h3>
+<div style="display: flex; gap: 1.5rem; align-items: center;">
+  <div style="width: 4rem; height: 4rem; background: var(--light-grey); border-radius: var(--radius-sm);"></div>
+  <code>--radius-sm (0.25rem)</code>
+  <div style="width: 4rem; height: 4rem; background: var(--light-grey); border-radius: var(--radius-md);"></div>
+  <code>--radius-md (0.5rem — same as the existing button/card radius)</code>
+</div>
+
+<h3>Shadow</h3>
+<div style="display: flex; align-items: center; gap: 1.5rem;">
+  <div style="width: 4rem; height: 4rem; background: var(--body-color); box-shadow: var(--shadow-1);"></div>
+  <code>--shadow-1</code>
+</div>
+
+<h3>Heading colour</h3>
+<div style="display: flex; align-items: center; gap: 1.5rem;">
+  <div style="width: 4rem; height: 4rem; background: var(--color-heading);"></div>
+  <code>--color-heading (currently aliases --mid-grey — same colour the h1–h6 above use)</code>
+</div>
+
+<h3>Measure (prose line-length, for Phase 2)</h3>
+<p style="max-width: var(--measure);">
+  This paragraph is constrained to <code>max-width: var(--measure)</code> (65 characters)
+  so long-form body copy — like blog articles — stays readable instead of stretching
+  the full width of the page. Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+</p>
+
 <h2>Forms</h2>
 
 <h2>Buttons</h2>

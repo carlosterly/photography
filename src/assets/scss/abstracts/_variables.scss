@@ -14,8 +14,37 @@
   --text-color: var(--dark-grey);
   --text-inverse: var(--body-color);
   --border-color: var(--brand-color);
+  --color-heading: var(--mid-grey);
 
   // --max-width: 1180px;
   --max-width: 960px;
-  --base-url: "https://res.cloudinary.com/liquidweb/image/upload/f_auto/";
+
+  // spacing scale — not yet consumed anywhere; establishes the vocabulary
+  // that layout/*, pages/* and _card.scss literals will migrate to next.
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs: 0.8rem;
+  --space-sm: 1rem;
+  --space-md: 1.2rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4rem;
+  --space-3xl: 5rem;
+
+  // radius — button (8px) and card (0.5rem) are the same value already;
+  // forms' deliberate 0 (square inputs) doesn't need a token.
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+
+  // from the `box-shadow` mixin in abstracts/_mixins.scss
+  --shadow-1: 0 1px 1px hsl(0deg 0% 0% / 0.075), 0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
+    0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
+
+  // prose line-length, for the Phase 2 article body copy
+  --measure: 65ch;
+
+  // the mobile nav hamburger's internal stacking (base vs. the invisible
+  // checkbox placed over it) — see layout/_navigation.scss
+  --z-nav-toggle: 1;
+  --z-nav-toggle-input: 2;
 }
