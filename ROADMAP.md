@@ -241,10 +241,30 @@ through 24 partials. **No intended visual change.**
      dead declarations Sass's `@if` used to emit) was verified via a full
      expanded-CSS diff against the previous commit to change nothing else.
 3. **Layout objects** — new `src/assets/scss/layout/_objects.scss`: `.stack`,
-   `.cluster`, `.center` (container, replaces the `<body>` `.container` utility),
-   `.grid` (generalise the `.articles__list` auto-fit pattern); move `.flow` here.
+   `.cluster`, `.center` (container, replaces the `<body>` `.container` utility,
+   tokenizing its `1rem` padding to `var(--space-sm)`), `.grid` (generalise the
+   `.articles__list` auto-fit pattern via a caller-overridable `--min`); move
+   `.flow` here from `base/_helpers.scss` (also tokenizing its `1rem` fallback).
    Refactor `_header.scss` / `_navigation.scss` / `_footer.scss` / `_home.scss` to
-   *consume* these — additive, not a rewrite.
+   *consume* these — additive, not a rewrite. Candidates already identified:
+   `.footer__icons` and `.menu__desktop` (both hand-rolled flex-row/wrap/justify)
+   are the two direct `.cluster` call sites.
+
+   **Risk note (2026-09-14), before implementing:** unlike items 1–2, this one is
+   explicitly additive in the *HTML* too — `class="..."` edits in
+   [footer.njk](src/_includes/partials/footer.njk) and
+   [header.njk](src/_includes/partials/header.njk), shared partials rendered on
+   every page. A clean compiled-CSS diff won't prove anything here the way it did
+   for items 1–2, since the change *is* the markup/class wiring — this needs the
+   roadmap's own screenshot-based verification (`/`, `/gallery/`, `/about/`,
+   `/contact/`, an article, `/sandbox/` before/after), not a diff.
+
+   **Planned scoping, to keep each commit independently screenshot-checkable:**
+   1. First commit: add `_objects.scss` (all four classes + relocated `.flow`),
+      wire into `main.scss`'s import list, and migrate only
+      `.container` → `.center` on `<body>` — one call site, lowest risk.
+   2. Second commit: the `.footer__icons`/`.menu__desktop` → `.cluster` refactor,
+      screenshot-checked separately since it touches two more shared partials.
 4. **Interleave include-media removal.** In each partial you touch, swap
    `@include media(">=sm"|">=md"|">=lg"|"<=lg")` for a plain `@media` block (only ~5
    distinct conditions, 576/768/992 px). Delete
