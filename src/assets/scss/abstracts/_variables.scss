@@ -47,4 +47,22 @@
   // checkbox placed over it) — see layout/_navigation.scss
   --z-nav-toggle: 1;
   --z-nav-toggle-input: 2;
+
+  // button variant colours (Phase 1 item 2) — $color-action from the old
+  // Sass palette was dropped, it had zero call sites.
+  --btn-success-bg: #3dad7e;
+  --btn-danger-bg: #e63846;
+  --btn-accent-bg: #a8dadc;
+  --btn-primary-bg: var(--mid-grey);
+  --btn-secondary-bg: #fca311;
+  --btn-color-light: #f1faee;
+
+  // form colours (Phase 1 item 2) — $formbase__svg from the old Sass
+  // palette is inlined directly into the 3 data-URI SVGs in _forms.scss
+  // instead, since url()-embedded SVGs can't reference custom properties.
+  --form-color: #000;
+  --form-placeholder: #999;
+  --form-background: #fff;
+  --form-border: #bbb;
+  --form-active: #17f;
 }

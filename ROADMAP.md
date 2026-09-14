@@ -184,7 +184,7 @@ change.
 layout objects, so the actual reskin is a token edit + a sandbox review, not a hunt
 through 24 partials. **No intended visual change.**
 
-**Progress (2026-09-13):** item 1 is fully done. Items 2–5 are still open.
+**Progress (2026-09-14):** items 1–2 are fully done. Items 3–5 are still open.
 
 1. **Expand [_variables.scss](src/assets/scss/abstracts/_variables.scss):**
    ~~spacing scale `--space-3xs…3xl`~~ ✅ **tokens added** — `--space-3xs`(0.25rem)
@@ -211,13 +211,35 @@ through 24 partials. **No intended visual change.**
    ([_navigation.scss](src/assets/scss/layout/_navigation.scss)), which had no
    exact token match — rounded down to `--space-2xs` (8px), a deliberate 2px
    visual change, the only one in this commit.
-2. **De-Sass component colour logic** (the Lightning-CSS down payment):
-   - [_button.scss](src/assets/scss/components/_button.scss): replace `$color-*` +
-     `btnStyle()` + `darken()` with `:root` props +
-     `color-mix(in oklab, var(--btn-bg), black 12%)`.
-   - [_forms.scss](src/assets/scss/components/_forms.scss): replace `$formbase__*`
-     hex with tokens; inline the 3 `#{$svg}` fill colours into the data-URIs; drop
-     `@use "sass:math"` where `calc()` suffices.
+2. ~~**De-Sass component colour logic**~~ ✅ **Done** (the Lightning-CSS down payment):
+   - [_button.scss](src/assets/scss/components/_button.scss): `$color-*` → 7 new
+     `--btn-*-bg`/`--btn-color-light` tokens in `_variables.scss`; `darken($color, 10%)`
+     → `color-mix(in oklab, $color, black 12%)` inside the `btnStyle()` mixin (the
+     mixin itself stays — only its colour inputs and hover math changed). Dropped
+     `$color-action`, which had 0 call sites. Also folded in the button's own
+     `border-radius: 8px` → `var(--radius-md)` — a leftover from item 1 that should
+     have been caught there.
+   - [_forms.scss](src/assets/scss/components/_forms.scss): `$formbase__color/
+     placeholder/background/border/active` → 5 new `--form-*` tokens;
+     `lighten()`/`darken()` (disabled/placeholder states) → `color-mix(in oklab, …,
+     white|black 10%)` (same reasoning as buttons — those functions can't operate
+     on a `var()` reference once the colour becomes a custom property). The 3
+     `#{$svg}` fill colours are now the literal `%23000` baked directly into each
+     data-URI, since a `url()`-embedded SVG can't read a page's custom properties
+     at all — this was the one hex not converted to a token. Dropped
+     `@use "sass:math"`/`math.div()` in favour of native CSS `calc()` division
+     (`#{$x} / 2` inside `calc()`) — tested against the pinned `sass@1.77.8`
+     first to confirm it emits zero deprecation warnings before committing to it.
+   - **Deliberately not byte-identical:** every hover/disabled colour above now
+     resolves at paint time via `color-mix()` instead of at Sass-compile time via
+     `darken()`/`lighten()` — a different algorithm (oklab mixing vs. HSL lightness
+     shift) with a different result, chosen to approximate the old look. This is
+     the one place in Phase 1 where "no intended visual change" doesn't fully
+     hold, consistent with UPGRADE_PLAN.md §2's own note that this class of
+     Sass → native-CSS swap was never going to be pixel-identical. Everything
+     else in this commit (selector structure, cascade order, the redundant
+     dead declarations Sass's `@if` used to emit) was verified via a full
+     expanded-CSS diff against the previous commit to change nothing else.
 3. **Layout objects** — new `src/assets/scss/layout/_objects.scss`: `.stack`,
    `.cluster`, `.center` (container, replaces the `<body>` `.container` utility),
    `.grid` (generalise the `.articles__list` auto-fit pattern); move `.flow` here.

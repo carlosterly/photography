@@ -1,14 +1,5 @@
-// Set global color pallete
-
-$color-success: #3dad7e;
-$color-danger: #e63846;
-$color-accent: #a8dadc;
-$color-primary: rgba(77, 63, 63, 1);
-$color-action: #457b9d;
-$color-light: #f1faee;
-$color-secondary: #fca311;
-
-// Set mixin rules
+// Button variant colours live as :root custom properties in
+// abstracts/_variables.scss (--btn-*-bg, --btn-color-light).
 
 @mixin btnStyle($color, $text-color, $outline: false) {
   background: $color;
@@ -27,10 +18,12 @@ $color-secondary: #fca311;
   }
 
   &:hover {
-    background: darken($color, 10%);
+    // color-mix, not darken() — $color is now a var() reference, which Sass
+    // color functions can't operate on. Approximates the old darken(10%)
+    // look; not a byte-identical hover colour, same as UPGRADE_PLAN.md §2
+    // already documents for this class of Sass → native-CSS swap.
+    background: color-mix(in oklab, $color, black 12%);
   }
-
-
 }
 
 .btn {
@@ -38,7 +31,7 @@ $color-secondary: #fca311;
   cursor: pointer;
   user-select: none;
   padding: 10px;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   border: 0;
   // margin: 10px 10px;
   width: 220px;
@@ -78,37 +71,37 @@ $color-secondary: #fca311;
   }
 
   &--success {
-    @include btnStyle($color-success, $color-light);
+    @include btnStyle(var(--btn-success-bg), var(--btn-color-light));
     &.outline {
-      @include btnStyle($color-success, $color-light, true);
+      @include btnStyle(var(--btn-success-bg), var(--btn-color-light), true);
     }
   }
 
   &--danger {
-    @include btnStyle($color-danger, $color-light);
+    @include btnStyle(var(--btn-danger-bg), var(--btn-color-light));
     &.outline {
-      @include btnStyle($color-danger, $color-light, true);
+      @include btnStyle(var(--btn-danger-bg), var(--btn-color-light), true);
     }
   }
 
   &--accent {
-    @include btnStyle($color-accent, $color-primary);
+    @include btnStyle(var(--btn-accent-bg), var(--mid-grey));
     &.outline {
-      @include btnStyle($color-accent, $color-primary, true);
+      @include btnStyle(var(--btn-accent-bg), var(--mid-grey), true);
     }
   }
 
   &--primary {
-    @include btnStyle($color-primary, $color-light);
+    @include btnStyle(var(--btn-primary-bg), var(--btn-color-light));
     &.outline {
-      @include btnStyle($color-primary, $color-light, true);
+      @include btnStyle(var(--btn-primary-bg), var(--btn-color-light), true);
     }
   }
 
   &--secondary {
-    @include btnStyle($color-secondary, $color-primary);
+    @include btnStyle(var(--btn-secondary-bg), var(--mid-grey));
     &.outline {
-      @include btnStyle($color-secondary, $color-light, true);
+      @include btnStyle(var(--btn-secondary-bg), var(--btn-color-light), true);
     }
   }
 }
