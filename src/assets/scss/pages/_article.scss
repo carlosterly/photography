@@ -8,3 +8,117 @@
   in extra narrow spaces */
   grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min)), 1fr));
 }
+
+// Article/blog body copy. Scoped to `.prose` (paired with the existing
+// `.flow` layout object for vertical rhythm between direct children) so it
+// never leaks into the rest of the site's typography.
+.prose {
+  max-width: var(--measure);
+
+  // Heading rhythm: more space above a heading than below it, so it reads
+  // as attached to the section it introduces rather than floating between
+  // two paragraphs.
+  h2,
+  h3,
+  h4 {
+    --flow-space: var(--space-xl);
+  }
+
+  h2 + *,
+  h3 + *,
+  h4 + * {
+    --flow-space: var(--space-xs);
+  }
+
+  p {
+    font-size: var(--font-size-base);
+  }
+
+  a {
+    color: var(--red);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+  }
+
+  ul,
+  ol {
+    padding-inline-start: var(--space-md);
+  }
+
+  li + li {
+    margin-top: var(--space-3xs);
+  }
+
+  blockquote {
+    margin: 0;
+    padding-inline-start: var(--space-sm);
+    border-inline-start: var(--space-3xs) solid var(--border-color);
+    font-style: italic;
+    color: var(--mid-grey);
+  }
+
+  code {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-sm);
+    background: var(--light-grey);
+    padding: 0.2em 0.4em;
+    border-radius: var(--radius-sm);
+  }
+
+  pre {
+    margin: 0;
+    padding: var(--space-sm);
+    overflow-x: auto;
+    background: var(--dark-grey);
+    border-radius: var(--radius-md);
+
+    code {
+      background: none;
+      padding: 0;
+      color: var(--body-color);
+    }
+  }
+
+  figure {
+    margin: 0;
+  }
+
+  figure img {
+    display: block;
+    width: 100%;
+    border-radius: var(--radius-md);
+  }
+
+  figcaption {
+    margin-top: var(--space-3xs);
+    font-size: var(--font-size-sm);
+    color: var(--mid-grey);
+    text-align: center;
+  }
+
+  img {
+    border-radius: var(--radius-md);
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid var(--light-grey);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th,
+  td {
+    padding: var(--space-2xs) var(--space-xs);
+    border: 1px solid var(--light-grey);
+    text-align: left;
+  }
+
+  th {
+    font-family: var(--font-heading);
+    color: var(--mid-grey);
+  }
+}

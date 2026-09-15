@@ -263,58 +263,63 @@ noindex: true
   </div>
 </div>
 
-<h2>Prose specimen (Phase 2 styles this)</h2>
+<h2>Prose specimen</h2>
+<p>The <code>.prose</code> class below is the exact wrapper <a href="/articles/">article.njk</a> uses around article body content.</p>
 
-<h2>Heading 2</h2>
-<h3>Heading 3</h3>
-<h4>Heading 4</h4>
+<div class="prose flow">
 
-<p>A paragraph of body copy. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. This one has an <a href="/sandbox/">in-prose link</a> for contrast against the site's bare <code>--red</code> nav links.</p>
+  <h2>Heading 2</h2>
+  <h3>Heading 3</h3>
+  <h4>Heading 4</h4>
 
-<ul>
-  <li>Unordered list item one</li>
-  <li>Unordered list item two</li>
-  <li>Unordered list item three</li>
-</ul>
+  <p>A paragraph of body copy. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. This one has an <a href="/sandbox/">in-prose link</a> for contrast against the site's bare <code>--red</code> nav links.</p>
 
-<ol>
-  <li>Ordered list item one</li>
-  <li>Ordered list item two</li>
-  <li>Ordered list item three</li>
-</ol>
+  <ul>
+    <li>Unordered list item one</li>
+    <li>Unordered list item two</li>
+    <li>Unordered list item three</li>
+  </ul>
 
-<blockquote>
-  <p>A blockquote — set apart from the surrounding body copy, for a pull-quote or a cited passage.</p>
-</blockquote>
+  <ol>
+    <li>Ordered list item one</li>
+    <li>Ordered list item two</li>
+    <li>Ordered list item three</li>
+  </ol>
 
-<p>Inline <code>code</code> next to a fenced block:</p>
+  <blockquote>
+    <p>A blockquote — set apart from the surrounding body copy, for a pull-quote or a cited passage.</p>
+  </blockquote>
 
-<pre><code>function example() {
+  <p>Inline <code>code</code> next to a fenced block:</p>
+
+  <pre><code>function example() {
   return "pre/code uses --font-mono";
 }</code></pre>
 
-<figure>
-  <img src="{{ site.defaultImage }}" alt="{{ site.defaultImageAlt }}" width="400" height="225" loading="lazy">
-  <figcaption>A figure with a caption, for in-article photos.</figcaption>
-</figure>
+  <figure>
+    <img src="{{ site.defaultImage }}" alt="{{ site.defaultImageAlt }}" width="400" height="225" loading="lazy">
+    <figcaption>A figure with a caption, for in-article photos.</figcaption>
+  </figure>
 
-<hr>
+  <hr>
 
-<table>
-  <thead>
-    <tr>
-      <th>Column A</th>
-      <th>Column B</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Row 1, cell A</td>
-      <td>Row 1, cell B</td>
-    </tr>
-    <tr>
-      <td>Row 2, cell A</td>
-      <td>Row 2, cell B</td>
-    </tr>
-  </tbody>
-</table>
+  <table>
+    <thead>
+      <tr>
+        <th>Column A</th>
+        <th>Column B</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Row 1, cell A</td>
+        <td>Row 1, cell B</td>
+      </tr>
+      <tr>
+        <td>Row 2, cell A</td>
+        <td>Row 2, cell B</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

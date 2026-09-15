@@ -8,7 +8,9 @@
 
     {% include 'partials/page-banner.njk' %}
 
-    {{ content | safe }}
+    <div class="prose flow">
+      {{ content | safe }}
+    </div>
 
   </article>
 

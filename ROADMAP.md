@@ -289,13 +289,25 @@ you touch for another reason — swap its `@include media()` calls for a plain
 
 **Goal:** ship the blog on the hand-written `.njk` model.
 
-1. **Prose CSS** in [_article.scss](src/assets/scss/pages/_article.scss) (or a
-   `.prose` class on `<article>` in `article.njk`), scoped to the article body:
-   h2–h4 rhythm on `--space-*` + the existing fluid `--font-size-*` scale; `ul/ol`,
-   `blockquote`, `code`, `pre` (`--font-mono`, finally used), `figure`/`figcaption`,
-   `hr`, `table`, in-prose `a` (underlined, distinct from the site's bare `--red`
-   links), `img` (`--radius-md`). Constrain body copy to `--measure`; drop in-prose
-   `p` from `--font-size-lg` to `base`/`md`. Verify against the Phase 1 specimen.
+**Progress (2026-09-15):** item 1 done.
+
+1. ~~**Prose CSS**~~ ✅ **Done** — added a `.prose` class in
+   [_article.scss](src/assets/scss/pages/_article.scss), paired with the Phase 1
+   `.flow` layout object for vertical rhythm: h2–h4 get a larger `--flow-space`
+   above (via `.prose h2/h3/h4`) and a smaller one below (via `.prose h2/h3/h4 + *`)
+   so headings read as attached to the section they introduce; `ul/ol`, `blockquote`,
+   `code`/`pre` (`--font-mono`, finally used), `figure`/`figcaption`, `hr`, `table`,
+   in-prose `a` (underlined `--red`, distinct from the site's bare nav links), `img`
+   (`--radius-md`). Body copy constrained to `--measure`, `p` at `--font-size-base`.
+   Wired into [article.njk](src/_includes/layouts/article.njk) as a
+   `<div class="prose flow">` around `{{ content | safe }}` — since this is the
+   shared layout, all 5 existing articles picked it up automatically with no
+   per-article edit needed. Verified: `npm run build` clean; compiled
+   `public/css/main.css` diff confirmed purely additive (new rules inserted after
+   `.grid`, nothing else changed); built `my-first-article` HTML shows the
+   `.prose flow` wrapper. Sandbox specimen updated to reuse the same
+   `<div class="prose flow">` markup so it doubles as a living preview of exactly
+   what `article.njk` renders.
 2. **Article layout parity** — rework
    [article.njk](src/_includes/layouts/article.njk): wrap in `.fh__wrapper` like
    [page.njk](src/_includes/layouts/page.njk); render a byline (date via `postDate`,
@@ -319,8 +331,8 @@ you touch for another reason — swap its `@include media()` calls for a plain
    [header.njk](src/_includes/partials/header.njk) (mobile `menu__slide` ~line 24,
    desktop `menu__desktop` ~line 49). Until then: URLs live, unlinked.
 
-**First task:** write the prose CSS against the sandbox specimen, convert **one** real
-article, review on a branch + deploy preview.
+**First task:** rework `article.njk` for layout parity (item 2) — `.fh__wrapper`,
+byline, `Article` JSON-LD.
 
 ---
 
