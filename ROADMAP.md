@@ -369,8 +369,8 @@ item 6's completion.
    the risks table: "Blog launch with stale content").
 
 **First task:** none left to pull here — items 1–5 are done and item 6 is
-blocked on the user writing real posts/dates by hand. Phase 3 item 1 is
-token-independent and can be pulled forward in the meantime (see below).
+blocked on the user writing real posts/dates by hand. (Phase 3 item 1 was
+pulled forward in the meantime — see below.)
 
 ---
 
@@ -379,12 +379,34 @@ token-independent and can be pulled forward in the meantime (see below).
 **Goal:** kill the fragile inline-JSON delivery, then add depth (per-photo pages,
 series).
 
-1. **Perf / architecture fix first (no visual change).** Convert
-   [gallery.njk](src/pages/gallery.njk) and
-   [home.njk](src/_includes/layouts/home.njk) to `<a>`-based PhotoSwipe markup
-   (anchor per photo, `href` = full image, `data-pswp-width/height`). Removes the
-   inline `| dump | safe` blob, gives a no-JS fallback and crawlable image URLs.
-   Reuse [_gallery.scss](src/assets/scss/components/_gallery.scss).
+**Progress (2026-09-15):** item 1 done.
+
+1. ~~**Perf / architecture fix first (no visual change).**~~ ✅ **Done** —
+   converted [gallery.njk](src/pages/gallery.njk) and
+   [home.njk](src/_includes/layouts/home.njk) to `<a>`-based PhotoSwipe markup.
+   Each gallery/the home banner is now a real DOM container (`#pswp-gallery-<slug>`
+   / `#pswp-gallery-home`) holding one visible `<a>` (wraps the existing thumbnail
+   `<img>`, `href`/`data-pswp-width`/`data-pswp-height` from that gallery's first
+   image) plus one `.visually-hidden` `<a>` per remaining photo (same data
+   attributes, `aria-hidden="true" tabindex="-1"` so screen readers/keyboard users
+   aren't given empty "ghost" stops, but the real `href` stays crawlable and
+   mouse-clickable). `PhotoSwipeLightbox` now takes `{ gallery: '#id', children: 'a' }`
+   instead of a `dataSource` array — the inline `| dump | safe` JSON blob (up to
+   105 images per gallery) is gone entirely, replaced by a few one-line `.init()`
+   calls per gallery. Two 1-line CSS additions in
+   [_gallery.scss](src/assets/scss/components/_gallery.scss) /
+   [_home.scss](src/assets/scss/pages/_home.scss) (`display: block` on the new
+   wrapping `<a>`) keep the visible thumbnail's box sizing identical to the old
+   bare `<img>`.
+   Verified: `npm run build` → `validate: OK`; `data-pswp-width` attribute count
+   in built `gallery/index.html` is exactly 243 (105+47+50+41, matching
+   `galleries.json`'s totals) confirming every photo got a real anchor; home page
+   count is exactly 105 (`galleries.portrait.images.length`); zero `| dump` /
+   `dataSource` occurrences left in either built page; compiled CSS diffed
+   against the pre-change baseline is **byte-identical** once the two new
+   1-line rules are subtracted back out (no existing rule touched). No-JS
+   fallback: each visible thumbnail's `<a href>` now navigates straight to that
+   gallery's first full-size photo without any JS.
 2. **Schema + validation** — JSON Schema for `galleries.json`, wired into the Phase 0
    validate script (required keys, integer dims, the "every top-level key is a
    gallery" rule). Extend [docs/editing-galleries.md](docs/editing-galleries.md).
@@ -400,9 +422,7 @@ series).
    gallery thumbs. **Not** `eleventy-img` (adds a real dependency; the site is 100%
    Cloudinary already).
 
-**First task:** on a branch, convert `/gallery/` to `<a>`-based PhotoSwipe; confirm
-the inline blob is gone from built HTML, the 4 lightboxes still open, and it works
-with JS disabled. Deploy-preview, then do `home.njk`.
+**First task:** JSON Schema for `galleries.json` (item 2).
 
 ---
 

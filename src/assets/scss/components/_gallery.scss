@@ -20,6 +20,14 @@
   padding: 0.4rem;
   background-color: var(--dark-grey);
   @include box-shadow;
+
+  // The <a> wrapping .gallery__img (added so the visible thumbnail is a real,
+  // crawlable link rather than a JS-only click target) needs to be a block so
+  // it doesn't shrink-wrap and change the flex item's sizing vs. the bare
+  // <img> this replaced.
+  > a:first-child {
+    display: block;
+  }
 }
 
 .gallery__img {

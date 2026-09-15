@@ -2,6 +2,22 @@
   @include fh-wrapper;
 }
 
+// The banner <img> is now wrapped in a real <a> (crawlable link + PhotoSwipe
+// trigger) inside a plain <div>. `.home__wrapper`'s `grid-template-rows: auto
+// 1fr auto` stretches that <div> (the actual grid item) to fill the middle
+// row, but plain block children don't inherit a parent's height just because
+// it's definite — each step needs its own `height: 100%` for .home__banner's
+// own `height: 100%` (which is what makes it cover the full row) to have
+// anything to resolve against.
+#pswp-gallery-home {
+  height: 100%;
+
+  > a:first-child {
+    display: block;
+    height: 100%;
+  }
+}
+
 .home__banner {
   aspect-ratio: 3/2;
   object-fit: cover;
