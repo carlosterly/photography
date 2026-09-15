@@ -9,6 +9,40 @@
   grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min)), 1fr));
 }
 
+.article__byline {
+  font-size: var(--font-size-sm);
+  color: var(--mid-grey);
+
+  time {
+    font-family: var(--font-heading);
+  }
+}
+
+.article__tags {
+  --cluster-gap: var(--space-2xs);
+
+  a {
+    font-size: var(--font-size-sm);
+    color: var(--mid-grey);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--red);
+    }
+  }
+}
+
+.article__pager {
+  --cluster-justify: space-between;
+
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--light-grey);
+
+  a {
+    color: var(--red);
+  }
+}
+
 // Article/blog body copy. Scoped to `.prose` (paired with the existing
 // `.flow` layout object for vertical rhythm between direct children) so it
 // never leaks into the rest of the site's typography.

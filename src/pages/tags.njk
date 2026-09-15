@@ -1,0 +1,43 @@
+---
+pagination:
+  data: collections.tagList
+  size: 1
+  alias: tag
+permalink: "/tags/{{ tag | slugify }}/"
+eleventyExcludeFromCollections: true
+layout: 'layouts/page.njk'
+noindex: true
+eleventyComputed:
+  title: "{{ tag | capitalize }}"
+  description: "Articles tagged “{{ tag }}”."
+---
+
+<h1>Tagged &ldquo;{{ tag }}&rdquo;</h1>
+
+<div class="articles__list">
+
+  {% for post in collections.post | reverse %}
+    {% if tag in post.data.tags %}
+
+      <article class="card">
+
+        <a href="{{post.url}}">
+          <img src="{{post.data.image}}" alt="{{post.data.imageAlt}}" class="img-responsive" width="{{post.data.imageWidth}}" height="{{post.data.imageHeight}}" loading="lazy">
+        </a>
+
+        <a href="{{post.url}}">
+          <h2>{{ post.data.title }}</h2>
+        </a>
+
+        <time>{{ post.date | postDate }}</time>
+
+        <p>{{ post.data.description }}</p>
+
+        <a href="{{post.url}}" class="btn btn--primary outline">Continue Reading</a>
+
+      </article>
+
+    {% endif %}
+  {% endfor %}
+
+</div>

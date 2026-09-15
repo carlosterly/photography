@@ -1,21 +1,45 @@
 {% include 'partials/site-head.njk' %}
 
-{% include 'partials/header.njk' %}
+{% set prevPost = collections.post | previousPost(page.url) %}
+{% set nextPost = collections.post | nextPost(page.url) %}
 
-<main class="main__content">
+<div class="fh__wrapper">
 
-  <article class="flow">
+  {% include 'partials/header.njk' %}
 
-    {% include 'partials/page-banner.njk' %}
+  <main class="main__content">
 
-    <div class="prose flow">
-      {{ content | safe }}
-    </div>
+    <article class="flow">
 
-  </article>
+      {% include 'partials/page-banner.njk' %}
 
-</main>
+      <p class="article__byline">By {{ author }} &middot; <time datetime="{{ page.date.toISOString() }}">{{ page.date | postDate }}</time></p>
 
-{% include 'partials/footer.njk' %}
+      {% if tags %}
+        <p class="article__tags cluster">
+          {% for t in tags %}
+            {% if t != 'post' %}<a href="/tags/{{ t | slugify }}/">#{{ t }}</a>{% endif %}
+          {% endfor %}
+        </p>
+      {% endif %}
+
+      <div class="prose flow">
+        {{ content | safe }}
+      </div>
+
+      {% if prevPost or nextPost %}
+        <nav class="article__pager cluster" aria-label="Article navigation">
+          {% if prevPost %}<a href="{{ prevPost.url }}">&larr; {{ prevPost.data.title }}</a>{% endif %}
+          {% if nextPost %}<a href="{{ nextPost.url }}">{{ nextPost.data.title }} &rarr;</a>{% endif %}
+        </nav>
+      {% endif %}
+
+    </article>
+
+  </main>
+
+  {% include 'partials/footer.njk' %}
+
+</div>
 
 {% include 'partials/body-close.njk' %}

@@ -289,7 +289,9 @@ you touch for another reason — swap its `@include media()` calls for a plain
 
 **Goal:** ship the blog on the hand-written `.njk` model.
 
-**Progress (2026-09-15):** item 1 done.
+**Progress (2026-09-15):** items 1–5 done; item 6 partially done (images +
+placeholder headings only — real prose/dates still pending). Item 7 blocked on
+item 6's completion.
 
 1. ~~**Prose CSS**~~ ✅ **Done** — added a `.prose` class in
    [_article.scss](src/assets/scss/pages/_article.scss), paired with the Phase 1
@@ -308,31 +310,67 @@ you touch for another reason — swap its `@include media()` calls for a plain
    `.prose flow` wrapper. Sandbox specimen updated to reuse the same
    `<div class="prose flow">` markup so it doubles as a living preview of exactly
    what `article.njk` renders.
-2. **Article layout parity** — rework
-   [article.njk](src/_includes/layouts/article.njk): wrap in `.fh__wrapper` like
-   [page.njk](src/_includes/layouts/page.njk); render a byline (date via `postDate`,
-   `author` from `articles.json`); add `Article` JSON-LD to the Phase 0 meta scaffold.
-3. **Draft handling** — populate `src/_11ty/filters/`, `require` from `.eleventy.js`.
-   `draft: true` via `eleventyComputed` → `permalink: false` +
-   `eleventyExcludeFromCollections` when `draft` and `process.env.CONTEXT === 'production'`
-   (drafts preview locally / on branch deploys, never hit prod).
-4. **Feed** — hand-written `src/pages/feed.njk` → `/feed.xml`, mirroring
-   [sitemap.njk](src/pages/sitemap.njk). Link from `site-head.njk`
-   (`<link rel="alternate" type="application/atom+xml">`). No plugin.
-5. **Taxonomy + navigation** — topical tags in front matter (keep `tags: post` for
-   the collection); `src/pages/tags.njk` with `pagination` → `/tags/<tag>/`; prev/next
-   in `article.njk`; optional `/articles/` pagination if post count warrants.
-6. **Content** — replace the 5 `my-*-article.njk` with real posts (or `git rm`
-   them); replace every `via.placeholder.com` body image with a real Cloudinary URL
-   (the validate script enforces this); set real dates (self-heals the 2022
-   `lastmod` in the sitemap).
+2. ~~**Article layout parity**~~ ✅ **Done** — reworked
+   [article.njk](src/_includes/layouts/article.njk): wrapped in `.fh__wrapper` like
+   [page.njk](src/_includes/layouts/page.njk) (fixes sticky-footer parity on short
+   articles); added an `.article__byline` (date via `postDate`, `author` from
+   `articles.json`'s cascade); added an `Article` node to the Phase 0 meta scaffold's
+   JSON-LD `@graph` (headline/description/image/datePublished/author/publisher/
+   mainEntityOfPage), gated on `ogType == 'article'` so it never appears on
+   non-article pages. Verified: valid JSON via Node's `JSON.parse`; confirmed absent
+   from `about`/`home`/`contact`.
+3. ~~**Draft handling**~~ ✅ **Done** — established the `src/_11ty/*` extension
+   pattern: [src/_11ty/computed/draft.js](src/_11ty/computed/draft.js), wired via
+   `eleventyConfig.addGlobalData("eleventyComputed", …)` in
+   [.eleventy.js](.eleventy.js). `draft: true` + `CONTEXT === "production"` →
+   `permalink: false` + `eleventyExcludeFromCollections: true`; passthrough
+   otherwise, so drafts preview locally / on branch deploys. Documented in
+   [docs/drafts.md](docs/drafts.md). Verified live: temporarily set `draft: true`
+   on an article, confirmed it's written locally (no `CONTEXT`) and excluded
+   entirely — file and collection membership — under `CONTEXT=production`.
+4. ~~**Feed**~~ ✅ **Done** — hand-written [src/pages/feed.njk](src/pages/feed.njk)
+   → `/feed.xml`, mirroring `sitemap.njk`'s style: site-level `title`/`subtitle`/
+   `id`/self-link, one `<entry>` per post (newest first) with title/link/id/
+   updated/author/summary/full-body `content` (CDATA-wrapped). Linked from
+   `site-head.njk` via `<link rel="alternate" type="application/atom+xml">` on
+   every page. Verified: parses as well-formed XML (.NET `XmlDocument`, all 5
+   entries); alternate-link tag confirmed present with the right `href`.
+5. ~~**Taxonomy + navigation**~~ ✅ **Done** — topical tags added to each
+   article's front matter (merge with the cascade's `tags: post` automatically,
+   since `tags` gets array-unioned across the data cascade). New `tagList`
+   collection in `.eleventy.js` (distinct topical tags, excluding `post`) feeds
+   [src/pages/tags.njk](src/pages/tags.njk), paginated → `/tags/<tag>/`, one page
+   per tag reusing the `articles-index.njk` card markup; per-tag title/description
+   via a front-matter-level `eleventyComputed` (merges cleanly with item 3's
+   global one). `article.njk` gained tag chips under the byline and a prev/next
+   pager, backed by new `previousPost`/`nextPost` filters in `.eleventy.js`.
+   **Bug caught in review:** a first attempt computed prev/next with `{% set %}`
+   inside a `{% for %}…{% if %}` block — Nunjucks/Jinja scope that assignment to
+   the loop, so it never reached the template below and the pager silently
+   rendered nothing. Fixed by moving the lookup into the two filters (plain
+   top-level `{% set %}`, no loop). Verified: the full first→…→fifth prev/next
+   chain renders correctly; both tag pages group the right articles.
+6. **Content** — 🟡 **Partially done.** Swapped every `via.placeholder.com`
+   reference (banner + body images, 24 in total) for real images picked from
+   `galleries.json` across all 4 galleries, and replaced the 5 identical
+   "My Nth Article" titles with distinct placeholder headings (still obviously
+   dummy — e.g. "Lorem Ipsum Dolor Sit") so real titles are easy to spot later.
+   Recomputed each article's tag to match its new banner's gallery
+   (`portrait`/`art`/`travel`). Verified: `npm run build` → `validate: OK` with
+   **zero warnings** for the first time (the `via.placeholder.com` check no
+   longer has anything to flag). **Still lorem-ipsum body text and 2022 dates —
+   real posts/dates are the user's own writing, still pending.** Files were not
+   renamed or `git rm`'d, per instruction ("I will update these articles by hand").
 7. **Launch switch (last commit)** — remove `class="hidden"` from the two
    `/articles/` `<li>` in
    [header.njk](src/_includes/partials/header.njk) (mobile `menu__slide` ~line 24,
-   desktop `menu__desktop` ~line 49). Until then: URLs live, unlinked.
+   desktop `menu__desktop` ~line 49). **Blocked on item 6** — do not un-hide nav
+   until the lorem-ipsum body text and dates are replaced with real content (see
+   the risks table: "Blog launch with stale content").
 
-**First task:** rework `article.njk` for layout parity (item 2) — `.fh__wrapper`,
-byline, `Article` JSON-LD.
+**First task:** none left to pull here — items 1–5 are done and item 6 is
+blocked on the user writing real posts/dates by hand. Phase 3 item 1 is
+token-independent and can be pulled forward in the meantime (see below).
 
 ---
 

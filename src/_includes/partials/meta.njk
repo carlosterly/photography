@@ -39,7 +39,23 @@
       "@type": "Person",
       "name": {{ site.authorName | dump | safe }},
       "url": {{ site.url | dump | safe }}
-    }
+    }{% if ogType == 'article' %},
+    {
+      "@type": "Article",
+      "headline": {{ title | dump | safe }},
+      "description": {{ pageDescription | dump | safe }},
+      "image": {{ ogImage | dump | safe }},
+      "datePublished": {{ page.date.toISOString() | dump | safe }},
+      "author": {
+        "@type": "Person",
+        "name": {{ (author or site.authorName) | dump | safe }}
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": {{ site.name | dump | safe }}
+      },
+      "mainEntityOfPage": {{ pageUrl | dump | safe }}
+    }{% endif %}
   ]
 }
 </script>
