@@ -1,0 +1,30 @@
+---
+pagination:
+  data: collections.galleryPhotos
+  size: 1
+  alias: photo
+  addAllPagesToCollections: true
+permalink: "/gallery/{{ photo.gallery }}/{{ photo.slug }}/"
+layout: 'layouts/gallery-photo.njk'
+eleventyComputed:
+  title: "{{ photo.galleryTitle }}: {{ photo.alt }}"
+  description: "A photo from the {{ photo.galleryTitle }} gallery: {{ photo.alt }}."
+  image: "{{ photo.src }}"
+  imageAlt: "{{ photo.alt }}"
+---
+
+<div class="photo-page flow">
+
+  <p class="photo-page__breadcrumb">
+    <a href="/gallery/">Gallery</a> / <a href="/gallery/#pswp-gallery-{{ photo.gallery }}">{{ photo.galleryTitle }}</a>
+  </p>
+
+  <img class="photo-page__img" src="{{ photo.src }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}">
+
+  <nav class="photo-page__pager cluster" aria-label="Photo navigation">
+    {% if photo.prevSlug %}<a href="/gallery/{{ photo.gallery }}/{{ photo.prevSlug }}/">&larr; Previous</a>{% endif %}
+    <a href="/gallery/#pswp-gallery-{{ photo.gallery }}">All {{ photo.galleryTitle }} photos</a>
+    {% if photo.nextSlug %}<a href="/gallery/{{ photo.gallery }}/{{ photo.nextSlug }}/">Next &rarr;</a>{% endif %}
+  </nav>
+
+</div>

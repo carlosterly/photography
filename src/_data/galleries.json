@@ -12,631 +12,736 @@
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661243713/photography/portraits/Beth-Piano-1-PNG-Final.png",
         "width": 720,
         "height": 1080,
-        "alt": "Beth"
+        "alt": "Beth",
+        "slug": "beth-piano-1-png-final"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1750155032/photography/portraits/Verity-Portrait-13-161224.jpg",
         "width": 2160,
         "height": 1620,
-        "alt": "Verity"
+        "alt": "Verity",
+        "slug": "verity-portrait-13-161224"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661243729/photography/portraits/Beth-Portrait-5-PNG.png",
         "width": 1620,
         "height": 1080,
-        "alt": "Beth"
+        "alt": "Beth",
+        "slug": "beth-portrait-5-png"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/v1788255307/Shannon-Portrait-15-020826_ykh2ka.jpg",
         "width": 3240,
         "height": 2160,
-        "alt": "Shannon"
+        "alt": "Shannon",
+        "slug": "shannon-portrait-15-020826-ykh2ka"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1577351918/photography/portraits/Marcelle-Portrait-6-14092019.jpg",
         "width": 1365,
         "height": 2048,
-        "alt": "Marcelle"
+        "alt": "Marcelle",
+        "slug": "marcelle-portrait-6-14092019"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661426954/photography/portraits/Panda-Leather-Dress-BW-3.jpg",
         "width": 1366,
         "height": 2048,
-        "alt": "Siyu"
+        "alt": "Siyu",
+        "slug": "panda-leather-dress-bw-3"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1639387683/photography/portraits/Dana-Portrait-1-12122021.jpg",
         "width": 2160,
         "height": 1440,
-        "alt": "Dana"
+        "alt": "Dana",
+        "slug": "dana-portrait-1-12122021"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1577352006/photography/portraits/Karen-Portrait-4-26052019.jpg",
         "width": 1365,
         "height": 2048,
-        "alt": "Karen"
+        "alt": "Karen",
+        "slug": "karen-portrait-4-26052019"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1667531907/photography/portraits/Dad-Portrait-12062021.jpg",
         "width": 2160,
         "height": 1440,
-        "alt": "Dad"
+        "alt": "Dad",
+        "slug": "dad-portrait-12062021"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661237192/photography/portraits/Harmanpreet-Portrait-4-200221.jpg",
         "width": 1440,
         "height": 2160,
-        "alt": "Harmanpreet"
+        "alt": "Harmanpreet",
+        "slug": "harmanpreet-portrait-4-200221"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661237273/photography/portraits/Ruthie-Portrait-1-Colour-14112015.jpg",
         "width": 1620,
         "height": 1080,
-        "alt": "Ruthie"
+        "alt": "Ruthie",
+        "slug": "ruthie-portrait-1-colour-14112015"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1667532227/photography/portraits/Carl-Osterly-Portrait-4.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Amanda"
+        "alt": "Amanda",
+        "slug": "carl-osterly-portrait-4"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661237359/photography/portraits/Lan-Joy-Portrait-1-0720.jpg",
         "width": 2160,
         "height": 1440,
-        "alt": "Lan & Joy"
+        "alt": "Lan & Joy",
+        "slug": "lan-joy-portrait-1-0720"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661237436/photography/portraits/Lan-Joy-Portrait-12-0720.jpg",
         "width": 1440,
         "height": 2160,
-        "alt": "Lan & Joy"
+        "alt": "Lan & Joy",
+        "slug": "lan-joy-portrait-12-0720"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1667531703/photography/portraits/PortraitP-OsterlyCarl-5.jpg.jpg",
         "width": 1440,
         "height": 2160,
-        "alt": "Lan & Joy"
+        "alt": "Lan & Joy",
+        "slug": "portraitp-osterlycarl-5-jpg"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661237537/photography/portraits/Alyson-Portrait-5.jpg",
         "width": 1458,
         "height": 1080,
-        "alt": "Alyson"
+        "alt": "Alyson",
+        "slug": "alyson-portrait-5"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661237596/photography/portraits/Yeena-Portrait-1-BW.jpg",
         "width": 1620,
         "height": 1080,
-        "alt": "Yeena"
+        "alt": "Yeena",
+        "slug": "yeena-portrait-1-bw"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661237754/photography/portraits/Cissy-2019-Edit-1.jpg",
         "width": 1636,
         "height": 2048,
-        "alt": "Cissy"
+        "alt": "Cissy",
+        "slug": "cissy-2019-edit-1"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661237774/photography/portraits/Cissy-GD-Shot-8-Colour.jpg",
         "width": 2160,
         "height": 1440,
-        "alt": "Cissy"
+        "alt": "Cissy",
+        "slug": "cissy-gd-shot-8-colour"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661237829/photography/portraits/Sura-Portrait-2-Colour-14082016.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Sura"
+        "alt": "Sura",
+        "slug": "sura-portrait-2-colour-14082016"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1667531647/photography/portraits/Mia-Portrait-BW.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Mia"
+        "alt": "Mia",
+        "slug": "mia-portrait-bw"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661237891/photography/portraits/Hop-Portrait-10-031221.jpg",
         "width": 1440,
         "height": 2160,
-        "alt": "Hop"
+        "alt": "Hop",
+        "slug": "hop-portrait-10-031221"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661237926/photography/portraits/CC-SMC-Shot-4.jpg",
         "width": 702,
         "height": 1080,
-        "alt": "CC"
+        "alt": "CC",
+        "slug": "cc-smc-shot-4"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661237928/photography/portraits/CC-SMC-Shot-1.jpg",
         "width": 1424,
         "height": 1080,
-        "alt": "CC"
+        "alt": "CC",
+        "slug": "cc-smc-shot-1"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661237987/photography/portraits/Mia-Tran-Portrait-1.jpg",
         "width": 1620,
         "height": 1080,
-        "alt": "Mia"
+        "alt": "Mia",
+        "slug": "mia-tran-portrait-1"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661238015/photography/portraits/Tiphany-HP-Portrait-1-BW.jpg",
         "width": 796,
         "height": 1080,
-        "alt": "Tiphany"
+        "alt": "Tiphany",
+        "slug": "tiphany-hp-portrait-1-bw"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661238058/photography/portraits/Hannah-Portrait-3-Colour-28012017.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Hannah"
+        "alt": "Hannah",
+        "slug": "hannah-portrait-3-colour-28012017"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1667532321/photography/portraits/PortraitP-OsterlyCarl-4.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Georgia"
+        "alt": "Georgia",
+        "slug": "portraitp-osterlycarl-4"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661238077/photography/portraits/Georgia-Portrait-Colour-3-15042017.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Georgia"
+        "alt": "Georgia",
+        "slug": "georgia-portrait-colour-3-15042017"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661238126/photography/portraits/Georgia-Sitting-Colour-5-15042017.jpg",
         "width": 1365,
         "height": 2048,
-        "alt": "Georgia"
+        "alt": "Georgia",
+        "slug": "georgia-sitting-colour-5-15042017"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661238147/photography/portraits/Georgia-Portrait-1-Colour-13122017.jpg",
         "width": 1520,
         "height": 2048,
-        "alt": "Georgia"
+        "alt": "Georgia",
+        "slug": "georgia-portrait-1-colour-13122017"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661238171/photography/portraits/Az-Az-Portrait-2-Colour-25062016.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Az Az"
+        "alt": "Az Az",
+        "slug": "az-az-portrait-2-colour-25062016"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1667531907/photography/portraits/Brisbane-Man.jpg",
         "width": 2160,
         "height": 1440,
-        "alt": "Brisbane Man"
+        "alt": "Brisbane Man",
+        "slug": "brisbane-man"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1667531905/photography/portraits/Eric-Portrait-4-210821.jpg",
         "width": 2160,
         "height": 1440,
-        "alt": "Brisbane Man"
+        "alt": "Brisbane Man",
+        "slug": "eric-portrait-4-210821"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661238243/photography/portraits/Ekaterina-Portrait-4-171120.jpg",
         "width": 2160,
         "height": 1440,
-        "alt": "Ekaterina"
+        "alt": "Ekaterina",
+        "slug": "ekaterina-portrait-4-171120"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661238206/photography/portraits/Ekaterina-Portrait-6-171120.jpg",
         "width": 1440,
         "height": 2160,
-        "alt": "Ekaterina"
+        "alt": "Ekaterina",
+        "slug": "ekaterina-portrait-6-171120"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661238255/photography/portraits/Fiamma-Portrait-2-280521.jpg",
         "width": 2160,
         "height": 1440,
-        "alt": "Fiamma"
+        "alt": "Fiamma",
+        "slug": "fiamma-portrait-2-280521"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661238283/photography/portraits/Amy-Portrait-1-070521.jpg",
         "width": 2160,
         "height": 1440,
-        "alt": "Amy"
+        "alt": "Amy",
+        "slug": "amy-portrait-1-070521"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661240909/photography/portraits/Ivy-Portrait-6-19112020.jpg",
         "width": 2160,
         "height": 1440,
-        "alt": "Ivy"
+        "alt": "Ivy",
+        "slug": "ivy-portrait-6-19112020"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661240958/photography/portraits/Libby-Portrait-4-BW-12012020.jpg",
         "width": 1365,
         "height": 2048,
-        "alt": "Libby"
+        "alt": "Libby",
+        "slug": "libby-portrait-4-bw-12012020"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661240986/photography/portraits/Steph-Portrait-3-220820.jpg",
         "width": 2160,
         "height": 1440,
-        "alt": "Steph"
+        "alt": "Steph",
+        "slug": "steph-portrait-3-220820"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661240988/photography/portraits/Steph-Portrait-2-220820.jpg",
         "width": 1440,
         "height": 2160,
-        "alt": "Steph"
+        "alt": "Steph",
+        "slug": "steph-portrait-2-220820"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661241020/photography/portraits/Zues-Standing-Colour-5-26122016.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Zues"
+        "alt": "Zues",
+        "slug": "zues-standing-colour-5-26122016"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661241114/photography/portraits/Mugzy-Portrait-13-Colour-28012017.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Mugzy"
+        "alt": "Mugzy",
+        "slug": "mugzy-portrait-13-colour-28012017"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661241129/photography/portraits/Joyce-Portrait-4-120920.jpg",
         "width": 2160,
         "height": 1440,
-        "alt": "Joyce"
+        "alt": "Joyce",
+        "slug": "joyce-portrait-4-120920"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661241196/photography/portraits/Joyce-Portrait-10-120920.jpg",
         "width": 1440,
         "height": 2160,
-        "alt": "Joyce"
+        "alt": "Joyce",
+        "slug": "joyce-portrait-10-120920"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661241227/photography/portraits/Jerome-Portrait-1-Colour-19122016-.jpg",
         "width": 1365,
         "height": 2048,
-        "alt": "Jerome"
+        "alt": "Jerome",
+        "slug": "jerome-portrait-1-colour-19122016"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661241287/photography/portraits/Cameron-Portrait-2-Colour-17052018.jpg",
         "width": 1365,
         "height": 2048,
-        "alt": "Cameron"
+        "alt": "Cameron",
+        "slug": "cameron-portrait-2-colour-17052018"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661241347/photography/portraits/Serena-Front-Portrait-1-CG.jpg",
         "width": 720,
         "height": 1080,
-        "alt": "Serena"
+        "alt": "Serena",
+        "slug": "serena-front-portrait-1-cg"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661241382/photography/portraits/Serena-Portrait-5-Colour-0620.jpg",
         "width": 1366,
         "height": 2048,
-        "alt": "Serena"
+        "alt": "Serena",
+        "slug": "serena-portrait-5-colour-0620"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661241530/photography/portraits/Valeria-Portrait-2-CG.jpg",
         "width": 733,
         "height": 1080,
-        "alt": "Valeria"
+        "alt": "Valeria",
+        "slug": "valeria-portrait-2-cg"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661241544/photography/portraits/Valeria-Portrait-Sunglasses-CG.jpg",
         "width": 1620,
         "height": 1080,
-        "alt": "Valeria"
+        "alt": "Valeria",
+        "slug": "valeria-portrait-sunglasses-cg"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661241560/photography/portraits/Ulim-Portrait-2-BW-02112019.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Ulim"
+        "alt": "Ulim",
+        "slug": "ulim-portrait-2-bw-02112019"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661241655/photography/portraits/Tara-Portrait-4-BW-0620.jpg",
         "width": 1366,
         "height": 2048,
-        "alt": "Tara"
+        "alt": "Tara",
+        "slug": "tara-portrait-4-bw-0620"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661241691/photography/portraits/Tabasom-Portrait-1-Colour.jpg",
         "width": 1680,
         "height": 2048,
-        "alt": "Tabasom"
+        "alt": "Tabasom",
+        "slug": "tabasom-portrait-1-colour"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1667532126/photography/portraits/Carl-Osterly-Fashion-6.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Tabasom"
+        "alt": "Tabasom",
+        "slug": "carl-osterly-fashion-6"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661241771/photography/portraits/Susanne-Portrait-1-0720.jpg",
         "width": 2048,
         "height": 1366,
-        "alt": "Susanne"
+        "alt": "Susanne",
+        "slug": "susanne-portrait-1-0720"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661241813/photography/portraits/Sherry-Standing-10-BW-12032016.jpg",
         "width": 1620,
         "height": 1080,
-        "alt": "Sherry"
+        "alt": "Sherry",
+        "slug": "sherry-standing-10-bw-12032016"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661241857/photography/portraits/Sherry-Portrait-5-12082017.jpg",
         "width": 1365,
         "height": 2048,
-        "alt": "Sherry"
+        "alt": "Sherry",
+        "slug": "sherry-portrait-5-12082017"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661241958/photography/portraits/Sheffie-Shoot3-Sunglasses.jpg",
         "width": 2048,
         "height": 1474,
-        "alt": "Sheffie"
+        "alt": "Sheffie",
+        "slug": "sheffie-shoot3-sunglasses"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661241977/photography/portraits/Sharon-Portrait-2-BW-21052016.jpg",
         "width": 1620,
         "height": 1080,
-        "alt": "Sharon"
+        "alt": "Sharon",
+        "slug": "sharon-portrait-2-bw-21052016"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661242011/photography/portraits/Sharon-Portrait-BW-4-30122016.jpg",
         "width": 1365,
         "height": 2048,
-        "alt": "Sharon"
+        "alt": "Sharon",
+        "slug": "sharon-portrait-bw-4-30122016"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661242088/photography/portraits/Sascha-Portrait-3-Colour.jpg",
         "width": 1365,
         "height": 2048,
-        "alt": "Sascha"
+        "alt": "Sascha",
+        "slug": "sascha-portrait-3-colour"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661242153/photography/portraits/Sabina-Portrait-4-BW-14042018.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Sabina"
+        "alt": "Sabina",
+        "slug": "sabina-portrait-4-bw-14042018"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661242166/photography/portraits/Ruby-Portrait-1-22042018.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Ruby"
+        "alt": "Ruby",
+        "slug": "ruby-portrait-1-22042018"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661242181/photography/portraits/Ruby-Portrait-2-22042018.jpg",
         "width": 1365,
         "height": 2048,
-        "alt": "Ruby"
+        "alt": "Ruby",
+        "slug": "ruby-portrait-2-22042018"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661242276/photography/portraits/Patricia-Portrait-16-Colour-07042018.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Patricia"
+        "alt": "Patricia",
+        "slug": "patricia-portrait-16-colour-07042018"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661242393/photography/portraits/Mona-Portrait-4-03032019.jpg",
         "width": 1365,
         "height": 2048,
-        "alt": "Patricia"
+        "alt": "Patricia",
+        "slug": "mona-portrait-4-03032019"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661242439/photography/portraits/Mona-Portrait-3-03032019.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Mona"
+        "alt": "Mona",
+        "slug": "mona-portrait-3-03032019"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661242678/photography/portraits/Mina-Portrait-Colour-1-23042017.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Mina"
+        "alt": "Mina",
+        "slug": "mina-portrait-colour-1-23042017"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661242833/photography/portraits/Marie-Sitting-Colour-5-01042017.jpg",
         "width": 1365,
         "height": 2048,
-        "alt": "Marie"
+        "alt": "Marie",
+        "slug": "marie-sitting-colour-5-01042017"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661242920/photography/portraits/Marcelle-Portrait-7-14092019.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Marcelle"
+        "alt": "Marcelle",
+        "slug": "marcelle-portrait-7-14092019"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661242923/photography/portraits/Marcelle-Portrait-12-14092019.jpg",
         "width": 1365,
         "height": 2048,
-        "alt": "Marcelle"
+        "alt": "Marcelle",
+        "slug": "marcelle-portrait-12-14092019"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661242943/photography/portraits/Maddi-Portrait-7-Colour.jpg",
         "width": 1920,
         "height": 1080,
-        "alt": "Maddi"
+        "alt": "Maddi",
+        "slug": "maddi-portrait-7-colour"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661242973/photography/portraits/Leslie-Portrait-1-Colour-02092017.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Leslie"
+        "alt": "Leslie",
+        "slug": "leslie-portrait-1-colour-02092017"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661242983/photography/portraits/Leslie-Portrait-BW-29072018.jpg",
         "width": 1365,
         "height": 2048,
-        "alt": "Leslie"
+        "alt": "Leslie",
+        "slug": "leslie-portrait-bw-29072018"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661243010/photography/portraits/Lani-Portrait-1-Colour-01122018.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Lani"
+        "alt": "Lani",
+        "slug": "lani-portrait-1-colour-01122018"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661243070/photography/portraits/Katarina_030613_Colour_Lean.jpg",
         "width": 1800,
         "height": 1080,
-        "alt": "Katarina"
+        "alt": "Katarina",
+        "slug": "katarina-030613-colour-lean"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661243099/photography/portraits/Gia_Portrait_Web_Rev2.jpg",
         "width": 1392,
         "height": 1080,
-        "alt": "Gia"
+        "alt": "Gia",
+        "slug": "gia-portrait-web-rev2"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661243158/photography/portraits/Karen-Portrait-1-26052019.jpg",
         "width": 1365,
         "height": 2048,
-        "alt": "Karen"
+        "alt": "Karen",
+        "slug": "karen-portrait-1-26052019"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661243174/photography/portraits/Karla-Portrait-2-Colour.jpg",
         "width": 840,
         "height": 1080,
-        "alt": "Karla"
+        "alt": "Karla",
+        "slug": "karla-portrait-2-colour"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661243204/photography/portraits/Justyna-Portrait-1.jpg",
         "width": 720,
         "height": 1080,
-        "alt": "Justyna"
+        "alt": "Justyna",
+        "slug": "justyna-portrait-1"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661243235/photography/portraits/Jess-Portrait-5-BW-02012018.jpg",
         "width": 1441,
         "height": 2048,
-        "alt": "Jess"
+        "alt": "Jess",
+        "slug": "jess-portrait-5-bw-02012018"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/v1661493019/photography/portraits/Irina-Cafe-Sitting1-Colour.jpg",
         "width": 739,
         "height": 1080,
-        "alt": "Irina"
+        "alt": "Irina",
+        "slug": "irina-cafe-sitting1-colour"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661243249/photography/portraits/Irina-Standing-Rocks-1.jpg",
         "width": 1668,
         "height": 1080,
-        "alt": "Irina"
+        "alt": "Irina",
+        "slug": "irina-standing-rocks-1"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661243304/photography/portraits/Gabriella-Dark-Jacket-01.jpg",
         "width": 1365,
         "height": 2048,
-        "alt": "Gabriella"
+        "alt": "Gabriella",
+        "slug": "gabriella-dark-jacket-01"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661243324/photography/portraits/Gabriella-Standing-08-Colour.jpg",
         "width": 1620,
         "height": 1080,
-        "alt": "Gabriella"
+        "alt": "Gabriella",
+        "slug": "gabriella-standing-08-colour"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661243340/photography/portraits/Florian-Portrait-1-Colour.jpg",
         "width": 1620,
         "height": 1080,
-        "alt": "Florian"
+        "alt": "Florian",
+        "slug": "florian-portrait-1-colour"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661243378/photography/portraits/Elizabeth-Colour-3-30072018.jpg",
         "width": 1365,
         "height": 2048,
-        "alt": "Elizabeth"
+        "alt": "Elizabeth",
+        "slug": "elizabeth-colour-3-30072018"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661243386/photography/portraits/Elizabeth-BW-5-30072018.jpg",
         "width": 1365,
         "height": 2048,
-        "alt": "Elizabeth"
+        "alt": "Elizabeth",
+        "slug": "elizabeth-bw-5-30072018"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661243403/photography/portraits/Elena-Portrait-4-21122017.jpg",
         "width": 1365,
         "height": 2048,
-        "alt": "Elena"
+        "alt": "Elena",
+        "slug": "elena-portrait-4-21122017"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661243416/photography/portraits/Elena-Portrait-3-21122017.jpg",
         "width": 2560,
         "height": 1440,
-        "alt": "Elena"
+        "alt": "Elena",
+        "slug": "elena-portrait-3-21122017"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661243481/photography/portraits/Elena-Portrait-4-31032019.jpg",
         "width": 1459,
         "height": 2048,
-        "alt": "Elena"
+        "alt": "Elena",
+        "slug": "elena-portrait-4-31032019"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661243494/photography/portraits/Dee-Portrait-Colour-1-02042017.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Dee"
+        "alt": "Dee",
+        "slug": "dee-portrait-colour-1-02042017"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661243572/photography/portraits/Claudia-Portrait-Sunglasses-1.jpg",
         "width": 1620,
         "height": 1035,
-        "alt": "Claudia"
+        "alt": "Claudia",
+        "slug": "claudia-portrait-sunglasses-1"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661243593/photography/portraits/Christ-Portrait-1-Colour-14052016.jpg",
         "width": 1620,
         "height": 1035,
-        "alt": "Christ"
+        "alt": "Christ",
+        "slug": "christ-portrait-1-colour-14052016"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661243621/photography/portraits/Chanel-Portrait-2-24112018.jpg",
         "width": 1365,
         "height": 2048,
-        "alt": "Chanel"
+        "alt": "Chanel",
+        "slug": "chanel-portrait-2-24112018"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661243635/photography/portraits/Hi-Key_Portrait_Colour.jpg",
         "width": 1136,
         "height": 2048,
-        "alt": "Cassandra"
+        "alt": "Cassandra",
+        "slug": "hi-key-portrait-colour"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661243657/photography/portraits/Carmina-Portrait-9-BW-0620.jpg",
         "width": 2048,
         "height": 1366,
-        "alt": "Carmina"
+        "alt": "Carmina",
+        "slug": "carmina-portrait-9-bw-0620"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661243693/photography/portraits/Carmina-Portrait-4-Colour-0620.jpg",
         "width": 2048,
         "height": 1366,
-        "alt": "Carmina"
+        "alt": "Carmina",
+        "slug": "carmina-portrait-4-colour-0620"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661243830/photography/portraits/Barbara-Portrait-1-0720.jpg",
         "width": 2048,
         "height": 1366,
-        "alt": "Barbara"
+        "alt": "Barbara",
+        "slug": "barbara-portrait-1-0720"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661243840/photography/portraits/Apoorva-Portrait-2-Retouched.jpg",
         "width": 836,
         "height": 1080,
-        "alt": "Apoorva"
+        "alt": "Apoorva",
+        "slug": "apoorva-portrait-2-retouched"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661243886/photography/portraits/AJ-Colour-6-09092018.jpg",
         "width": 1365,
         "height": 2048,
-        "alt": "AJ"
+        "alt": "AJ",
+        "slug": "aj-colour-6-09092018"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661243897/photography/portraits/Six_Neo.jpg",
         "width": 1920,
         "height": 1080,
-        "alt": "Six"
+        "alt": "Six",
+        "slug": "six-neo"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1661243918/photography/portraits/John-Portrait-1-BW.jpg",
         "width": 720,
         "height": 1080,
-        "alt": "John"
+        "alt": "John",
+        "slug": "john-portrait-1-bw"
       }
     ]
   },
@@ -649,283 +754,330 @@
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447390/photography/street/Architecture-Carl-Osterly-1.jpg",
         "width": 1517,
         "height": 2048,
-        "alt": "Central Park Buildings"
+        "alt": "Central Park Buildings",
+        "slug": "architecture-carl-osterly-1"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447809/photography/street/Twirl-Girl.jpg",
         "width": 1920,
         "height": 1080,
-        "alt": "Twirl Girl"
+        "alt": "Twirl Girl",
+        "slug": "twirl-girl"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447800/photography/street/carl_osterly_01.jpg",
         "width": 1920,
         "height": 1080,
-        "alt": "Street Demonstration"
+        "alt": "Street Demonstration",
+        "slug": "carl-osterly-01"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447809/photography/street/Exploding-Bubble.jpg",
         "width": 1920,
         "height": 1080,
-        "alt": "Exploding Bubble"
+        "alt": "Exploding Bubble",
+        "slug": "exploding-bubble"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447799/photography/street/Long-Embrace.jpg",
         "width": 1644,
         "height": 1080,
-        "alt": "Long Embrace"
+        "alt": "Long Embrace",
+        "slug": "long-embrace"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447808/photography/street/carl_osterly_13.jpg",
         "width": 1920,
         "height": 1080,
-        "alt": "Quiet Drink"
+        "alt": "Quiet Drink",
+        "slug": "carl-osterly-13"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447799/photography/street/carl_osterly_06.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Hyde Park Couple"
+        "alt": "Hyde Park Couple",
+        "slug": "carl-osterly-06"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447808/photography/street/Neon-Stair-Couple.jpg",
         "width": 1620,
         "height": 1080,
-        "alt": "Hyde Park Couple"
+        "alt": "Hyde Park Couple",
+        "slug": "neon-stair-couple"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447797/photography/street/Lying-Down.jpg",
         "width": 1920,
         "height": 1080,
-        "alt": "Lying Down"
+        "alt": "Lying Down",
+        "slug": "lying-down"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447807/photography/street/carl_osterly_11.jpg",
         "width": 1920,
         "height": 1080,
-        "alt": "Couple With Umbrella"
+        "alt": "Couple With Umbrella",
+        "slug": "carl-osterly-11"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1666689555/photography/street/Architecture-Carl-Osterly-3.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "City Landscape"
+        "alt": "City Landscape",
+        "slug": "architecture-carl-osterly-3"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447797/photography/street/Kick-The-Ball.jpg",
         "width": 1920,
         "height": 1080,
-        "alt": "Kick The Ball"
+        "alt": "Kick The Ball",
+        "slug": "kick-the-ball"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447806/photography/street/carl_osterly_10.jpg",
         "width": 1254,
         "height": 1080,
-        "alt": "Hyde Park Reflection"
+        "alt": "Hyde Park Reflection",
+        "slug": "carl-osterly-10"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447637/photography/street/Quiet-Drink.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Reflective Drink At The Pub"
+        "alt": "Reflective Drink At The Pub",
+        "slug": "quiet-drink"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447804/photography/street/Forgetful-Groom.jpg",
         "width": 1772,
         "height": 1080,
-        "alt": "Forgetful Groom"
+        "alt": "Forgetful Groom",
+        "slug": "forgetful-groom"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447795/photography/street/Expecting-Her-Kiss.jpg",
         "width": 1365,
         "height": 2048,
-        "alt": "Expecting Her Kiss"
+        "alt": "Expecting Her Kiss",
+        "slug": "expecting-her-kiss"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447804/photography/street/Tram-Ride-Home.jpg",
         "width": 1920,
         "height": 965,
-        "alt": "Tram Ride Home"
+        "alt": "Tram Ride Home",
+        "slug": "tram-ride-home"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447793/photography/street/Man-Patting-Dog.jpg",
         "width": 1489,
         "height": 1080,
-        "alt": "Man Patting Dog"
+        "alt": "Man Patting Dog",
+        "slug": "man-patting-dog"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447803/photography/street/carl_osterly_12.jpg",
         "width": 1620,
         "height": 1080,
-        "alt": "Book Sale"
+        "alt": "Book Sale",
+        "slug": "carl-osterly-12"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447792/photography/street/Wedding-Car.jpg",
         "width": 1920,
         "height": 1080,
-        "alt": "Wedding Car"
+        "alt": "Wedding Car",
+        "slug": "wedding-car"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1666689699/photography/street/St-Marys-Couple-IR.jpg",
         "width": 1620,
         "height": 1080,
-        "alt": "St Marys Cathedral"
+        "alt": "St Marys Cathedral",
+        "slug": "st-marys-couple-ir"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447792/photography/street/Chucking-The-Bed.jpg",
         "width": 1620,
         "height": 1080,
-        "alt": "Chucking The Bed"
+        "alt": "Chucking The Bed",
+        "slug": "chucking-the-bed"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447802/photography/street/We-Are-Open.jpg",
         "width": 1620,
         "height": 1080,
-        "alt": "We Are Open"
+        "alt": "We Are Open",
+        "slug": "we-are-open"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447791/photography/street/Apple-Taxis.jpg",
         "width": 1620,
         "height": 1080,
-        "alt": "Apple Taxi"
+        "alt": "Apple Taxi",
+        "slug": "apple-taxis"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447801/photography/street/Bob-Leedow-Portrait-6.jpg",
         "width": 1920,
         "height": 1080,
-        "alt": "Portrait of Bob Leedow"
+        "alt": "Portrait of Bob Leedow",
+        "slug": "bob-leedow-portrait-6"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447789/photography/street/Mobile-Love.jpg",
         "width": 1654,
         "height": 930,
-        "alt": "Mobile Love"
+        "alt": "Mobile Love",
+        "slug": "mobile-love"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447801/photography/street/Barber-Shop.jpg",
         "width": 1620,
         "height": 1080,
-        "alt": "Barber Shop"
+        "alt": "Barber Shop",
+        "slug": "barber-shop"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447789/photography/street/Singing-Man-2.jpg",
         "width": 1620,
         "height": 1080,
-        "alt": "Singing Man"
+        "alt": "Singing Man",
+        "slug": "singing-man-2"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447801/photography/street/carl_osterly_03.jpg",
         "width": 1555,
         "height": 1080,
-        "alt": "Violin Chef"
+        "alt": "Violin Chef",
+        "slug": "carl-osterly-03"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447789/photography/street/Australia-V.jpg",
         "width": 1920,
         "height": 1072,
-        "alt": "Newspaper and Beer"
+        "alt": "Newspaper and Beer",
+        "slug": "australia-v"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1666689701/photography/street/TTG-80-Afternoon-Walk.jpg",
         "width": 1920,
         "height": 1080,
-        "alt": "TTG 80 Afternoon Walk"
+        "alt": "TTG 80 Afternoon Walk",
+        "slug": "ttg-80-afternoon-walk"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447798/photography/street/carl_osterly_05.jpg",
         "width": 1620,
         "height": 1080,
-        "alt": "Bubble Gun"
+        "alt": "Bubble Gun",
+        "slug": "carl-osterly-05"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447788/photography/street/carl_osterly_07.jpg",
         "width": 1620,
         "height": 1080,
-        "alt": "More Compassion"
+        "alt": "More Compassion",
+        "slug": "carl-osterly-07"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447797/photography/street/Yellow-Man.jpg",
         "width": 1620,
         "height": 1080,
-        "alt": "Yellow Man"
+        "alt": "Yellow Man",
+        "slug": "yellow-man"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447626/photography/street/Rushcutters-Bay_Park-IR-6.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Rushcutters Bay Park"
+        "alt": "Rushcutters Bay Park",
+        "slug": "rushcutters-bay-park-ir-6"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447795/photography/street/carl_osterly_02.jpg",
         "width": 1620,
         "height": 1080,
-        "alt": "Girl Resting On Shoulder"
+        "alt": "Girl Resting On Shoulder",
+        "slug": "carl-osterly-02"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447583/photography/street/Man-Feeding-Birds.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Man Feeding Birds"
+        "alt": "Man Feeding Birds",
+        "slug": "man-feeding-birds"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447794/photography/street/carl_osterly_09.jpg",
         "width": 1440,
         "height": 1080,
-        "alt": "Wedding Envy"
+        "alt": "Wedding Envy",
+        "slug": "carl-osterly-09"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447320/photography/street/IMG_5040.jpg",
         "width": 2268,
         "height": 4032,
-        "alt": "Shadow of a Fork"
+        "alt": "Shadow of a Fork",
+        "slug": "img-5040"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1666689700/photography/street/Haymarket-Walk-iPad-IR.jpg",
         "width": 1024,
         "height": 1536,
-        "alt": "Haymarket Walk"
+        "alt": "Haymarket Walk",
+        "slug": "haymarket-walk-ipad-ir"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447792/photography/street/carl_osterly_08.jpg",
         "width": 1445,
         "height": 1080,
-        "alt": "Girl Holding Train Ticket"
+        "alt": "Girl Holding Train Ticket",
+        "slug": "carl-osterly-08"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1663908882/photography/street/Chinese-Garden-BW.jpg",
         "width": 1620,
         "height": 1080,
-        "alt": "Chinese Garden"
+        "alt": "Chinese Garden",
+        "slug": "chinese-garden-bw"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447791/photography/street/Hand-on-Chest.jpg",
         "width": 1080,
         "height": 1080,
-        "alt": "Hand On Chest"
+        "alt": "Hand On Chest",
+        "slug": "hand-on-chest"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447313/photography/street/Flying-Black-Bird-Moon.jpg",
         "width": 1620,
         "height": 2160,
-        "alt": "Flying Black Bird Over Moon"
+        "alt": "Flying Black Bird Over Moon",
+        "slug": "flying-black-bird-moon"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447361/photography/street/Fire-Sunset-St-Leonards.jpg",
         "width": 2048,
         "height": 1366,
-        "alt": "Fire Sunset at St Leonards"
+        "alt": "Fire Sunset at St Leonards",
+        "slug": "fire-sunset-st-leonards"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1663908871/photography/street/Central-Park-Carl-Osterly.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Central Park Buildings"
+        "alt": "Central Park Buildings",
+        "slug": "central-park-carl-osterly"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1666689701/photography/street/Hot-Rod-Wedding.jpg",
         "width": 1620,
         "height": 1080,
-        "alt": "Hot Rod Wedding"
+        "alt": "Hot Rod Wedding",
+        "slug": "hot-rod-wedding"
       }
     ]
   },
@@ -938,301 +1090,351 @@
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1663908964/photography/japan/Kyoto-58.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Kyoto Geisha"
+        "alt": "Kyoto Geisha",
+        "slug": "kyoto-58"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1666429193/photography/japan/Kyoto-290.jpg",
         "width": 2160,
         "height": 1440,
-        "alt": "Kyoto Street Scene"
+        "alt": "Kyoto Street Scene",
+        "slug": "kyoto-290"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1663908967/photography/japan/Tokyo-2019-1.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Tokyo Street Scene"
+        "alt": "Tokyo Street Scene",
+        "slug": "tokyo-2019-1"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1666429080/photography/japan/Kyoto-206.jpg",
         "width": 2160,
         "height": 1440,
-        "alt": "Kyoto Street Scene"
+        "alt": "Kyoto Street Scene",
+        "slug": "kyoto-206"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1666428608/photography/japan/Hiroshima-8.jpg",
         "width": 2160,
         "height": 1440,
-        "alt": "Hiroshima Street Scene"
+        "alt": "Hiroshima Street Scene",
+        "slug": "hiroshima-8"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447545/photography/japan/Kyoto-70.jpg",
         "width": 2560,
         "height": 1440,
-        "alt": "Kyoto Couple"
+        "alt": "Kyoto Couple",
+        "slug": "kyoto-70"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1666428405/photography/japan/Kyoto-60.jpg",
         "width": 2560,
         "height": 1440,
-        "alt": "Kyoto Street Scene"
+        "alt": "Kyoto Street Scene",
+        "slug": "kyoto-60"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447545/photography/japan/Takayama-2019-1.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Takayama Shrine"
+        "alt": "Takayama Shrine",
+        "slug": "takayama-2019-1"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447542/photography/japan/Kanazawa-25.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Kanazawa Castle"
+        "alt": "Kanazawa Castle",
+        "slug": "kanazawa-25"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1666429043/photography/japan/Kyoto-175.jpg",
         "width": 2048,
         "height": 1366,
-        "alt": "Kyoto Street Scene"
+        "alt": "Kyoto Street Scene",
+        "slug": "kyoto-175"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1663908967/photography/japan/Kanazawa-51.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Kanazawa Street Scene"
+        "alt": "Kanazawa Street Scene",
+        "slug": "kanazawa-51"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664520706/photography/japan/Takayama-2019-37.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "School girls riding bikes in Takayama"
+        "alt": "School girls riding bikes in Takayama",
+        "slug": "takayama-2019-37"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1666428535/photography/japan/Kanazawa-Castle-1.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Kanazawa Castle"
+        "alt": "Kanazawa Castle",
+        "slug": "kanazawa-castle-1"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664521092/photography/japan/Kyoto-82.jpg",
         "width": 1365,
         "height": 2048,
-        "alt": "Kyoto Boy"
+        "alt": "Kyoto Boy",
+        "slug": "kyoto-82"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664521161/photography/japan/Kyoto-105.jpg",
         "width": 1365,
         "height": 2048,
-        "alt": "Kyoto Dragon"
+        "alt": "Kyoto Dragon",
+        "slug": "kyoto-105"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1666428965/photography/japan/Kyoto-67.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Kyoto School Children"
+        "alt": "Kyoto School Children",
+        "slug": "kyoto-67"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1666428301/photography/japan/Fushimi-Inari-taisha-34.jpg",
         "width": 2021,
         "height": 1536,
-        "alt": "Fushimi Inari taisha"
+        "alt": "Fushimi Inari taisha",
+        "slug": "fushimi-inari-taisha-34"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1666428959/photography/japan/Kyoto-66.jpg",
         "width": 1365,
         "height": 2048,
-        "alt": "Kyoto Street Scene"
+        "alt": "Kyoto Street Scene",
+        "slug": "kyoto-66"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1666428294/photography/japan/Fushimi-Inari-taisha-9.jpg",
         "width": 1365,
         "height": 2048,
-        "alt": "Fushimi Inari taisha"
+        "alt": "Fushimi Inari taisha",
+        "slug": "fushimi-inari-taisha-9"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1666428504/photography/japan/Tokyo-Station-2.jpg",
         "width": 2048,
         "height": 1416,
-        "alt": "Tokyo Station"
+        "alt": "Tokyo Station",
+        "slug": "tokyo-station-2"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1666428495/photography/japan/Nara-5.jpg",
         "width": 2048,
         "height": 1248,
-        "alt": "Nara"
+        "alt": "Nara",
+        "slug": "nara-5"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1666428362/photography/japan/Kyoto-28.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Kyoto Street Scene"
+        "alt": "Kyoto Street Scene",
+        "slug": "kyoto-28"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1666428219/photography/japan/Ueno-1.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Tokyo Street Scene"
+        "alt": "Tokyo Street Scene",
+        "slug": "ueno-1"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1666428173/photography/japan/Tokyo-76.jpg",
         "width": 1431,
         "height": 2048,
-        "alt": "Tokyo Street Scene"
+        "alt": "Tokyo Street Scene",
+        "slug": "tokyo-76"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1666428159/photography/japan/Tokyo-64.jpg",
         "width": 2048,
         "height": 1297,
-        "alt": "Tokyo Street Scene"
+        "alt": "Tokyo Street Scene",
+        "slug": "tokyo-64"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1666428147/photography/japan/Tokyo-40.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Tokyo Street Scene"
+        "alt": "Tokyo Street Scene",
+        "slug": "tokyo-40"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1666428110/photography/japan/Tokyo-29.jpg",
         "width": 2560,
         "height": 1440,
-        "alt": "Tokyo Street Scene"
+        "alt": "Tokyo Street Scene",
+        "slug": "tokyo-29"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1666428070/photography/japan/Shinjuku-18.jpg",
         "width": 2048,
         "height": 1195,
-        "alt": "Tokyo Street Scene"
+        "alt": "Tokyo Street Scene",
+        "slug": "shinjuku-18"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1666428059/photography/japan/Shinjuku-21.jpg",
         "width": 2560,
         "height": 1440,
-        "alt": "Tokyo Street Scene"
+        "alt": "Tokyo Street Scene",
+        "slug": "shinjuku-21"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1666428040/photography/japan/Shinjuku-16.jpg",
         "width": 1416,
         "height": 2048,
-        "alt": "Tokyo Street Scene"
+        "alt": "Tokyo Street Scene",
+        "slug": "shinjuku-16"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1666428036/photography/japan/Shinjuku-8.jpg",
         "width": 2048,
         "height": 1455,
-        "alt": "Tokyo Street Scene"
+        "alt": "Tokyo Street Scene",
+        "slug": "shinjuku-8"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1666427998/photography/japan/Meiji-Jingu-1.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Tokyo Street Scene"
+        "alt": "Tokyo Street Scene",
+        "slug": "meiji-jingu-1"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1666427915/photography/japan/Harajuku-1.jpg",
         "width": 2048,
         "height": 1667,
-        "alt": "Tokyo Street Scene"
+        "alt": "Tokyo Street Scene",
+        "slug": "harajuku-1"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1666427873/photography/japan/Akihabara-9.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Tokyo Street Scene"
+        "alt": "Tokyo Street Scene",
+        "slug": "akihabara-9"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447545/photography/japan/Kanazawa-68.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Kanazawa Street Scene"
+        "alt": "Kanazawa Street Scene",
+        "slug": "kanazawa-68"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1666685884/photography/japan/Hiroshima-73.jpg",
         "width": 2160,
         "height": 1440,
-        "alt": "Hiroshima Street Scene"
+        "alt": "Hiroshima Street Scene",
+        "slug": "hiroshima-73"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1666685886/photography/japan/Hiroshima-55.jpg",
         "width": 2160,
         "height": 1440,
-        "alt": "Hiroshima Street Scene"
+        "alt": "Hiroshima Street Scene",
+        "slug": "hiroshima-55"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1666686061/photography/japan/Hiroshima-81.jpg",
         "width": 2160,
         "height": 1440,
-        "alt": "Hiroshima Street Scene"
+        "alt": "Hiroshima Street Scene",
+        "slug": "hiroshima-81"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1666686095/photography/japan/Kanazawa-8.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Kanazawa Street Scene"
+        "alt": "Kanazawa Street Scene",
+        "slug": "kanazawa-8"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1666686229/photography/japan/Kanazawa-48.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Kanazawa Street Scene"
+        "alt": "Kanazawa Street Scene",
+        "slug": "kanazawa-48"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1666686234/photography/japan/Kanazawa-65.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Kanazawa Street Scene"
+        "alt": "Kanazawa Street Scene",
+        "slug": "kanazawa-65"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1666686281/photography/japan/Kyoto-13.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Kyoto Street Scene"
+        "alt": "Kyoto Street Scene",
+        "slug": "kyoto-13"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1666686302/photography/japan/Kyoto-17.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Kyoto Street Scene"
+        "alt": "Kyoto Street Scene",
+        "slug": "kyoto-17"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1666686715/photography/japan/Kyoto-220.jpg",
         "width": 2160,
         "height": 1440,
-        "alt": "Kyoto Street Scene"
+        "alt": "Kyoto Street Scene",
+        "slug": "kyoto-220"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1666686755/photography/japan/Kyoto-282.jpg",
         "width": 2160,
         "height": 1440,
-        "alt": "Kyoto Street Scene"
+        "alt": "Kyoto Street Scene",
+        "slug": "kyoto-282"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1666686925/photography/japan/Kyoto-328.jpg",
         "width": 2160,
         "height": 1440,
-        "alt": "Kyoto Street Scene"
+        "alt": "Kyoto Street Scene",
+        "slug": "kyoto-328"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1666687163/photography/japan/Takayama-2019-50.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Takayama Street Scene"
+        "alt": "Takayama Street Scene",
+        "slug": "takayama-2019-50"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1666687194/photography/japan/Tokyo-2019-2.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Tokyo Street Scene"
+        "alt": "Tokyo Street Scene",
+        "slug": "tokyo-2019-2"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1666687306/photography/japan/Tokyo-2019-12.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Tokyo Street Scene"
+        "alt": "Tokyo Street Scene",
+        "slug": "tokyo-2019-12"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1666687460/photography/japan/Kyoto-55.jpg",
         "width": 1365,
         "height": 2048,
-        "alt": "Kyoto Street Scene"
+        "alt": "Kyoto Street Scene",
+        "slug": "kyoto-55"
       }
     ]
   },
@@ -1245,247 +1447,288 @@
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1639040097/photography/art/Big-Bang.png",
         "width": 1365,
         "height": 2048,
-        "alt": "Big Bang"
+        "alt": "Big Bang",
+        "slug": "big-bang"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447486/photography/art/Emerging-OsterlyCarl-6.jpg",
         "width": 2700,
         "height": 1804,
-        "alt": "Girl Emerging"
+        "alt": "Girl Emerging",
+        "slug": "emerging-osterlycarl-6"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664447043/photography/art/Quantum-Rising.png",
         "width": 2400,
         "height": 2400,
-        "alt": "Quantum Rising"
+        "alt": "Quantum Rising",
+        "slug": "quantum-rising"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664446938/photography/art/Double-Vision-Building.jpg",
         "width": 1620,
         "height": 1080,
-        "alt": "Double Vision Building"
+        "alt": "Double Vision Building",
+        "slug": "double-vision-building"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664446915/photography/art/Cloud-Heads.jpg",
         "width": 1620,
         "height": 1080,
-        "alt": "Cloud Heads"
+        "alt": "Cloud Heads",
+        "slug": "cloud-heads"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664446901/photography/art/Chinese-Garden.png",
         "width": 1920,
         "height": 1080,
-        "alt": "Chinese Garden"
+        "alt": "Chinese Garden",
+        "slug": "chinese-garden"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664446878/photography/art/Broken-Bottles-and-Sky.jpg",
         "width": 1620,
         "height": 1080,
-        "alt": "Broken Bottles and Sky"
+        "alt": "Broken Bottles and Sky",
+        "slug": "broken-bottles-and-sky"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664446876/photography/art/Blurred-Power_Poles.png",
         "width": 2048,
         "height": 1364,
-        "alt": "Blurred Power Poles"
+        "alt": "Blurred Power Poles",
+        "slug": "blurred-power-poles"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664446851/photography/art/Blue-Orb.jpg",
         "width": 3072,
         "height": 3072,
-        "alt": "Blue Orb"
+        "alt": "Blue Orb",
+        "slug": "blue-orb"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664446825/photography/art/Beth-Glitch_Portrait-3-10-2015.png",
         "width": 1920,
         "height": 1080,
-        "alt": "Beth Glitch"
+        "alt": "Beth Glitch",
+        "slug": "beth-glitch-portrait-3-10-2015"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1664446803/photography/art/Bathurst-St-Quilt.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Bathurst St Quilt"
+        "alt": "Bathurst St Quilt",
+        "slug": "bathurst-st-quilt"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1665655189/photography/art/Wavy-Building.png",
         "width": 1920,
         "height": 1080,
-        "alt": "Wavy Building"
+        "alt": "Wavy Building",
+        "slug": "wavy-building"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1665655138/photography/art/My-Life-as-a_Ghost.jpg",
         "width": 1920,
         "height": 1065,
-        "alt": "My Life As a Ghost"
+        "alt": "My Life As a Ghost",
+        "slug": "my-life-as-a-ghost"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1665655079/photography/art/Red_Sunset.png",
         "width": 1920,
         "height": 1080,
-        "alt": "Red Sunset"
+        "alt": "Red Sunset",
+        "slug": "red-sunset"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1665655040/photography/art/Tree-Building.jpg",
         "width": 1620,
         "height": 1080,
-        "alt": "Tree Building"
+        "alt": "Tree Building",
+        "slug": "tree-building"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1665654759/photography/art/future-web.png",
         "width": 1061,
         "height": 796,
-        "alt": "Future Web"
+        "alt": "Future Web",
+        "slug": "future-web"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1665655603/photography/art/Hotel-Wall.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Hotel Wall"
+        "alt": "Hotel Wall",
+        "slug": "hotel-wall"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1665655695/photography/art/Cronulla-Beach.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Cronulla Beach"
+        "alt": "Cronulla Beach",
+        "slug": "cronulla-beach"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1665655838/photography/art/higher-structure.jpg",
         "width": 668,
         "height": 1000,
-        "alt": "Higher Structure"
+        "alt": "Higher Structure",
+        "slug": "higher-structure"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1665655855/photography/art/kiss-the-ball.jpg",
         "width": 4500,
         "height": 2994,
-        "alt": "Kiss The Ball"
+        "alt": "Kiss The Ball",
+        "slug": "kiss-the-ball"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1665656089/photography/art/wave-girl.png",
         "width": 482,
         "height": 587,
-        "alt": "Wave Girl"
+        "alt": "Wave Girl",
+        "slug": "wave-girl"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1665654910/photography/art/spiral-girl.png",
         "width": 1536,
         "height": 2048,
-        "alt": "Spiral Girl"
+        "alt": "Spiral Girl",
+        "slug": "spiral-girl"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1665656282/photography/art/blue-ufo.jpg",
         "width": 2448,
         "height": 3264,
-        "alt": "Blue UFO"
+        "alt": "Blue UFO",
+        "slug": "blue-ufo"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1665656403/photography/art/future-tron.jpg",
         "width": 1535,
         "height": 1535,
-        "alt": "Future Tron"
+        "alt": "Future Tron",
+        "slug": "future-tron"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1665656406/photography/art/blue-skull.png",
         "width": 2400,
         "height": 2400,
-        "alt": "Blue Skull"
+        "alt": "Blue Skull",
+        "slug": "blue-skull"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1667381648/photography/art/Tanaka-Cloud.jpg",
         "width": 1620,
         "height": 1080,
-        "alt": "Tanaka Cloud"
+        "alt": "Tanaka Cloud",
+        "slug": "tanaka-cloud"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1667381696/photography/art/IMG_0074.jpg",
         "width": 2400,
         "height": 2400,
-        "alt": "Face Vortex"
+        "alt": "Face Vortex",
+        "slug": "img-0074"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1667381724/photography/art/IMG_0167.jpg",
         "width": 2048,
         "height": 2048,
-        "alt": "Open Gathering"
+        "alt": "Open Gathering",
+        "slug": "img-0167"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1667381832/photography/art/IMG_0446.png",
         "width": 2400,
         "height": 2400,
-        "alt": "Red Sky Lips"
+        "alt": "Red Sky Lips",
+        "slug": "img-0446"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1667382011/photography/art/IMG_1182.png",
         "width": 2400,
         "height": 2400,
-        "alt": "God Is Speaking"
+        "alt": "God Is Speaking",
+        "slug": "img-1182"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1667382115/photography/art/IMG_1699.jpg",
         "width": 640,
         "height": 640,
-        "alt": "Buildings in Haze"
+        "alt": "Buildings in Haze",
+        "slug": "img-1699"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1667382191/photography/art/IMG_1420.jpg",
         "width": 1603,
         "height": 1146,
-        "alt": "Bahaus Gig"
+        "alt": "Bahaus Gig",
+        "slug": "img-1420"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1667382335/photography/art/IMG_1526.jpg",
         "width": 499,
         "height": 750,
-        "alt": "Stormy Sea"
+        "alt": "Stormy Sea",
+        "slug": "img-1526"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1667382617/photography/art/night-crossing.jpg",
         "width": 1620,
         "height": 1080,
-        "alt": "Night Crossing"
+        "alt": "Night Crossing",
+        "slug": "night-crossing"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1667382785/photography/art/plant-kaleidoscope.png",
         "width": 2048,
         "height": 1365,
-        "alt": "Plant Kaleidoscope"
+        "alt": "Plant Kaleidoscope",
+        "slug": "plant-kaleidoscope"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1667382686/photography/art/bw-buildings.png",
         "width": 1620,
         "height": 1080,
-        "alt": "BW Buildings"
+        "alt": "BW Buildings",
+        "slug": "bw-buildings"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1667382884/photography/art/chatswood-burn.jpg",
         "width": 1620,
         "height": 1080,
-        "alt": "Chatswood Burn"
+        "alt": "Chatswood Burn",
+        "slug": "chatswood-burn"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1667382933/photography/art/newtown-clothes.jpg",
         "width": 3072,
         "height": 2046,
-        "alt": "Newtown Clothes"
+        "alt": "Newtown Clothes",
+        "slug": "newtown-clothes"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1667382724/photography/art/ir-building.jpg",
         "width": 780,
         "height": 439,
-        "alt": "Gothic Building"
+        "alt": "Gothic Building",
+        "slug": "ir-building"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1667382978/photography/art/head-twirl.jpg",
         "width": 536,
         "height": 750,
-        "alt": "Head Twirl"
+        "alt": "Head Twirl",
+        "slug": "head-twirl"
       },
       {
         "src": "https://res.cloudinary.com/liquidweb/image/upload/f_auto/v1667383022/photography/art/IMG_5575.jpg",
         "width": 2048,
         "height": 1365,
-        "alt": "Grey Zone"
+        "alt": "Grey Zone",
+        "slug": "img-5575"
       }
     ]
   }

@@ -431,10 +431,56 @@ series).
    galleries.md`'s "How it's wired" section still described the pre-Phase-3
    inline-JSON-blob mechanism — updated to describe the current `<a>`-based
    markup, and added a schema section cross-linking `validate.md`.
-3. **Per-photo pages** — add a stable `slug` per image; `pagination` with `size: 1`
-   over a flattened image collection → `/gallery/<gallery>/<slug>/` with prev/next,
-   a per-photo `og:image`, and `ImageObject` JSON-LD. Style with Phase 1 layout
-   objects.
+3. ~~**Per-photo pages**~~ ✅ **Done** — `/gallery/<gallery>/<slug>/` for all 243
+   photos, prev/next, per-photo `og:image`, `ImageObject` JSON-LD.
+   - **Slugs:** backfilled every image with a `slug` derived from its Cloudinary
+     filename (`Beth-Piano-1-PNG-Final.png` → `beth-piano-1-png-final`), unique
+     *within its own gallery* (URLs are gallery-scoped, so cross-gallery
+     collisions don't matter) — verified no collisions existed with this rule
+     across all 243 images before committing to it, with a dedup-suffix
+     fallback in the backfill script for future uploads. `galleries.schema.json`
+     now requires `slug`; `validate.js` gained a per-gallery uniqueness check
+     (the schema interpreter has no "uniqueness" keyword) — tested by
+     deliberately duplicating a slug, confirming it's caught, then restoring.
+   - **Pages:** a `galleryPhotos` Eleventy collection (`.eleventy.js`) flattens
+     all 4 galleries' images, computing `prevSlug`/`nextSlug` at build time
+     (scoped to the same gallery, in `images[]` order — the order the site
+     already treats as canonical per `editing-galleries.md`). New
+     [src/pages/gallery-photo.njk](src/pages/gallery-photo.njk) paginates
+     `size: 1` over it; permalink, title/description/`image` are all templated
+     via front-matter `eleventyComputed` (same pattern as `tags.njk`). New
+     dedicated layout ([gallery-photo.njk](src/_includes/layouts/gallery-photo.njk))
+     rather than reusing `page.njk` — its `page-banner.njk` hard-crops to
+     16:9/21:9, which would butcher the mostly-portrait-orientation photos this
+     page exists to show faithfully.
+   - **Meta:** extended the Phase 0/2 JSON-LD `@graph` in `meta.njk` with an
+     `ImageObject` node (native dimensions, not the 1200×630 OG crop) gated on
+     a `photo` variable being in scope — Nunjucks `{% include %}` shares the
+     calling template's context, so this needed no new plumbing.
+   - **Two real bugs caught mid-build, both fixed:**
+     (1) copied `eleventyExcludeFromCollections: true` from the `tags.njk`
+     pattern out of habit — this silently kept all 243 pages out of
+     `collections.all`, and `sitemap.njk` loops exactly that collection, so
+     none of them were reaching the sitemap. Removed the flag.
+     (2) Eleventy pagination only adds *one* representative page to
+     `collections.all` per template by default — even after fix (1), the
+     sitemap only gained a single photo URL, not 243. Fixed with
+     `pagination.addAllPagesToCollections: true`. Verified by counting
+     `<loc>` entries in the built sitemap directly (243, matching
+     `galleries.json`'s total image count) rather than trusting the fix
+     visually.
+   - **Not done here (deliberately):** `gallery.njk`'s `<a>` tags still point
+     straight at the raw Cloudinary image (required — that's what PhotoSwipe
+     loads into the lightbox), so these new pages aren't yet linked *from* the
+     gallery grid, only reachable via the sitemap or a direct URL. Wiring the
+     grid to cross-link into per-photo pages fits more naturally as part of
+     item 4 below than as a late addition here.
+   - Verified end-to-end: `npm run build` → `validate: OK`; exact page count
+     matches (`find public/gallery -name index.html` → 244 = 243 photos + the
+     `/gallery/` index); spot-checked first/middle/last photo of a gallery for
+     correct prev/next (first has no Previous, last has no Next); JSON-LD
+     parses on a sampled page; `ImageObject` confirmed absent from `about`/
+     `home`/`gallery` index pages.
 4. **Series / collections** — reuse the Phase 2 tag mechanism for photo series;
    cross-link related photos.
 5. **`srcset` shortcode** ($0, no dep) — a Nunjucks shortcode in
@@ -443,8 +489,9 @@ series).
    gallery thumbs. **Not** `eleventy-img` (adds a real dependency; the site is 100%
    Cloudinary already).
 
-**First task:** per-photo pages (item 3) — stable `slug` per image,
-`/gallery/<gallery>/<slug>/`.
+**First task:** series/collections (item 4) — reuse the Phase 2 tag mechanism for
+photo series; this is also the natural place to cross-link `gallery.njk`'s grid
+into the new per-photo pages from item 3.
 
 ---
 

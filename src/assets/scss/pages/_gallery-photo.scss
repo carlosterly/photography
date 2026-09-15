@@ -1,0 +1,26 @@
+.photo-page__breadcrumb {
+  font-size: var(--font-size-sm);
+  color: var(--mid-grey);
+
+  a {
+    color: inherit;
+  }
+}
+
+.photo-page__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+}
+
+.photo-page__pager {
+  --cluster-justify: space-between;
+
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--light-grey);
+
+  a {
+    color: var(--red);
+  }
+}

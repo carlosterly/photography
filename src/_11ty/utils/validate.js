@@ -39,6 +39,24 @@ function validateGalleries() {
   for (const err of validateAgainstSchema(schema, galleries)) {
     errors.push(`galleries.json: ${err}`);
   }
+
+  // Not expressible in the schema interpreter (no "uniqueness" keyword):
+  // per-photo page URLs are /gallery/<gallery>/<slug>/, so slugs only need
+  // to be unique within their own gallery, not globally.
+  for (const [galleryName, gallery] of Object.entries(galleries)) {
+    if (!Array.isArray(gallery.images)) continue;
+    const seen = new Map();
+    gallery.images.forEach((image, i) => {
+      if (typeof image.slug !== "string") return;
+      if (seen.has(image.slug)) {
+        errors.push(
+          `galleries.json: ${galleryName}.images[${i}].slug "${image.slug}" duplicates images[${seen.get(image.slug)}]`
+        );
+      } else {
+        seen.set(image.slug, i);
+      }
+    });
+  }
 }
 
 function walk(dir, out = []) {

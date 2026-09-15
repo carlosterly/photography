@@ -55,6 +55,14 @@
         "name": {{ site.name | dump | safe }}
       },
       "mainEntityOfPage": {{ pageUrl | dump | safe }}
+    }{% endif %}{% if photo %},
+    {
+      "@type": "ImageObject",
+      "contentUrl": {{ photo.src | dump | safe }},
+      "url": {{ pageUrl | dump | safe }},
+      "caption": {{ photo.alt | dump | safe }},
+      "width": {{ photo.width }},
+      "height": {{ photo.height }}
     }{% endif %}
   ]
 }

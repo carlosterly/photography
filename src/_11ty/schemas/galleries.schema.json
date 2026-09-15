@@ -25,12 +25,13 @@
     },
     "image": {
       "type": "object",
-      "required": ["src", "width", "height", "alt"],
+      "required": ["src", "width", "height", "alt", "slug"],
       "properties": {
         "src": { "type": "string", "minLength": 1 },
         "width": { "type": "integer" },
         "height": { "type": "integer" },
-        "alt": { "type": "string", "minLength": 1 }
+        "alt": { "type": "string", "minLength": 1 },
+        "slug": { "type": "string", "minLength": 1 }
       }
     }
   }

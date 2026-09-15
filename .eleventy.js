@@ -39,6 +39,27 @@ module.exports = function(eleventyConfig) {
     return url.replace(/\/upload\/(?:[a-z0-9]+_[^/]+\/)*/i, "/upload/c_fill,g_auto,w_1200,h_630,f_auto,q_auto/");
   });
 
+  // Flattens every gallery's images into one collection for per-photo
+  // pagination (src/pages/gallery-photo.njk). prevSlug/nextSlug are computed
+  // here (scoped to the same gallery, in galleries.json's own image order)
+  // rather than via a filter, since the grouping is static at build time.
+  eleventyConfig.addCollection("galleryPhotos", () => {
+    const galleries = require("./src/_data/galleries.json");
+    const photos = [];
+    for (const [gallery, data] of Object.entries(galleries)) {
+      data.images.forEach((image, i) => {
+        photos.push({
+          ...image,
+          gallery,
+          galleryTitle: data.title,
+          prevSlug: i > 0 ? data.images[i - 1].slug : null,
+          nextSlug: i < data.images.length - 1 ? data.images[i + 1].slug : null,
+        });
+      });
+    }
+    return photos;
+  });
+
   // Distinct topical tags across posts, excluding the "post" tag itself
   // (that one just marks collection membership, set via articles.json).
   eleventyConfig.addCollection("tagList", (collectionApi) => {
