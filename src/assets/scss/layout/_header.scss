@@ -15,6 +15,11 @@
   font-family: var(--font-heading);
   line-height: var(--heading-line-height);
   font-weight: var(--heading-weight);
+
+  // Named view transition: the logo is identical on every page, so give it
+  // a stable identity across navigations instead of letting the default
+  // `navigation: auto` cross-fade sweep it up with the rest of the page.
+  view-transition-name: site-heading;
 }
 
 .logo__text1 {

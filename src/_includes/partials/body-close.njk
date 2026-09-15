@@ -9,5 +9,9 @@
     }
   });
 </script>
+
+{% if not noAnalytics %}
+  {% include 'partials/analytics.njk' %}
+{% endif %}
 </body>
 </html>

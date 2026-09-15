@@ -1,0 +1,39 @@
+.cookie-consent {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  // Isolated one-off, not from the nav's z-index scale (--z-nav-toggle*) —
+  // those are named for a specific unrelated purpose (Phase 1 item 1).
+  z-index: 100;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  padding: var(--space-sm);
+  background: var(--dark-grey);
+  color: var(--body-color);
+  box-shadow: var(--shadow-1);
+
+  p {
+    // A directly-matching rule (base/_typography.scss's `p { color:
+    // var(--text-color) }`, near-black) always beats an inherited value
+    // regardless of specificity — `color` on `.cookie-consent` above never
+    // actually reached this text without overriding it here explicitly.
+    color: var(--body-color);
+    margin: 0;
+    font-size: var(--font-size-sm);
+  }
+
+  // The browser's built-in `[hidden] { display: none }` UA rule has the same
+  // specificity as `.cookie-consent { display: flex }` above and loses to it
+  // (author styles beat UA styles at equal specificity) — so setting the
+  // `hidden` attribute via JS did nothing visually without this override.
+  &[hidden] {
+    display: none;
+  }
+}
+
+.cookie-consent__actions {
+  --cluster-gap: var(--space-2xs);
+}

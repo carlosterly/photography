@@ -481,17 +481,32 @@ series).
      correct prev/next (first has no Previous, last has no Next); JSON-LD
      parses on a sampled page; `ImageObject` confirmed absent from `about`/
      `home`/`gallery` index pages.
-4. **Series / collections** — reuse the Phase 2 tag mechanism for photo series;
-   cross-link related photos.
-5. **`srcset` shortcode** ($0, no dep) — a Nunjucks shortcode in
+4. **Series / collections** — 🟡 **Cross-linking done; series-tagging not
+   started.** `gallery.njk`'s grid now includes one real, visible
+   `<a class="gallery__view-link">` per gallery (below the tile, not inside
+   the PhotoSwipe-triggering `.gallery__box`, to avoid disturbing its flex/
+   absolute-caption layout), pointing to that gallery's first photo page —
+   from there, the existing prev/next nav lets a visitor browse every photo
+   in the gallery one at a time. This closes the "orphan page" gap from item 3
+   (243 pages existed but nothing linked to them). Verified: all 4 links
+   checked against the actual built output — each resolves to a real,
+   existing page; compiled CSS diffed against the pre-change baseline and
+   confirmed byte-identical once the one new rule is subtracted back out.
+   **Still open:** reuse the Phase 2 tag mechanism for actual photo series
+   (thematic groupings within/across galleries) — no scheme decided yet, and
+   unlike blog tags there's no existing data to build from; needs the user's
+   own editorial input on what the groupings should even be before this can
+   be designed, let alone implemented.
+5. **`srcset` shortcode** — 🟡 **On hold at the user's request (2026-09-15)**,
+   revisit later. ($0, no dep) — a Nunjucks shortcode in
    `src/_11ty/shortcodes/` that swaps the Cloudinary `w_` param to emit
    `srcset`/`sizes`. Retrofit `about.njk`, `page-banner.njk`, article body images,
    gallery thumbs. **Not** `eleventy-img` (adds a real dependency; the site is 100%
    Cloudinary already).
 
-**First task:** series/collections (item 4) — reuse the Phase 2 tag mechanism for
-photo series; this is also the natural place to cross-link `gallery.njk`'s grid
-into the new per-photo pages from item 3.
+**First task:** none in Phase 3 right now — item 4's series-tagging needs the
+user's editorial input, item 5 is on hold. See Phase 4 or the Anytime items
+below for what's actually pullable.
 
 ---
 
@@ -522,17 +537,43 @@ the branch passes, then swap in one commit.
 
 ## Anytime items (low coupling — pull when convenient)
 
-- **GA4 consent + scope** — `G-BFJXSFY8R8` is hardcoded in `site-head.njk` on every
-  page incl. `/thankyou/` `/sandbox/`. Move to a partial excluded on those routes;
-  add a minimal vanilla consent gate (AU/EU).
-- **`src/_11ty/*` extension pattern** — establish once (each subdir an index
-  `require`d by `.eleventy.js`); first consumers are the P0 validate util, P2 draft
-  filter, P3 `srcset` shortcode.
-- **`prefers-reduced-motion`** — the guard is commented out in `base/_base.scss`;
-  cheap to add during Phase 1.
-- **Named view transitions** — `base/_base.scss` has only the default cross-fade;
-  opportunistic polish after the reskin.
-- **README full rewrite** (Phase 0 does the one-liner).
+**Progress (2026-09-15):** all 4 pulled — GA4 consent gate, `prefers-reduced-motion`,
+named view transitions, README rewrite. (The `src/_11ty/*` pattern below isn't a
+task, just a note — it's already established by the P0 validate util, P2 draft
+computed, and P3 schemas.)
+
+- ~~**GA4 consent + scope**~~ ✅ **Done** — moved the hardcoded
+  `G-BFJXSFY8R8` gtag snippet out of `site-head.njk` entirely into a new
+  [analytics.njk](src/_includes/partials/analytics.njk) partial, included from
+  `body-close.njk` and gated by a new per-page `noAnalytics: true` front-matter
+  flag (set on `/sandbox/` and `/thankyou/`). Real consent gate, not just
+  Google's "Consent Mode" signal: the GA script tag itself is only ever
+  injected (via `document.createElement`) after the visitor clicks Accept, or
+  on a later visit if they already did — declining or not deciding means zero
+  network request to Google, ever. Choice persists in `localStorage`
+  (`ga-consent: "granted"|"denied"`). Verified: since a real browser wasn't
+  available to test in safely this session, wrote a 5-case logic test
+  (no-decision, previously-granted, previously-denied, click-Accept,
+  click-Decline) against the actual extracted script with a mocked
+  DOM/localStorage — all 5 passed once the mock correctly aliased `window` to
+  the global object (matching real browser semantics, where `window.gtag = fn`
+  makes bare `gtag()` calls resolve — the mock's first draft didn't do this
+  and reported a false failure). Built output confirmed the banner/script are
+  present on ordinary pages and completely absent from `/sandbox/`/`/thankyou/`.
+- ~~**`prefers-reduced-motion`**~~ ✅ **Done** — uncommented the existing guard
+  in `base/_base.scss` (disables `scroll-behavior: smooth`). Scoped narrowly to
+  exactly what was already stubbed in, not a full motion audit — consistent
+  with the project's stated "targeted fixes, not a full a11y audit" approach.
+- ~~**Named view transitions**~~ ✅ **Done** — gave `.site__heading` (the logo,
+  identical markup on every page) a stable `view-transition-name`, so it
+  persists smoothly across navigations instead of being swept into the
+  default whole-page cross-fade along with everything else.
+- ~~**README full rewrite**~~ ✅ **Done** — full project-structure overview,
+  content-editing pointers, validate/analytics/deployment sections, and a docs
+  index cross-linking every file in `docs/` plus `ROADMAP.md`/`UPGRADE_PLAN.md`
+  (every linked path verified to actually exist before committing to it).
+- **`src/_11ty/*` extension pattern** — not a task, just a note: already
+  established by the P0 validate util, P2 draft computed, and P3 schemas.
 
 ## Risks & keeping `main` deployable
 

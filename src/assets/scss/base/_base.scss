@@ -7,11 +7,11 @@ html {
   scroll-behavior: smooth;
 }
 
-// @media screen and (prefers-reduced-motion: reduce) {
-//   html {
-//     scroll-behavior: unset;
-//   }
-// }
+@media screen and (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: unset;
+  }
+}
 
 /**
  * Make all elements from the DOM inherit from the parent box-sizing

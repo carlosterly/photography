@@ -1,0 +1,46 @@
+<div id="cookie-consent" class="cookie-consent" hidden>
+  <p>This site uses Google Analytics to understand visitor traffic. No data is
+    collected until you accept.</p>
+  <div class="cookie-consent__actions cluster">
+    <button type="button" class="btn btn--primary btn--small" data-consent="granted">Accept</button>
+    <button type="button" class="btn btn--secondary btn--small outline" data-consent="denied">Decline</button>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var STORAGE_KEY = "ga-consent";
+    var GA_ID = "G-BFJXSFY8R8";
+
+    function loadAnalytics() {
+      var script = document.createElement("script");
+      script.async = true;
+      script.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
+      document.head.appendChild(script);
+
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () {
+        dataLayer.push(arguments);
+      };
+      gtag("js", new Date());
+      gtag("config", GA_ID);
+    }
+
+    var consent = localStorage.getItem(STORAGE_KEY);
+    if (consent === "granted") {
+      loadAnalytics();
+    } else if (consent !== "denied") {
+      document.getElementById("cookie-consent").hidden = false;
+    }
+
+    document.addEventListener("click", function (event) {
+      var button = event.target.closest("[data-consent]");
+      if (!button) return;
+
+      var choice = button.getAttribute("data-consent");
+      localStorage.setItem(STORAGE_KEY, choice);
+      document.getElementById("cookie-consent").hidden = true;
+      if (choice === "granted") loadAnalytics();
+    });
+  })();
+</script>
