@@ -120,8 +120,31 @@ the page.
 - `src/_data/galleries.json` is an Eleventy global data file, so it's available to
   every template as `galleries`.
 - `src/pages/gallery.njk` loops `galleries` to build the four tiles and one
-  PhotoSwipe lightbox per gallery.
+  PhotoSwipe lightbox per gallery (`#pswp-gallery-<slug>`).
 - `src/_includes/layouts/home.njk` uses `galleries.portrait` for the hero image and
-  the portrait slideshow.
-- Both templates emit the image arrays into their inline `<script>` at build time via
-  `{{ ... | dump | safe }}` — there is no runtime fetch.
+  the portrait slideshow (`#pswp-gallery-home`).
+- Both templates render one real `<a href="...full image..." data-pswp-width="..."
+  data-pswp-height="...">` per photo — the visible thumbnail/banner is the first
+  anchor, every other photo is a `.visually-hidden` anchor with the same real
+  `href`/data attributes. `PhotoSwipeLightbox` reads these straight from the DOM
+  (`{ gallery: '#id', children: 'a' }`) — there is no inline JSON blob and no
+  runtime fetch; every photo URL is a crawlable link in the built HTML.
+
+## Schema validation
+
+`galleries.json`'s shape is defined in
+[src/_11ty/schemas/galleries.schema.json](../src/_11ty/schemas/galleries.schema.json)
+(a JSON Schema): every top-level key must be a gallery object with `title`,
+`thumb`, `thumbAlt`, and an `images` array; `banner`/`bannerAlt`/`bannerWidth`/
+`bannerHeight` are validated if present but aren't required (only `portrait` has
+them); each image needs a non-empty `src`/`alt` and integer `width`/`height`.
+
+It's enforced by
+[src/_11ty/utils/validate.js](../src/_11ty/utils/validate.js) (see
+[validate.md](validate.md)) via a small hand-rolled interpreter in
+[src/_11ty/schemas/jsonSchema.js](../src/_11ty/schemas/jsonSchema.js) — not a full
+JSON Schema engine, just enough of the spec (`type`, `required`, `properties`,
+`additionalProperties`, `items`, `minLength`, `minProperties`, `$ref`) to check
+this one file, keeping the project dependency-free. Every edit gets checked on
+`npm run build`; a bad edit fails with the exact path (e.g.
+`galleries.json: street.images[12].width: expected integer, got string`).

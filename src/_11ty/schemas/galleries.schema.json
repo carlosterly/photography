@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "galleries.json",
+  "description": "src/_data/galleries.json — every top-level key is a gallery.",
+  "type": "object",
+  "minProperties": 1,
+  "additionalProperties": { "$ref": "#/definitions/gallery" },
+  "definitions": {
+    "gallery": {
+      "type": "object",
+      "required": ["title", "thumb", "thumbAlt", "images"],
+      "properties": {
+        "title": { "type": "string", "minLength": 1 },
+        "thumb": { "type": "string", "minLength": 1 },
+        "thumbAlt": { "type": "string", "minLength": 1 },
+        "banner": { "type": "string", "minLength": 1 },
+        "bannerAlt": { "type": "string", "minLength": 1 },
+        "bannerWidth": { "type": "integer" },
+        "bannerHeight": { "type": "integer" },
+        "images": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/image" }
+        }
+      }
+    },
+    "image": {
+      "type": "object",
+      "required": ["src", "width", "height", "alt"],
+      "properties": {
+        "src": { "type": "string", "minLength": 1 },
+        "width": { "type": "integer" },
+        "height": { "type": "integer" },
+        "alt": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

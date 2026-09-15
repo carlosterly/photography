@@ -7,9 +7,11 @@
 
 const fs = require("fs");
 const path = require("path");
+const { validateAgainstSchema } = require("../schemas/jsonSchema.js");
 
 const ROOT = path.join(__dirname, "..", "..", "..");
 const GALLERIES_PATH = path.join(ROOT, "src", "_data", "galleries.json");
+const GALLERIES_SCHEMA_PATH = path.join(__dirname, "..", "schemas", "galleries.schema.json");
 const PUBLIC_DIR = path.join(ROOT, "public");
 const CHECKED_EXTENSIONS = [".html", ".xml"];
 
@@ -33,26 +35,9 @@ function validateGalleries() {
     return;
   }
 
-  for (const [galleryName, gallery] of Object.entries(galleries)) {
-    if (!Array.isArray(gallery.images)) {
-      errors.push(`galleries.json: "${galleryName}" has no "images" array`);
-      continue;
-    }
-    gallery.images.forEach((image, i) => {
-      const where = `galleries.json: "${galleryName}".images[${i}]`;
-      if (typeof image.src !== "string" || image.src.trim() === "") {
-        errors.push(`${where} missing a non-empty "src"`);
-      }
-      if (!Number.isInteger(image.width)) {
-        errors.push(`${where} "width" is not an integer`);
-      }
-      if (!Number.isInteger(image.height)) {
-        errors.push(`${where} "height" is not an integer`);
-      }
-      if (typeof image.alt !== "string" || image.alt.trim() === "") {
-        errors.push(`${where} missing a non-empty "alt"`);
-      }
-    });
+  const schema = JSON.parse(fs.readFileSync(GALLERIES_SCHEMA_PATH, "utf8"));
+  for (const err of validateAgainstSchema(schema, galleries)) {
+    errors.push(`galleries.json: ${err}`);
   }
 }
 

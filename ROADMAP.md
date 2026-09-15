@@ -407,9 +407,30 @@ series).
    1-line rules are subtracted back out (no existing rule touched). No-JS
    fallback: each visible thumbnail's `<a href>` now navigates straight to that
    gallery's first full-size photo without any JS.
-2. **Schema + validation** — JSON Schema for `galleries.json`, wired into the Phase 0
-   validate script (required keys, integer dims, the "every top-level key is a
-   gallery" rule). Extend [docs/editing-galleries.md](docs/editing-galleries.md).
+2. ~~**Schema + validation**~~ ✅ **Done** — real JSON Schema at
+   [src/_11ty/schemas/galleries.schema.json](src/_11ty/schemas/galleries.schema.json):
+   every top-level key must be a gallery object (`title`/`thumb`/`thumbAlt`/
+   `images` required; `banner*` validated if present but not required — only
+   `portrait` has it), each image needs a non-empty `src`/`alt` and integer
+   `width`/`height`. Enforced by a small hand-rolled interpreter,
+   [src/_11ty/schemas/jsonSchema.js](src/_11ty/schemas/jsonSchema.js) (`type`,
+   `required`, `properties`, `additionalProperties`, `items`, `minLength`,
+   `minProperties`, `$ref` — just enough of draft-07 for this one file, no new
+   dependency), wired into `validate.js` in place of the old hand-rolled
+   per-image loop. **Caught a real bug in my own first draft:** the schema
+   initially required `banner*` on every gallery; building against it
+   immediately failed with 11 "required property missing" errors on
+   `street`/`japan`/`art`, which turned out to be correct — only `portrait` has
+   ever had those fields (confirmed by inspecting the actual data), so the
+   schema was fixed to match reality rather than the data being "fixed" to fit
+   a wrong assumption. Verified: clean build passes; four different deliberate
+   corruptions (missing `alt`, wrong-typed `width`, blank `thumbAlt`, missing
+   `title`) each produced a precise, correctly-pathed error
+   (e.g. `street.images[1].width: expected integer, got string`); restored and
+   confirmed `git diff` clean afterward. Also fixed a stale doc: `editing-
+   galleries.md`'s "How it's wired" section still described the pre-Phase-3
+   inline-JSON-blob mechanism — updated to describe the current `<a>`-based
+   markup, and added a schema section cross-linking `validate.md`.
 3. **Per-photo pages** — add a stable `slug` per image; `pagination` with `size: 1`
    over a flattened image collection → `/gallery/<gallery>/<slug>/` with prev/next,
    a per-photo `og:image`, and `ImageObject` JSON-LD. Style with Phase 1 layout
@@ -422,7 +443,8 @@ series).
    gallery thumbs. **Not** `eleventy-img` (adds a real dependency; the site is 100%
    Cloudinary already).
 
-**First task:** JSON Schema for `galleries.json` (item 2).
+**First task:** per-photo pages (item 3) — stable `slug` per image,
+`/gallery/<gallery>/<slug>/`.
 
 ---
 

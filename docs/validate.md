@@ -3,10 +3,12 @@
 `npm run build` ends with `node src/_11ty/utils/validate.js`, which checks two
 things:
 
-1. **`src/_data/galleries.json` is well-formed** — valid JSON, and every gallery's
-   `images[]` entries have a non-empty `src`, integer `width`/`height`, and a
-   non-empty `alt`. A hand-edit that breaks this fails the build immediately
-   (`errors`, exit code 1).
+1. **`src/_data/galleries.json` is well-formed** — valid JSON, checked against
+   [galleries.schema.json](../src/_11ty/schemas/galleries.schema.json) (every
+   top-level key is a gallery object with `title`/`thumb`/`thumbAlt`/`images`;
+   each image has a non-empty `src`/`alt` and integer `width`/`height`; see
+   [editing-galleries.md](editing-galleries.md#schema-validation)). A hand-edit
+   that breaks this fails the build immediately (`errors`, exit code 1).
 2. **The built `public/**/*.{html,xml}`** doesn't contain an insecure
    `src="http://…"` / `href="http://…"`, or a leading-space
    `src="  http…`/`href="  http…` (the exact bug class fixed on the About page —
