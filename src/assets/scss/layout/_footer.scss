@@ -45,7 +45,7 @@
 
 .footer__icons {
   grid-area: icons;
-  display: flex;
+  --cluster-gap: 0;
   justify-content: space-evenly;
   @include media(">=md") {
     justify-content: space-between;
