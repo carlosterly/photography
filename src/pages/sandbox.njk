@@ -76,6 +76,54 @@ noindex: true
   <code>--color-heading (currently aliases --mid-grey — same colour the h1–h6 above use)</code>
 </div>
 
+<h3>Colours</h3>
+<div class="cluster" style="align-items: flex-start;">
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+    <div style="width: 4rem; height: 4rem; background: var(--blue);"></div>
+    <code>--blue</code>
+  </div>
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+    <div style="width: 4rem; height: 4rem; background: var(--light-yellow);"></div>
+    <code>--light-yellow</code>
+  </div>
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+    <div style="width: 4rem; height: 4rem; background: var(--dark-yellow);"></div>
+    <code>--dark-yellow</code>
+  </div>
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+    <div style="width: 4rem; height: 4rem; background: var(--red);"></div>
+    <code>--red</code>
+  </div>
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+    <div style="width: 4rem; height: 4rem; background: var(--light-grey);"></div>
+    <code>--light-grey</code>
+  </div>
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+    <div style="width: 4rem; height: 4rem; background: var(--mid-grey);"></div>
+    <code>--mid-grey</code>
+  </div>
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+    <div style="width: 4rem; height: 4rem; background: var(--dark-grey);"></div>
+    <code>--dark-grey</code>
+  </div>
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+    <div style="width: 4rem; height: 4rem; background: var(--body-color); border: 1px solid var(--light-grey);"></div>
+    <code>--body-color</code>
+  </div>
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+    <div style="width: 4rem; height: 4rem; background: var(--brand-color);"></div>
+    <code>--brand-color</code>
+  </div>
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+    <div style="width: 4rem; height: 4rem; background: var(--text-color);"></div>
+    <code>--text-color</code>
+  </div>
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+    <div style="width: 4rem; height: 4rem; background: var(--border-color);"></div>
+    <code>--border-color</code>
+  </div>
+</div>
+
 <h3>Measure (prose line-length, for Phase 2)</h3>
 <p style="max-width: var(--measure);">
   This paragraph is constrained to <code>max-width: var(--measure)</code> (65 characters)
@@ -85,6 +133,37 @@ noindex: true
 </p>
 
 <h2>Forms</h2>
+
+<form>
+  <fieldset class="fieldset">
+    <label for="sandbox-name">Full Name</label>
+    <input class="input" type="text" id="sandbox-name" placeholder="Placeholder text">
+
+    <label for="sandbox-disabled">Disabled input</label>
+    <input class="input" type="text" id="sandbox-disabled" value="Can't touch this" disabled>
+
+    <label for="sandbox-select">Select</label>
+    <select class="select" id="sandbox-select">
+      <option value="" selected disabled>Choose</option>
+      <option value="one">Option one</option>
+      <option value="two">Option two</option>
+    </select>
+
+    <div class="control">
+      <input class="control__input" type="checkbox" id="sandbox-checkbox">
+      <label class="control__label" for="sandbox-checkbox">Checkbox</label>
+    </div>
+
+    <div class="control">
+      <input class="control__input" type="radio" name="sandbox-radio" id="sandbox-radio-1" checked>
+      <label class="control__label" for="sandbox-radio-1">Radio one</label>
+    </div>
+    <div class="control">
+      <input class="control__input" type="radio" name="sandbox-radio" id="sandbox-radio-2">
+      <label class="control__label" for="sandbox-radio-2">Radio two</label>
+    </div>
+  </fieldset>
+</form>
 
 <h2>Buttons</h2>
 
@@ -144,3 +223,98 @@ noindex: true
   <button class="btn btn--primary btn--large">Primary</button>
   <button class="btn btn--secondary btn--large">Secondary</button>
 </div>
+
+<h2>Card</h2>
+<div class="grid" style="--min: 30ch;">
+  <article class="card">
+    <a href="/sandbox/">
+      <img src="{{ site.defaultImage }}" alt="{{ site.defaultImageAlt }}" class="img-responsive" width="400" height="225" loading="lazy">
+    </a>
+    <a href="/sandbox/">
+      <h2>Card title</h2>
+    </a>
+    <time>1 January 2026</time>
+    <p>Card body copy — the same markup used by the articles-index card grid.</p>
+    <a href="/sandbox/" class="btn btn--primary outline">Continue Reading</a>
+  </article>
+</div>
+
+<h2>Pricing card</h2>
+<div class="pricing-card__wrapper">
+  <div class="pricing-card">
+    <div class="pricing-card__header">
+      Package name
+    </div>
+    <div class="pricing-card__body">
+      <ul class="pricing-card__list">
+        <li class="card-element">Feature one</li>
+        <li class="card-element">Feature two</li>
+        <li class="card-element">Feature three</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<h2>Gallery tile</h2>
+<div class="gallery" style="max-width: 20rem;">
+  <div class="gallery__box">
+    <img class="gallery__img" src="{{ site.defaultImage }}" alt="{{ site.defaultImageAlt }}">
+    <h5 class="gallery__caption">Gallery title</h5>
+  </div>
+</div>
+
+<h2>Prose specimen (Phase 2 styles this)</h2>
+
+<h2>Heading 2</h2>
+<h3>Heading 3</h3>
+<h4>Heading 4</h4>
+
+<p>A paragraph of body copy. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. This one has an <a href="/sandbox/">in-prose link</a> for contrast against the site's bare <code>--red</code> nav links.</p>
+
+<ul>
+  <li>Unordered list item one</li>
+  <li>Unordered list item two</li>
+  <li>Unordered list item three</li>
+</ul>
+
+<ol>
+  <li>Ordered list item one</li>
+  <li>Ordered list item two</li>
+  <li>Ordered list item three</li>
+</ol>
+
+<blockquote>
+  <p>A blockquote — set apart from the surrounding body copy, for a pull-quote or a cited passage.</p>
+</blockquote>
+
+<p>Inline <code>code</code> next to a fenced block:</p>
+
+<pre><code>function example() {
+  return "pre/code uses --font-mono";
+}</code></pre>
+
+<figure>
+  <img src="{{ site.defaultImage }}" alt="{{ site.defaultImageAlt }}" width="400" height="225" loading="lazy">
+  <figcaption>A figure with a caption, for in-article photos.</figcaption>
+</figure>
+
+<hr>
+
+<table>
+  <thead>
+    <tr>
+      <th>Column A</th>
+      <th>Column B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Row 1, cell A</td>
+      <td>Row 1, cell B</td>
+    </tr>
+    <tr>
+      <td>Row 2, cell A</td>
+      <td>Row 2, cell B</td>
+    </tr>
+  </tbody>
+</table>
