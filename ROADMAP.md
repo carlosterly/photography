@@ -1,8 +1,7 @@
 # carlosterly.photography — 12-month roadmap
 
-A prioritised backlog to pull from in order — not a dated schedule. Companion to
-[UPGRADE_PLAN.md](UPGRADE_PLAN.md) (tech-debt log; its one open item, §2, is folded
-into Phase 4 below).
+A prioritised backlog to pull from in order — not a dated schedule. Completed
+tech-debt work lives in git history, not a separate log.
 
 ## Context
 
@@ -41,21 +40,25 @@ What already exists (from exploration):
   hex). Layout is threadbare (one `.container` on `<body>`, one sticky-footer mixin,
   5 bespoke grid blocks). [sandbox.njk](src/pages/sandbox.njk) shows only headings +
   buttons.
-- **Galleries**: [src/_data/galleries.json](src/_data/galleries.json) (55 KB, 4
-  galleries, 243 images) is dumped **inline** into `<script type="module">` on
+- **Galleries** (✅ = fixed in Phase 3, see that phase's progress notes):
+  [src/_data/galleries.json](src/_data/galleries.json) (55 KB, 4 galleries, 243
+  images) ~~was dumped **inline** into `<script type="module">` on
   [gallery.njk](src/pages/gallery.njk) (all 243) and
-  [home.njk](src/_includes/layouts/home.njk) (105) via `| dump | safe`; only
-  Netlify's `minifyJS` shrinks it. No per-photo pages, no tags, no `<a>`-based
-  PhotoSwipe, no schema/validation.
+  [home.njk](src/_includes/layouts/home.njk) (105) via `| dump | safe`~~ ✅
+  (item 1 — real `<a>`-based PhotoSwipe markup now); ~~no schema/validation~~ ✅
+  (item 2); ~~no per-photo pages~~ ✅ (item 3). **Still open:** no tags/series
+  mechanism for photos (item 4 — blocked on the user's editorial input on what
+  groupings should even exist).
 - **Site-wide gaps** (✅ = fixed in Phase 0 items 1/2/4, see progress note below):
   ~~no Open Graph / Twitter / canonical / JSON-LD anywhere~~ ✅ (`partials/meta.njk`);
   ~~raw `{{ title }}` with no site-name suffix~~ ✅; ~~empty `<meta description>` on
   `articles-index` + `sandbox`~~ ✅; ~~About page has ~37 unsized `<img>` and 2
   malformed `src="  https://…"`~~ ✅; ~~5 award images missing `f_auto` (served as
   raw JPEG, not WebP/AVIF)~~ ✅; ~~stale `<label for="timely">` + `</br>` typo on
-  Contact~~ ✅ (found while fixing About). Still open: GA4 hardcoded on every page
-  incl. `/thankyou/` `/sandbox/`; no CI, no linting, no `_headers`.
-- **UPGRADE_PLAN.md §2** (deferred): Sass `@import` deprecation. Documented options:
+  Contact~~ ✅ (found while fixing About); ~~GA4 hardcoded on every page incl.
+  `/thankyou/` `/sandbox/`~~ ✅ (Anytime items — consent gate, see that section).
+  Still open: no CI, no linting, no `_headers`.
+- **Sass `@import` deprecation** (deferred, see Phase 4): documented options —
   (A) bump + `--silence-deprecation`; (B) `sass-migrator`; (C) drop Sass for
   **Lightning CSS**. Nothing forces it (removed only at Dart Sass 3.0, no date).
 
@@ -104,8 +107,9 @@ was a small, isolated, non-shared-partial-breaking change reviewed locally befor
 push).
 
 1. ~~**Repo hygiene.** Fix [README.md](README.md) ("Eleventy (v2)" → 3.1.6, CJS,
-   Node 24).~~ ✅ **Done** (`10ac853`). (The stale `_(uncommitted)_` markers in
-   UPGRADE_PLAN.md's Done table were corrected when this file was added.)
+   Node 24).~~ ✅ **Done** (`10ac853`). (This also corrected some stale
+   `_(uncommitted)_` markers in what was then `UPGRADE_PLAN.md`'s "Done" table
+   — since removed; see git history for that file's earlier form.)
 2. ~~**SEO / social meta partial**~~ ✅ **Done** (`10ac853`) — added
    [src/_includes/partials/meta.njk](src/_includes/partials/meta.njk), included from
    [site-head.njk](src/_includes/partials/site-head.njk):
@@ -236,7 +240,7 @@ include-media removal) is still open.
      `darken()`/`lighten()` — a different algorithm (oklab mixing vs. HSL lightness
      shift) with a different result, chosen to approximate the old look. This is
      the one place in Phase 1 where "no intended visual change" doesn't fully
-     hold, consistent with UPGRADE_PLAN.md §2's own note that this class of
+     hold, consistent with Phase 4's own research note that this class of
      Sass → native-CSS swap was never going to be pixel-identical. Everything
      else in this commit (selector structure, cascade order, the redundant
      dead declarations Sass's `@if` used to emit) was verified via a full
@@ -514,16 +518,67 @@ below for what's actually pullable.
 
 **Goal:** finish the toolchain move once the reskin has settled. Phases 1–3 already
 removed `darken()`/`lighten()`, moved component colours to custom props +
-`color-mix()`, and replaced most `@include media()` — so UPGRADE_PLAN §2 Option 2·CSS
-is now far smaller than its ~1-day estimate.
+`color-mix()`, and replaced most `@include media()` — so Option 2·CSS below is
+now far smaller than its original ~1-day estimate.
 
-1. **`lightningcss-cli` swap** (pin exact): `main.scss` `@import` list → one entry
-   point inlined by Lightning CSS; delete `_responsive.scss` + `_functions.scss`;
-   expand remaining static mixins to plain CSS; vendor the PhotoSwipe `.css`
-   cross-import into `scss/vendors/`; `package.json` script
-   `sass … ` → `lightningcss --bundle --minify --targets '>= 0.25%' … -o public/css/main.css`.
-2. **Fallback if appetite is low:** UPGRADE_PLAN §2 Option A — `sass@latest` +
-   `--silence-deprecation=…`. ~15 min.
+**Decision so far (2026-09-06): deferred, Option A.** Pin `sass` to exact
+`1.77.8` and leave it — no migration, no removal. `@import` is deprecated (Dart
+Sass 1.80) but **not removed until Dart Sass 3.0**, which has no release date,
+so nothing forces a change yet. The two options below stay documented for
+whenever that changes, or the stylesheet needs significant work anyway.
+
+**Research (verified 2026-09-03, updated after the icons subset): what actually
+depends on Sass.** Building with `sass@1.77.8` today: **zero warnings**.
+Test-compiling with `sass@1.103.1`:
+
+- **~90 deprecation warnings** remain (was ~1,950 before the icons subset
+  removed ~1,920 `map-get` calls in the vendored icons). Remainder:
+  include-media global builtins in `base/_responsive.scss`, plus ~10
+  `darken()`/`lighten()` in `_button.scss` / `_forms.scss`, plus 5 `@import`,
+  plus 3 global `if()`.
+- **Compiled CSS changes**: newer `darken()`/`lighten()` emit
+  `rgb(18.7% 53% 38.6%)` instead of `#308763`. Same rendered colour, ~450 B
+  larger, not byte-identical. Affects every button/form hover & disabled
+  state.
+
+| Feature | Usage | Note |
+|---|---|---|
+| `@include media(...)` | 32 sites | [include-media](https://include-media.com/) (~360 lines in `_responsive.scss`). Only ~5 distinct conditions used (`>=sm`, `>=md`, `>=lg`, `<=lg`, `>420px`), each a one-line `@media`. |
+| `@include btnStyle()` | 10× | `@mixin` + `@if $outline` + `darken()` |
+| `@include box-shadow` / `fh-wrapper` / `responsive-iframe` / `line-clamp` | few | static, param-less snippets |
+| `_functions.scss` `asset()`/`image()`/`font()` | 0 sites | dead code |
+| `#{}` interpolation | `_forms.scss` | empty `$prefix` → `.input`; `math.div()` in `calc()`; `#{$svg}` colour in 3 inline-SVG data URIs |
+| nesting `&` | everywhere | native CSS nesting (Baseline 2024) |
+| `@import` partials | 24 partials + `main.scss` | concatenation only — needs a bundler |
+
+Nothing needs Sass's programmable features for the actual output.
+
+1. **`lightningcss-cli` swap** (Option 2·CSS, pin exact): deletes the
+   `@import`/`@use` question, the include-media library, and (already done)
+   the giant icons file. Tooling: **Lightning CSS** (`lightningcss-cli`), not
+   Vite — one fast dependency, near drop-in for the `sass` CLI line; inlines
+   `@import`, minifies, and transpiles native nesting / `color-mix()` down per
+   `--targets` so modern syntax keeps old browser support. (`esbuild` also
+   bundles CSS `@import`; Vite only if JS bundling is wanted too.) Path:
+   `main.scss`'s `@import` list becomes one entry point inlined by Lightning
+   CSS; convert the ~24 partials to plain CSS with native nesting; hand-write
+   the ~15 `@media` blocks (replacing include-media); expand the 4 static
+   mixins; rebuild button/form colours with custom properties + `color-mix()`;
+   inline the 3 form-SVG fill colours; delete the dead `_functions.scss`;
+   `package.json` script `sass … ` →
+   `lightningcss --bundle --minify --targets '>= 0.25%' … -o public/css/main.css`.
+   Eleventy unchanged. ~1 day + page-by-page QA.
+2. **Fallback if appetite is low (Option 2·SASS):**
+   1. **Bump + silence.** `sass@latest`; add
+      `--silence-deprecation=import,global-builtin,color-functions,if-function`
+      to `build:sass` / `watch:sass`. Accept the verbose-`rgb()` colour
+      output. ~15 min. Downside: deprecated APIs, warnings muted.
+   2. **Migrate.** `sass-migrator module` (`@import`→`@use`, `map-get`→
+      `map.get`) then `sass-migrator color` (`darken`/`lighten`→
+      `color.adjust`). Hand-work after: review `@use` namespacing across ~20
+      partials; handle the PhotoSwipe `.css` cross-import (vendor it into
+      `scss/vendors/`); `if()` has no migrator; output still not
+      byte-identical. ~½ day + visual QA.
 3. **Tooling / CI** (deferred to here so Phase 1–3 churn doesn't fight a linter):
    `.editorconfig`, Prettier + Stylelint configs (dev deps, $0), a real pre-commit
    hook, and a minimal GitHub Actions workflow (free for public repos) running
@@ -570,8 +625,9 @@ computed, and P3 schemas.)
   default whole-page cross-fade along with everything else.
 - ~~**README full rewrite**~~ ✅ **Done** — full project-structure overview,
   content-editing pointers, validate/analytics/deployment sections, and a docs
-  index cross-linking every file in `docs/` plus `ROADMAP.md`/`UPGRADE_PLAN.md`
-  (every linked path verified to actually exist before committing to it).
+  index cross-linking every file in `docs/` plus `ROADMAP.md` (every linked
+  path verified to actually exist before committing to it). Later updated
+  again when `UPGRADE_PLAN.md` was folded into this file's Phase 4.
 - **`src/_11ty/*` extension pattern** — not a task, just a note: already
   established by the P0 validate util, P2 draft computed, and P3 schemas.
 

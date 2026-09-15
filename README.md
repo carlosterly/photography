@@ -3,7 +3,8 @@
 Personal photography portfolio and blog for Carl Osterly. Static site built with
 [Eleventy](https://www.11ty.dev/) 3.1.6 (CJS `.eleventy.js`) and Dart Sass, deployed
 on Netlify. Solo project, no CI, hobby pace — see [ROADMAP.md](ROADMAP.md) for the
-active backlog and [UPGRADE_PLAN.md](UPGRADE_PLAN.md) for tech-debt notes.
+active backlog, phase by phase (including the one still-open stylesheet
+decision, Sass vs. Lightning CSS, in Phase 4).
 
 ## Local development
 
@@ -79,5 +80,5 @@ Forms (reCAPTCHA + honeypot), submitting to `/thankyou/`.
 - [docs/drafts.md](docs/drafts.md) — how `draft: true` works
 - [docs/og-images.md](docs/og-images.md) — the social-card image recipe
 - [docs/validate.md](docs/validate.md) — what the build-time validate step checks
-- [ROADMAP.md](ROADMAP.md) — the active 12-month backlog, phase by phase
-- [UPGRADE_PLAN.md](UPGRADE_PLAN.md) — tech-debt log
+- [ROADMAP.md](ROADMAP.md) — the active 12-month backlog, phase by phase (Phase 4
+  has the deferred Sass/Lightning CSS research)
