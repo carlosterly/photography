@@ -11,12 +11,6 @@
   display: table;
 }
 
-.container {
-  max-width: var(--max-width);
-  margin-inline: auto;
-  padding-inline: 1rem;
-}
-
 /**
  * Hide text while making it readable for screen readers
  * 1. Needed in WebKit-based browsers because of an implementation bug;
@@ -53,8 +47,4 @@
   display: block;
   max-width: 100%;
   height: auto;
-}
-
-.flow > * + * {
-  margin-top: var(--flow-space, 1rem);
 }
