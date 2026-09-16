@@ -13,25 +13,19 @@ permalink: "/gallery/"
 
 <div class="gallery">
   {% for slug, gallery in galleries %}
-  <div class="gallery__item">
+  <div class="gallery__box" id="pswp-gallery-{{ slug }}">
 
-    <div class="gallery__box" id="pswp-gallery-{{ slug }}">
+    <a href="{{ gallery.images[0].src }}" data-pswp-width="{{ gallery.images[0].width }}" data-pswp-height="{{ gallery.images[0].height }}">
+      <img class="gallery__img" src="{{ gallery.thumb }}" alt="{{ gallery.thumbAlt }}">
+    </a>
 
-      <a href="{{ gallery.images[0].src }}" data-pswp-width="{{ gallery.images[0].width }}" data-pswp-height="{{ gallery.images[0].height }}">
-        <img class="gallery__img" src="{{ gallery.thumb }}" alt="{{ gallery.thumbAlt }}">
-      </a>
+    <h5 class="gallery__caption">{{ gallery.title }}</h5>
 
-      <h5 class="gallery__caption">{{ gallery.title }}</h5>
-
-      {% for img in gallery.images %}
-        {% if not loop.first %}
-          <a class="visually-hidden" href="{{ img.src }}" data-pswp-width="{{ img.width }}" data-pswp-height="{{ img.height }}" aria-hidden="true" tabindex="-1">{{ img.alt }}</a>
-        {% endif %}
-      {% endfor %}
-
-    </div>
-
-    <a class="gallery__view-link" href="/gallery/{{ slug }}/{{ gallery.images[0].slug }}/">Browse {{ gallery.title }} photos one at a time &rarr;</a>
+    {% for img in gallery.images %}
+      {% if not loop.first %}
+        <a class="visually-hidden" href="{{ img.src }}" data-pswp-width="{{ img.width }}" data-pswp-height="{{ img.height }}" aria-hidden="true" tabindex="-1">{{ img.alt }}</a>
+      {% endif %}
+    {% endfor %}
 
   </div>
   {% endfor %}
