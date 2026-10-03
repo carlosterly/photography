@@ -80,10 +80,6 @@ function validateBuiltOutput() {
   const errorChecks = [
     { name: "insecure http:// src/href", pattern: /(?:src|href)\s*=\s*"http:\/\//i },
     { name: "leading-space src/href", pattern: /(?:src|href)\s*=\s*"\s+/i },
-  ];
-  // Non-fatal until ROADMAP.md Phase 2 item 6 replaces the lorem-ipsum
-  // articles' placeholder images — promote to errorChecks once that's done.
-  const warningChecks = [
     { name: "via.placeholder.com reference", pattern: /via\.placeholder\.com/ },
   ];
 
@@ -93,11 +89,6 @@ function validateBuiltOutput() {
     for (const check of errorChecks) {
       if (check.pattern.test(content)) {
         errors.push(`${rel}: found ${check.name}`);
-      }
-    }
-    for (const check of warningChecks) {
-      if (check.pattern.test(content)) {
-        warnings.push(`${rel}: found ${check.name}`);
       }
     }
   }

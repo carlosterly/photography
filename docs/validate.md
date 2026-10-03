@@ -13,13 +13,9 @@ things:
    `src="http://…"` / `href="http://…"`, or a leading-space
    `src="  http…`/`href="  http…` (the exact bug class fixed on the About page —
    see [ROADMAP.md](../ROADMAP.md) Phase 0 item 4). Also fatal.
-
-A third check — `via.placeholder.com` references — is currently a **warning only**
-(printed, doesn't fail the build). It flags the 5 lorem-ipsum
-`src/articles/my-*-article.njk` files, which are deliberately still placeholder
-content pending [ROADMAP.md](../ROADMAP.md) Phase 2 item 6 (blog content). Once
-those are replaced with real posts, promote it from `warningChecks` to
-`errorChecks` in `validate.js`.
+3. **The built `public/**/*.{html,xml}`** doesn't reference `via.placeholder.com`.
+   Those were the placeholder images on the lorem-ipsum articles, replaced in
+   [ROADMAP.md](../ROADMAP.md) Phase 2 item 6. Also fatal.
 
 ## Netlify
 

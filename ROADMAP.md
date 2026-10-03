@@ -165,7 +165,7 @@ push).
    `public/**/*.{html,xml}` scanned for insecure `http://` and leading-space
    `src`/`href` (fatal). `via.placeholder.com` is a **warning only** for now — it
    correctly flags the 5 still-lorem-ipsum articles, which are legitimately
-   unfixed pending Phase 2 item 6; those are now replaced (Phase 2 item 6), so promoting it to fatal is a small pending change in `validate.js`.
+   unfixed pending Phase 2 item 6. Promoted to fatal once those were replaced.
    Wired into `npm run build` (`build:sass` → `build:eleventy` → `build:validate`,
    now explicit instead of the `build:*` glob). (Considered a local
    `.git/hooks/pre-commit` too, but dropped it — it's untracked by git so it
