@@ -88,7 +88,7 @@ Phase 1  Token + layout     reskin enablement; visually identical
 Phase 2  Blog activation
   tag mechanism ─────────▶ reused for gallery series/collections (P3)
 Phase 3  Gallery restructure   (data/perf fix is token-independent — can pull forward)
-Phase 4  Sass → Lightning CSS + tooling/CI   last: needs a settled stylesheet
+Phase 4  Sass → Lightning CSS (deferred) + tooling (.editorconfig done)   last: needs a settled stylesheet
 ```
 
 - **Tokens before blog prose CSS and before the gallery *visual* restructure** — but
@@ -165,7 +165,7 @@ push).
    `public/**/*.{html,xml}` scanned for insecure `http://` and leading-space
    `src`/`href` (fatal). `via.placeholder.com` is a **warning only** for now — it
    correctly flags the 5 still-lorem-ipsum articles, which are legitimately
-   unfixed pending Phase 2 item 6; promote it to fatal once those are replaced.
+   unfixed pending Phase 2 item 6; those are now replaced (Phase 2 item 6), so promoting it to fatal is a small pending change in `validate.js`.
    Wired into `npm run build` (`build:sass` → `build:eleventy` → `build:validate`,
    now explicit instead of the `build:*` glob). (Considered a local
    `.git/hooks/pre-commit` too, but dropped it — it's untracked by git so it
@@ -176,9 +176,7 @@ push).
    clean. No `netlify.toml` change needed — its
    existing build command already runs `npm run build`, which now validates.
 
-**Phase 0 is now fully complete** (items 1–7). Next up: Phase 1 — token layer +
-layout foundation (see below), the reskin-enablement work with no intended visual
-change.
+**Phase 0 is now fully complete** (items 1–7). Phase 1 is also complete (see below).
 
 ---
 
@@ -188,8 +186,7 @@ change.
 layout objects, so the actual reskin is a token edit + a sandbox review, not a hunt
 through 24 partials. **No intended visual change.**
 
-**Progress (2026-09-15):** items 1–3 and 5 are fully done. Item 4 (interleave
-include-media removal) is still open.
+**Progress (2026-10-04):** all 5 items done. Phase 1 is complete.
 
 1. **Expand [_variables.scss](src/assets/scss/abstracts/_variables.scss):**
    ~~spacing scale `--space-3xs…3xl`~~ ✅ **tokens added** — `--space-3xs`(0.25rem)
@@ -284,9 +281,7 @@ include-media removal) is still open.
    `hr`, `table`) that Phase 2's prose CSS will style. `sandbox.njk` is
    `noindex`/excluded from collections, so this only ever touched that one page.
 
-**First task:** interleave include-media removal (item 4) into the next partial
-you touch for another reason — swap its `@include media()` calls for a plain
-`@media` block rather than doing it as a standalone sweep.
+**First task:** none — Phase 1 is complete.
 
 ---
 
@@ -565,7 +560,7 @@ Nothing needs Sass's programmable features for the actual output.
    CSS; convert the ~24 partials to plain CSS with native nesting; hand-write
    the ~15 `@media` blocks (replacing include-media); expand the 4 static
    mixins; rebuild button/form colours with custom properties + `color-mix()`;
-   inline the 3 form-SVG fill colours; delete the dead `_functions.scss`;
+   inline the 3 form-SVG fill colours;
    `package.json` script `sass … ` →
    `lightningcss --bundle --minify --targets '>= 0.25%' … -o public/css/main.css`.
    Eleventy unchanged. ~1 day + page-by-page QA.
@@ -580,7 +575,10 @@ Nothing needs Sass's programmable features for the actual output.
       partials; handle the PhotoSwipe `.css` cross-import (vendor it into
       `scss/vendors/`); `if()` has no migrator; output still not
       byte-identical. ~½ day + visual QA.
-3. **Tooling / CI** (deferred to here so Phase 1–3 churn doesn't fight a linter):
+3. **Tooling / CI** — partly done. `.editorconfig` ✅ (`13c5880`). The rest
+   is **not planned**: Netlify already runs build + validate on every push to
+   `main`, and editor extensions cover formatting. Revisit if the site gains a
+   second contributor or a preview gate. Original scope, for reference:
    `.editorconfig`, Prettier + Stylelint configs (dev deps, $0), a real pre-commit
    hook, and a minimal GitHub Actions workflow (free for public repos) running
    `npm run build` + validate on push — a second gate before Netlify.
@@ -640,8 +638,8 @@ computed, and P3 schemas.)
 | Phase 1 is a wide "no visual change" diff | Partial-by-partial commits; diff `public/css/main.css` each; expanded `sandbox.njk` + before/after screenshots. |
 | Meta partial touches every page | Land on a branch, `npm run build`, inspect 5 rendered pages before merge. A Nunjucks error fails the Netlify build (safe, but blocking). |
 | JSON-LD errors are invisible | Run changed pages through Google Rich Results test after each meta-scaffold deploy. |
-| `galleries.json` footguns (55 KB, hand-edited) | P0 validate script in the pre-commit hook **and** the Netlify build command. |
-| Gallery inline-JS relies on Netlify `minifyJS` | P3's `<a>`-markup conversion removes the blob; don't touch `minifyJS` while the blob still ships anywhere. |
+| `galleries.json` footguns (55 KB, hand-edited) | P0 validate script runs in the Netlify build command. (The pre-commit hook was dropped in P0 item 7.) |
+| Gallery inline-JS relies on Netlify `minifyJS` | Resolved: P3 item 1 removed the inline JSON blob, so this risk no longer applies. |
 | Blog launch with stale content | Replace / `git rm` the 5 lorem files and set real dates **before** un-hiding nav (the last P2 commit). `draft`/`noindex` cover half-written posts. |
 | Lightning CSS output not byte-identical to Sass | P4 on its own branch; visual QA vs the sandbox, not a byte diff. Keep `sass` on `main` until the branch passes. |
 | Scope creep: "reskin" → "rebuild" | Phase 1 layout objects are **additive**; bespoke blocks are refactored to consume tokens, never deleted wholesale. Nav hamburger stays unless the reskin truly needs JS. |
@@ -678,6 +676,6 @@ a shipped design-system package · RUM / perf-budget tooling beyond manual Light
   to full images); `/gallery/portrait/<slug>/` pages build with prev/next and a
   per-photo `og:image`; validate step passes the schema.
 - **Phase 4:** `npm run build` produces `public/css/main.css` via `lightningcss`;
-  every `/sandbox/` component matches its pre-swap screenshot; `_responsive.scss` and
-  `_functions.scss` are gone; the GitHub Action runs `build` + validate green on a
-  test push.
+  every `/sandbox/` component matches its pre-swap screenshot; `_responsive.scss` is gone
+  (`_functions.scss` was already deleted in P1 item 1). The GitHub Action check is
+  not planned (see Phase 4 item 3).
