@@ -3,7 +3,7 @@
   grid-template-columns: 1fr;
   grid-row-gap: var(--space-sm);
 
-  @include media(">=md") {
+  @media (min-width: 768px) {
     grid-template-columns: 1fr 1fr;
     grid-column-gap: var(--space-xl);
     grid-row-gap: 0;
@@ -30,7 +30,7 @@
   justify-content: space-around;
   padding: var(--space-xs) 0 var(--space-xs) 0;
 
-  @include media(">=md") {
+  @media (min-width: 768px) {
     justify-content: space-evenly;
   }
 

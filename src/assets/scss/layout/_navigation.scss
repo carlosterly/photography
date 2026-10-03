@@ -1,6 +1,6 @@
 .site__nav {
   grid-column: 1 / span 1;
-  @include media(">=lg") {
+  @media (min-width: 992px) {
     display: none;
   }
 }
@@ -13,7 +13,7 @@
   --cluster-gap: 0;
   justify-content: space-between;
 
-  @include media("<=lg") {
+  @media (max-width: 992px) {
     display: none;
   }
   li {

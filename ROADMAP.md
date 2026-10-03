@@ -267,11 +267,12 @@ include-media removal) is still open.
      `.cluster`'s new `flex-wrap`/`align-items: center` are inert) rather than the
      roadmap's usual screenshot diff — worth an eyeball in a real browser before
      treating this as fully proven.
-4. **Interleave include-media removal.** In each partial you touch, swap
-   `@include media(">=sm"|">=md"|">=lg"|"<=lg")` for a plain `@media` block (only ~5
-   distinct conditions, 576/768/992 px). Delete
-   [_responsive.scss](src/assets/scss/base/_responsive.scss) (587 lines) in Phase 4
-   once the last call site is gone.
+4. ~~**Interleave include-media removal.**~~ ✅ **Done** — all 13 live
+   `@include media()` call sites outside `_responsive.scss` converted to plain
+   `@media` blocks (576/768/992 px, plus `420.01px` for the two empty `>420px`
+   blocks in `_header.scss`). Verified by build + compiled-CSS check and
+   browser testing by the owner. [_responsive.scss](src/assets/scss/base/_responsive.scss)
+   (587 lines) is now unused and gets deleted in Phase 4.
 5. ~~**Turn [sandbox.njk](src/pages/sandbox.njk) into a real style guide**~~ ✅
    **Done.** Token swatches (spacing bars, radii, shadow, `--color-heading`,
    `--measure`) were already in place; this pass added the remaining pieces: a
